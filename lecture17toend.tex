@@ -1,0 +1,1522 @@
+\subsection{Lecture 17: The Spin Group and Pin Group}
+\subsubsection{Self-Dual and Anti-Self-Dual Forms}
+
+\begin{remark*}
+Let $\mu$ be a metric-compatible orientation (i.e. a volume form) on $\RR^{p,q}$. Recall that this means $G(\mu,\mu)=|\mu|^2 = (-1)^q$. Then by Theorem \ref{thm:kmod4} we know that $\bighat{\mu} = \pm \mu$ depends only on $p+q\mod 4$. So $\mu\mu = \pm \bighat{\mu}\mu = \pm |\mu|=\pm 1$, where the sign depends on $n,p,$ and $q$.
+\end{remark*}
+
+\begin{lemma}
+Let $\mu$ be a volume form on $\RR^{p,q}$. Then,
+\begin{enumerate}
+    \item $\mu^2 = 1$ if $p-q=0 \mod 4$ or $p-q=3\mod 4$.
+    \item $\mu^2 = -1$ if $p-q=1\mod 4$ or $p-q=2\mod 4$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+We have $\mu = e_1...e_n$ for some orthonormal basis $\{e_1,...,e_n\}$. This means $\bigcheck{\mu}\mu = (-1)^p$.
+
+We also know that $\bigcheck{\mu} = \mu$ if $n=0$ or $1$ mod $4$ and $\bigcheck{\mu}=-\mu$ if $n=2$ or $3$ mod $4$. So if $n=2k$, then $\bigcheck{\mu}=(-1)^k\mu$ and if $n=2k+1$ then $\bigcheck{\mu} = (-1)^k\mu$ as well.
+
+Therefore, $\mu^2 = \mu\bigcheck{\mu}(-1)^k = (-1)^{p-k}1$.
+
+When $n$ is even, this becomes $(-1)^{(p-q)/2}$ and when $n$ is odd it becomes $(-1)^{(p-q+1)/2}$. One can now check that this gives the desired result by substituting in each of $p-q = 1,2,3,4$.
+\end{proof}
+\begin{remark*}
+    When $p-q=1$ or $2$ mod $4$, then $\mu$ is a \textbf{complex structure} on $\Cl(p,q)$.
+\end{remark*}
+
+\begin{defn}
+Let $\mu$ be an orientation satisfying $\mu^2 = 1$ and let $a\in \Cl(p,q)$
+\begin{enumerate}
+    \item If $\mu a = a$ we say $a$ is \textbf{self-dual}.
+    \item If $\mu a = -a$ we say $a$ is \textbf{anti-self-dual}.
+\end{enumerate}
+The vector subspace of all self-dual forms is denoted $\Cl^+(p,q)$ and the subspace of all anti-self-dual forms is denoted $\Cl^-(p,q)$.
+\end{defn}
+\begin{remark*}
+    The sets $\Cl^+(p,q)$ and $\Cl^-(p,q)$ are vector subspaces, but not necessarily subalgebras.
+\end{remark*}
+\begin{remark*}
+    Since $\mu^2 = 1$ we require that $p-q=0$ or $3$ mod $4$ in order to define these subspaces.
+\end{remark*}
+\begin{remark*}
+    By setting $a = \frac{1}{2}(a+\mu a) + \frac{1}{2}(a-\mu a)$ we see that $\Cl(p,q) = \Cl^+(p,q) \oplus \Cl^-(p,q)$.
+\end{remark*}
+
+
+\begin{defn}[Left/Right Ideals]\index{Algebra!Left/Right Ideal}\index{Ideal!Left/Right Ideal of Algebra}
+    Let $A$ be an algebra and let $I$ be an ideal. We say $I$ is a two-sided ideal since $aI = I$ and $Ia=I$ for all $a\in A$.
+
+    A weaker definition is that of left and right ideals. $I$ is said to be a \textbf{right ideal} if $Ia=I$ for all $a\in A$. It is said to be a \textbf{left ideal} if $aI=I$ for all $a\in A$.
+\end{defn}
+\begin{lemma}
+\begin{enumerate}
+    \item When $p-q=3\mod 4$, the subspaces $\Cl^{\pm}(p,q)$ are two-sided ideals.
+    \item When $p-q=0\mod 4$, the subspaces $\Cl^{\pm}(p,q)$ are right ideals.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+    Let $\alpha \in \Cl^{\pm}(p,q)$ and let $b \in \Cl(p,q)$. Then $\mu\alpha = \pm \alpha$, so 
+    \[\mu(\alpha b) = (\mu\alpha)b = \pm \alpha b\]
+    So $\alpha b \in \Cl^{\pm}(p,q)$. Therefore $\Cl^{\pm}(p,q)$ is always a right ideal.
+
+    Now we show that if $p-q=3\mod 4$ then it is also a left ideal. Note that when this is the case, $\mu b = b\mu$, so
+    \[\mu(b\alpha) = b(\mu\alpha) = b(\pm \alpha) = \pm b\alpha\]
+    This completes the proof.
+\end{proof}
+\begin{remark*}
+    Why isn't $\Cl^{\pm}(p,q)$ two-sided when $p-q=0\mod 4$? The answer is that in general, if $p-q=0\mod 4$ then $\mu(b\alpha)=\pm \bigtilde{b}\alpha$, which is not in general equal to $\pm b\alpha$.
+\end{remark*}
+\begin{remark*}
+In fact, the algebra $\Cl(p,q)$ \textbf{only} has non-trivial two-sided ideals when $p-q=3\mod 4$, and they are always given by $\Cl^{\pm}(p,q)$ for some orientation $\mu$.
+\end{remark*}
+
+\subsubsection{Examples of Clifford Algebras}
+\begin{remark*}
+    Recall that $\dim \Cl(V) = 2^n$.
+\end{remark*}
+
+\begin{example}
+Suppose $n=0$. Then $V = \{0\}$. We have $\Cl(V) = \RR$, where it is given the positive definite inner product $\langle a,b\rangle = ab$.
+\end{example}
+\begin{example}
+    Let $n=1$. So $V = \Span\{e_1\}$. There are two possible signatures, $(1,0)$ and $(0,1)$. In the first case, $\langle e_1,e_1\rangle = 1$ and in the second, $\langle e_1,e_1\rangle = -1$.
+
+    \begin{enumerate}[(i)]
+    \item { The first case is the signature $(1,0)$. 
+
+    In this case, $e_1e_1 = |e_1|^2 = -1$, so $\Cl(1,0) = \{a1 + be_1 | e_1^2 = -1\}$. This is exactly the same as the definition of the complex numbers, so we see that
+    \[\CC=\Cl(1,0) \]
+    }
+    \item {
+    The second case is the signature $(0,1)$.
+
+    In this case, $e_1e_1 = |e_1|^2 = 1$. So we have $\Cl(0,1) = \{a1+be_1 | e_1^2 = 1 \}$. This is called the set of \textbf{Lorentz numbers} (also known as the split-complex numbers or the hyperbolic numbers). We denote it,
+    \[\LL = \Cl(0,1)\]
+    }
+    \end{enumerate}
+    \begin{remark*}
+        The Lorentz numbers \textbf{do not} form a field since $(1+e_1)(1-e_1) = 1-e_1^2 = 0$.
+    \end{remark*}
+\end{example}
+\begin{example}
+    We will soon see that $\Cl(2,0) = \HH$ and that $\Cl(0,2)$ and $\Cl(1,1)$ are both isomorphic to $M_{2\times 2}(\RR)$ (although the isomorphisms are different).
+\end{example}
+\begin{remark*}
+    Using the $k\mod 4$ which appears in many places will allow us to classify all Clifford algebras just by knowing the first few cases. This is a phenomenon called Bott periodicity.
+\end{remark*}
+
+\subsubsection{Pin Groups and Spin Groups}
+For the past few lectures we have worked out many properties of Clifford algebras. Now we will examine some important subsets of Clifford algebras which form groups.
+
+\begin{remark*}
+    Let $u \in \Cl(V)$. Then if $|u|^2 \neq 0$ then $u\frac{-u}{|u|^2}=1$, so $u$ is invertible.
+\end{remark*}
+\begin{defn}[Group of Invertible Elements of Clifford Algebra]
+    The set of all invertible elements of $\Cl(V)$ is denoted $\Cl^*(V)$. Observe that it forms a group with respect to Clifford multiplication. 
+\end{defn}
+\begin{remark*}
+    Try not to confuse this with the dual space, $(\Cl(V))^*$.
+\end{remark*}
+\begin{defn}[Pin Group]
+    The Pin group is defined to be the subgroup of $\Cl^*(V)$ generated by all unit vectors in $V$,
+    \begin{equation}
+        \Pin(V) = \{u_1...u_k : |u_i|^2 = 1\; \forall\, i=1,...,k\}
+    \end{equation}
+\end{defn}
+\begin{remark*}
+    By definition, every element $v\in \Pin(V)$ is decomposable. So every element of $\Pin(V)$ is either even or odd.
+\end{remark*}
+\begin{defn}[Spin Group] We define the Spin group to be all the even elements of the Pin group,
+\begin{equation}
+    \Spin(V) = \Cl^{\textsf{even}}(V)\cap \Pin(V)
+\end{equation}
+\end{defn}
+\begin{lemma}
+    Let $u \in V$ be a non-null vector. Then the action of a reflection $R_u$ on a vector $v\in V$ is given by $R_u(v) = -uvu^{-1}$.
+\end{lemma}
+\begin{proof}
+    We have $uv = u\wedge v - \langle u,v\rangle$. So $uv = vu$ iff $u$ and $v$ are co-linear, since the wedge product part vanishes and we are left with the metric term which is symmetric.
+
+    So $uvu^{-1}=v$ if $v = \lambda u$ for some $\lambda$. Furthermore, $uvu^{-1} = -v$ if $u$ and $v$ are perpendicular.  These are the two properties a reflection needs to satisfy, so we are done.
+\end{proof}
+The above lemma allows us to relate the Pin and Spin groups to the group of isometries of a vector space. To make this precise we will introduce some ideas from representation theory. The representation theory of the Spin group is extremely important in physics.
+\begin{defn}[Representation]\index{Representation}
+Let $V$ be a vector space and let $G$ be a group. Let $\GL(V)$ be the set of all invertible linear maps from $V$ to $V$. Then a \textbf{representation of} $G$ is a group homomorphism $\rho : G \to \GL(V)$.
+
+The vector space $V$ is called a representation space of $G$, and $\dim V$ is referred to as the dimension of the representation.
+\end{defn}
+\begin{remark*}
+    For an element of $\GL(V)$ in the image of $\rho$, we use the notation $\rho_g = \rho(g)$.
+\end{remark*}
+\begin{remark*}
+    We call such a map a representation because it provides us with a way to represent group elements as linear maps, and group multiplication as composition of linear maps. When $V$ is finite dimensional, we can even represent group elements using invertible matrices. As you might imagine, this is extremely powerful because linear algebra makes everything easier.
+\end{remark*}
+
+\begin{defn}[Adjoint Representation]\index{Representation!Adjoint}
+The \textbf{adjoint representation} of $\Cl^*(V)$ is the map $\Ad : \Cl^*(V) \to \GL(\Cl(V))$ given by 
+\begin{equation}\Ad_a(b) = aba^{-1}\end{equation}
+\end{defn}
+
+\begin{defn}[Twisted Adjoint Representation]\index{Representation!Twisted Adjoint} The \textbf{twisted adjoint representation} of $\Cl^*(V)$ is the map $\bigtilde{\Ad}:\Cl^*(V) \to \GL(\Cl(V))$ given by
+\begin{equation}
+    \bigtilde{\Ad}_a(b) = \bigtilde{a}ba^{-1}
+\end{equation}
+\end{defn}
+\begin{thm}
+There exist exact sequences,
+\begin{equation}
+    1 \to \{1,-1\} \to \Pin(V) \xrightarrow{\bigtilde{\Ad}} \Orth(V) \to 1
+\end{equation}
+and
+\begin{equation}
+    1 \to \{1,-1\} \to \Spin(V) \xrightarrow{\bigtilde{\Ad}} \textsf{SO}(V) \to 1
+\end{equation}
+\end{thm}
+\begin{proof}
+    Let $u \in V$, $|u|\neq 0$. Then $R_u = \bigtilde{\Ad}_u \in \Orth(V)$ as we saw earlier. So by Cartan-Dieudonn\'e theorem, $\bigtilde{\Ad}$ surjects onto $\Orth(V)$. 
+    
+    Now suppose $\bigtilde{\Ad}_a$ equals the identity for some $a \in \Pin(V)$. This means $\bigtilde{a}va^{-1}=v$ for al $v\in V$. 
+    
+    If $a$ is odd we have $\bigtilde{a}=-a$, so $av=-va$, or in other words $a \in \twcent(\Cl(V))$ which is impossible since $\twcent(\Cl(V))$ never contains odd elements. 
+    
+    If $a$ is even, we have $ava^{-1}=v$, so $a\in \cent(\Cl(V))$. Since $a$ is even, we have $a \in \RR$. So $a=\pm 1$. 
+
+    Therefore, the only way to have $\bigtilde{\Ad}_a = \One$ is to have $a=\pm 1$, so we see that $\ker \bigtilde{\Ad}|_{\Pin(V)}=\{1,-1\}$. Therefore we have shown that the first sequence is exact.
+
+    Now recall that any element of $\SO(V)$ can be written as an even number of reflections. Since $\bigtilde{\Ad}(v)$ is a reflection for any $v \in V$, and since elements of $\Spin(V)$ are the product of an even number of vectors, we see that $\bigtilde{\Ad}(\alpha)$ is the product of an even number of reflections as required.
+\end{proof}
+
+\begin{remark*}
+    The above exact sequences do not split. The proof of this is on assignment 5.
+\end{remark*}
+
+
+\section{Composition Algebras}
+\subsection{Lecture 18: Composition Algebras}
+\subsubsection{Real and Imaginary Parts of Composition Algebras}
+We have seen so far that a few different composition algebras (algebras with $|ab|=|a||b|$) can be constructed using Clifford algebras. In this section we will consider these kinds of algebras in more generality, and later we will relate this back to Clifford algebras. We will see in this section that any composition algebra can be broken down into a "real" and "imaginary" part (although more work will be required to show that this has anything to do with the complex numbers or quaternions).
+
+\begin{lemma}
+    Let $A$ be a unital algebra (not necessarily associative) over $\RR$ with metric $G = \langle\cdot,\cdot\rangle$. The following are equivalent conditions for $A$ to be compositional.
+    \begin{enumerate}[(i)]
+    \item $|ab|^2 = |a|^2|b|^2$
+    \item $\langle ac,bc\rangle = \langle a,b\rangle |c|^2$
+    \item $\langle ca,cb\rangle = |c|^2 \langle a,b\rangle$
+    \item $\langle ac,bd\rangle + \langle bc,ad\rangle = 2\langle a,b\rangle\langle c,d\rangle$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    First notice that (iv) implies (ii) and (iii), since we can set $c=d$ or $a=b$ in the equation.
+
+    Next, we see that (i) implies (ii) by the polarization identity, $|\langle a,b\rangle c|^2 = |a+b|^2 |c|^2$
+
+    The same argument shows that (i) implies (iii).
+
+    Again we can use the polarization identity to show that (ii) implies (iv) and that (iii) implies (iv).
+
+    FInally, we can set $a=b$ in (ii) or (iii) to show that (ii) implies (i) and that (iii) implies (i).
+\end{proof}
+\begin{defn}
+    We will define a right-multiplication map by $R_a(b) = ba$, and a left-multiplication map by $L_a(b) = ab$.
+\end{defn}
+\begin{remark*}
+    The condition (ii) in the previous lemma becomes $\langle R_c a,R_c b\rangle = |c|^2 \langle a,b\rangle$, and similar statements hold for (iii) and (iv).
+\end{remark*}
+
+Given a unital composition algebra $A$ with a metric of signature $(p,q)$ we will then define $\Re(A) = \Span\{1\}$. Then $|a1|^2 = |a|^2 |1|^2$, so $|1|^2 = 1$ as long as $p\geq 1$. This means that $\Re(A)$ is a nondegenerate subspace of $A$, and in particular we have $A = \Re(A)\oplus_\perp (\Re(A))^\perp$. We then define $\Im(A) = \Re(A)^\perp$. We therefore get $a = \Re(a)+\Im(a)$ for any $a \in A$.
+
+Observe that $\Re(A)$ is a one-dimensional subalgebra, but $\Im(A)$ is not necessarily a subalgebra and may just be a vector subspace.
+
+We then define a map $a \mapsto \overline{a}$ by the formula $\overline{a}=\Re(a)-\Im(a)$. This is conjugation, which we will note defines an element of $\Orth(V)$. Next time we will show that $R_a^\dagger = R_{\overline{a}}$ and $L_a^\dagger = L_{\overline{a}}$ for all $a\in A$, and that $\overline{ab}=\overline{b}\,\overline{a}$.
+\subsubsection{Conjugation in Composition Algebras}
+Before continuing our discussion of composition algebras we will prove the claim made at the end of the previous lecture. In this section $A$ is a unital composition algebra with metric of signature $(p,q)$.
+\begin{lemma}
+    Let $c \in A$. Then $R_c^\dagger = R_{\overline{c}}$ and $L_c^\dagger = L_{\overline{c}}$.
+\end{lemma}
+\begin{proof}
+    Suppose $c \in \Re(A)$. Then $\overline{c}=c$, and furthermore, by the definition of $\Re(A)$ we have that $\langle ca,b\rangle = \langle ta,b\rangle$ for some $t\in \RR$. By linearity we can then move $t$ to the other side to get $\langle ca,b\rangle = \langle a,tb\rangle = \langle a,cb\rangle$ as required.
+
+    Now suppose $c\in\Im(A)$. Then $\overline{c}=-c$. By property (iv), we also have $\langle a,R_cb\rangle + \langle R_ca,b\rangle=0$. So 
+    \begin{align*}\langle a,R_cb\rangle &= \langle- R_ca,b\rangle \\&= \langle R_{\overline{c}}a,b\rangle\end{align*}
+
+    By linearity the proof is complete.
+\end{proof}
+\begin{lemma}
+    We have,
+    \begin{enumerate}
+    \item {
+    $\overline{\overline{c}}=c$
+    }
+    \item {
+    $\langle a,b\rangle = \Re(a\overline{b}) = \Re(\overline{a}b) = \Re(b\overline{a})=\Re(\overline{b}a)$.
+    }
+    \item {
+    $\overline{ab} = \overline{b}\,\overline{a}$
+    }
+    \item {
+    $\overline{a}a=a\overline{a} = |a|^2$
+    }
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    We have 
+    \begin{align*}\langle a,b\rangle &= \langle a,R_b1\rangle\\& = \langle R_{\overline{b}}a,1\rangle \\&= \langle a\overline{b},1\rangle\\& = \Re(a\overline{b})
+    \end{align*}
+    and,
+    \begin{align*}
+        \langle \overline{ab},c\rangle &= \langle ab,\overline{c}\rangle\\
+        &= \langle b,\overline{a}\overline{c}\rangle\\
+        &=\langle bc,\overline{a}\rangle\\
+        &=\langle c,\overline{b}\,\overline{a}\rangle\\
+        &=\langle \overline{b}\,\overline{a},c\rangle
+    \end{align*}
+    We also have $\overline{a\overline{a}} = \overline{\overline{a}}\overline{a}=a\overline{a}$, so $a\overline{a}$ is real. Therefore $\langle a\overline{a},1\rangle = \langle a,a\rangle = |a|^2$.
+\end{proof}
+\subsubsection{Commutators and Associators}
+\begin{defn}
+    Let $A$ be an algebra. We define the \textbf{commutator} of two elements $a,b \in A$ as $[a,b] = ab-ba \in A$.
+\end{defn}
+\begin{remark*}
+    The map $[\cdot,\cdot] : A\times A \to A$ is bilinear and vanishes iff $a,b$ commute. We also have $[a,b]=-[b,a]$.
+\end{remark*}
+\begin{defn}
+Let $A$ be an algebra.
+We define the \textbf{associator} to be the trilinear map $[\cdot,\cdot,\cdot] : A^3 \to A$ given by $[a,b,c] = (ab)c-a(bc)$.
+\end{defn}
+\begin{remark*}
+    The algebra $A$ is associative if and only if the associator is always zero.
+\end{remark*}
+\begin{lemma}
+    Let $A$ be a composition algebra. Then the associator is totally skew-symmetric.
+\end{lemma}
+\begin{proof}
+    By trilinearity it is enough to show that $[a,a,b]=[a,b,a]=[b,a,a]=0$.
+
+    It is clear that if $a$ or $b$ are real the associator vanishes. So assume $a,b\in \Im(A)$.
+
+    Then,
+    \begin{align*}
+        -\langle [a,b,b],c\rangle &= \langle[a,b,\overline{b}],c\rangle\\
+        &= \langle(ab)\overline{b}-a(b\overline{b}),c\rangle\\
+        &= \langle (ab)\overline{b},c\rangle -\langle a(b\overline{b}),c\rangle\\
+        &= \langle ab,cb\rangle - |b|^2 \langle a,c\rangle\\
+        &= 0
+    \end{align*}
+    Since the metric is nondegenerate, $[a,b,b]=0$ for all $a,b$. We can show in exactly the same way that $[a,a,b]=0$ and $[a,b,a]=0$.
+\end{proof}
+\begin{defn}[Alternative Algebra]\index{Algebra!Alternative}
+    An algebra $A$ over $\RR$ is said to be \textbf{alternative} if the associator is totally skew-symmetric.
+\end{defn}
+\begin{remark*}
+    We just showed that any composition algebra is alternative.
+\end{remark*}
+\subsubsection{Cayley-Dickson Construction}
+Now we will show how any real unital composition algebra can be constructed out of $\RR$ by using the direct product and appropriately defining $\Re(A)$ and $\Im(A)$. First we need some lemmas.
+\begin{lemma}
+    Let $A$ be a unital composition algebra. Then,
+    \begin{equation}(bc)\overline{d}+(bd)\overline{c}=2\langle c,d\rangle b\end{equation}
+    and
+    \begin{equation}\overline{a}(bc)+\overline{b}(ac)=2\langle a,b\rangle c\label{eq:innprod_octonion}\end{equation}
+\end{lemma}
+\begin{proof}
+    We can rewrite the property that
+    \[\langle R_d a,R_c b\rangle+\langle R_c a,R_db\rangle = 2\langle a,b\rangle \langle c,d\rangle\]
+    as,
+    \[\langle a,R_{\overline{d}}R_cb+R_{\overline{c}}R_db\rangle = \langle 2\langle c,d\rangle b,a\rangle\]
+    and so that property is equivalent to,
+    \[(bc)\overline{d}+(bd)\overline{c}=2\langle c,d\rangle b\]
+    Similarly we can write
+    \[\overline{a}(bc)+\overline{b}(ac)=2\langle a,b\rangle c\]
+\end{proof}
+\begin{cor}
+Let $A$ be a unital composition algebra. If $x$ and $y$ are orthogonal, then \begin{align*}
+x(\overline{y}w) &= -y(\overline{x}w)\\
+(w\overline{y})x&=-(w\overline{x})y\\
+x\overline{y}&=-y\overline{x}
+\end{align*}
+\end{cor}
+\begin{proof}
+    Simply apply orthogonality to get rid of the metric terms in the above equations.
+\end{proof}
+\begin{lemma}
+    Let $B$ be a unital composition algebra and let $A\subseteq B$ be a subalgebra which is also unital and compositional. Suppose $e \in A^\perp$ and $|e|^2=\pm 1$. Then $A\oplus (Ae)$ is also a unital and compositional subalgebra of $B$.
+\end{lemma}
+\begin{proof}
+    Since $A$ is unital we have $1\in A$, so $x \in A$ implies that $x-2\Re(x)1 = \overline{x}\in A$, and vice versa. So $x\in A$ iff $\overline{x}\in A$. 
+    
+    Let $a,b\in A$. Then $\langle a,be\rangle = \langle \overline{b}a,e\rangle =0$ since $e\in A^\perp$. So $Ae = \{ae|a\in A\}$ is orthogonal to $A$.
+
+    Since $e\in A^\perp$ we also have that $\langle e,1\rangle = 0$. So $\overline{e}=-e$. Futhermore, $e^2 = e(-\overline{e}) = -e\overline{e} = -|e|^2 = \pm 1$.
+
+    Now let us try some calculations. Suppose $a,b,c,d\in A$.
+    
+    We have, $(a+be)(c+de) = ac+(be)c+a(de)+(be)(de)$. What we want to do is show that this is an element of $A\oplus (Ae)$.
+
+    We also have $(be)c=-(b\overline{e})c=(b\overline{c})e$ using the properties we proved earlier.
+
+    Similarly, using the fact that $ad \in A$, we have 
+    \begin{align*}a(de)&=-a(d\overline{e}) \\&= a(e\overline{d})\\& = -a(\overline{e}\overline{d}) \\&= e(\overline{a}\overline{d})\\&=e(\overline{da}) \\&= -(da)\overline{e} \\&= (da)e\end{align*}
+
+    We also have,
+    \begin{align*}
+        (be)(de)&= -(\overline{be})(de)\\
+        &= \overline{d}((be)e)\\
+        &= -\overline{d}((b\overline{e})e)\\
+        &= -(\overline{d}b)|e|^2\\& = \mp (\overline{d}b)
+    \end{align*}
+
+    Overall we find that,
+    \[(a+be)(c+de) = (ac\mp \overline{d}b) + (da+b\overline{c})e \]
+    So $A\oplus(Ae)$ is indeed closed with respect to multiplication, so it is a subalgebra.
+\end{proof}
+The above proof gives us a hint. If we want to construct bigger unital composition algebras, we can start with a known unital composition algebra $A$ and embed it in a larger algebra, and then construct $A\oplus (Ae)$ which is a new and larger composition algebra. This is called the Cayley-Dickson doubling process.
+\begin{defn}[Cayley-Dickson Process]
+Let $A$ be a real unital composition algebra. Then we define the following algebras,
+\begin{align*}
+    A(+) &= A\oplus A,\qquad (a,b)(c,d) = (ac-\overline{d}b,da+b\overline{c})\\
+    A(-) &= A\oplus A,\qquad (a,b)(c,d) = (ac+\overline{d}b,da+b\overline{a})
+\end{align*}
+Both $A(+)$ and $A(-)$ are real vector algebras, and the element $(1,0)\in A \oplus A$ is the identity, so $A(+)$ and $A(-)$ are unital. It remains to show that these are composition algebras.
+\end{defn}
+Let $e = (0,1) \in A\oplus A$. Then $A(\pm) = A\oplus_\perp (Ae)$ since $e^2 = \mp 1$.
+
+So $A$ satisfies exactly the same conditions as above. So we just need to show that the metric makes sense, and soon we will be able to show that these algebras are indeed compositional. Let $(p,q)$ be the signature of the metric on $A$. We define,
+    \[|(a,b)|^2 = |a|^2 \pm |b|^2\]
+Where the sign is chosen so that $e^2 = \mp 1$. Then the polarization identity gives us a metric with signature $(2p,2q)$ for $A(+)$, and a metric with signature $(p+q,p+q)$ for $A(-)$. 
+
+\begin{defn}
+    Let $x=(a,b) \in A(\pm)$. Then we define $\overline{x} =(\overline{a},-b)$. The map taking $x$ to $\overline{x}$ is an isometry, since conjugation is known to be an isometry on $A$ and the map $b\mapsto -b$ is also trivially an isometry.
+\end{defn}
+\begin{lemma}
+    Let $A$ be a unital composition algebra. Let $x = a+pe$, $y= b+qe$, $z = c+re$ all be elements of $A(\pm)$. Then,
+    \begin{align*}
+        \overline{xy}&=\overline{y}\,\overline{x}\\
+        \overline{x}x&=x\overline{x}=|x|^2\\
+        \frac{1}{2}(x\overline{y}+y\overline{x}) &= \Re(x\overline{y}) = \langle x,y\rangle 
+    \end{align*}
+\end{lemma}
+\begin{proof}
+The following calculations are sufficient.
+    \begin{align*}
+        xy &= (a+pe)(b+qe)\\
+        &= (ab\mp \overline{q}p)+(qa+p\overline{b})e\\
+        \overline{xy} &= (\overline{b}\,\overline{a}\mp \overline{p}q)-(qa+p\overline{b})e\\
+        \overline{y}\,\overline{x}&=(\overline{b}\,\overline{a}\mp \overline{p}q)+(-p\overline{b}-qa)e\\
+        x\overline{x}&=(a\overline{a}\mp(-\overline{p})p)+(-pa+pa)e\\
+        &=|a|^2\pm |p|^2 = |x|^2\\
+        \overline{x}x&=(\overline{a}a\mp p(-\overline{p})=|x|^2\\
+        \Re(x\overline{y})&=\frac{1}{2}(x\overline{y}+\overline{(x\overline{y})})\\
+        &= \frac{1}{2}(x\overline{y}+y\overline{x})\\
+        &= \frac{1}{2}((a\overline{b}\pm \overline{q}p)+(-qa+pb)e+(-pb+qa)e+(b\overline{a}\pm \overline{p}q))\\
+        &= \Re(a\overline{b})+\Re(\overline{p}q)\\
+        &= \langle a,b\rangle\pm\langle p,q\rangle\\
+        &=\langle x,y\rangle
+    \end{align*}
+\end{proof}
+\begin{lemma}
+Let $x = a+pe$, $y= b+qe$, $z = c+re$.
+We have the following identities,
+\begin{enumerate}[(i)]
+    \item \begin{equation}
+        \frac{1}{2}[x,y] = \frac{1}{2}[a,b]\pm\Im(\overline{p}q)+(q\Im(a)-p\Im(b))e
+    \end{equation}
+    \item If $A$ is associative, \begin{equation}
+        [x,y,z] = \pm [a,\overline{r}q]\pm[\overline{b},\overline{r}p]\pm [c,\overline{q}p]+(p[\overline{b},\overline{c}]+q[a,\overline{c}]+r[a,b])e\pm (p\overline{q}r-r\overline{q}p)e  \label{eq:assoc72}  
+    \end{equation}
+    \item {
+    \begin{equation}
+        [x,\overline{x},y]=\pm[a,\overline{q},p]+[p,\overline{b},a]e\label{eq:assoc73}
+    \end{equation}
+    \item {
+    \begin{equation}
+        |x|^2|y|^2 = |xy|^2 + 2\langle a,[\overline{q},p,\overline{b}]\rangle\label{eq:assoc74}
+    \end{equation}
+    }
+    }
+\end{enumerate}
+    In particular, if we want $A(\pm)$ to be a composition algebra we require that $2\langle a,[\overline{q},p,\overline{b}]\rangle=0$.
+\end{lemma}
+
+\begin{thm}\label{thm:18.1}
+We have,
+\begin{enumerate}[(i)]
+\item {
+$A(\pm)$ is commutative if and only if $A=\RR$
+}\item {
+$A(\pm)$ is associative if and only if $A$ is commutative and associative.
+}
+\item {
+$A(\pm)$ is alternative if and only if $A(\pm)$ is compositional, if and only if $A$ is associative.
+}
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Let $x = a+pe$, $y= b+qe$, $z = c+re$ 
+\begin{enumerate}[(i)]
+\item {
+Suppose $A=\RR$. Then $\Im(a)=0$ and $[a,b]=0$. Conversely, suppose $[a,b]=0$. Then \[0=\mp \Im(\overline{p}q)+(q\Im(a)+p\Im(b))e\]
+Set $a=b=0$, $p=1$, and $q\in A$. Then we find that $\Im(q)=0$ for all $q\in A$. In other words, $A=\RR$.
+}
+\item {
+Suppose $A$ is commutative and associative. Then both the associator and commutator are zero. So, from equation \ref{eq:assoc72} we see that $[x,y,z] = p\overline{q}r-r\overline{q}p$, which is zero.
+
+Conversely, suppose $A(\pm)$ is associative. Then $A$ is associative because it is a subalgebra. Now let $b=0,c=0,p=0,r=1$. Then we get $[a,q]=0$ for all $a,q\in A$. So $A$ is commutative.
+}
+\item {
+Suppose $A(\pm)$ is alternative. Then $[x,\overline{x},y]=0$, so $\pm[a,\overline{q},p]+[p,\overline{b},a]e=0$. Let $b=0$. Then we see that $[a,\overline{q},p]=0$ for all $a,\overline{q},p$, so $A(\pm)$ is associative, and hence $A$ is as well.
+
+Now suppose $A$ is associative. Then by \ref{eq:assoc74}, $|xy|^2 = |x|^2|y|^2$. So $A(\pm)$ is compositional.
+
+Finally, suppose $A(\pm)$ is compositional. Then it is alternative as shown earlier. This completes the proof.
+}
+\end{enumerate}
+\end{proof}
+This process gives us the following sequence of constructions.
+
+\begin{center}
+        \begin{tikzcd}
+            & & & \mathbb{R} \arrow[ld, "\mathbb{R}(+)"'] \arrow[rd, "\mathbb{R}(-)"] &            \\
+           &   & \RR(+) \arrow[ld, "\mathbb{C}(+)"'] \arrow[rd, "\mathbb{C}(-)"] &  & \RR(-) \\
+           & \RR(+,+) \arrow[ld, "\mathbb{H}(+)"'] \arrow[rd, "\mathbb{H}(-)"] &   & \RR(+,-)                &            \\
+\RR(+,+,+) & & \RR(+,+,-)            & &           
+\end{tikzcd}
+\end{center} 
+Soon we will show that only four of these are division algebras, and so there are exactly four real compositional division algebras up to isometry. 
+
+\subsection{Lecture 19: Hurwitz Theorem}
+\subsubsection{Classification of Composition Algebras}
+Recall the classification at the end of the previous section. It can also be phrased in terms of the signature of the metric on each algebra.
+
+\begin{center}
+    \begin{tikzcd}
+        & & & (1,0) \arrow[ld, "\mathbb{R}(+)"'] \arrow[rd, "\mathbb{R}(-)"] &            \\
+       &   & (2,0)\arrow[ld, "\mathbb{C}(+)"'] \arrow[rd, "\mathbb{C}(-)"] &  & (1,1) \\
+       & (4,0) \arrow[ld, "\mathbb{H}(+)"'] \arrow[rd, "\mathbb{H}(-)"] &   & (2,2)               &            \\
+(8,0)& & (4,4)             & &           
+\end{tikzcd}
+\begin{tikzcd}
+            & & & \mathbb{R} \arrow[ld, "\mathbb{R}(+)"'] \arrow[rd, "\mathbb{R}(-)"] &            \\
+           &   & \mathbb{C} \arrow[ld, "\mathbb{C}(+)"'] \arrow[rd, "\mathbb{C}(-)"] &  & \mathbb{L} \\
+           & \mathbb{H} \arrow[ld, "\mathbb{H}(+)"'] \arrow[rd, "\mathbb{H}(-)"] &   & \tilde{\mathbb{H}}                &            \\
+\mathbb{O} & & \tilde{\mathbb{O}}             & &           
+\end{tikzcd}
+\end{center} 
+\begin{cor}[Corollary of Theorem \ref{thm:18.1}]
+All 2-dimensional algebras generated by the Cayley Dickson process are commutative, associative, and compositional. 
+
+All the 4-dimensional algebras are associative and compositional.
+
+All the 8-dimensional algebras generated are alternative and compositional.
+\end{cor}
+\begin{lemma}
+    We have $\RR(+)=\CC,\RR(-)=\LL,\RR(+,+)=\HH,\tilde{\HH}=\RR(+,-)\cong M_{2\times 2}(\RR)$.
+\end{lemma}
+\begin{proof}
+    We can see that $\RR(+)=\CC$ and $\RR(-)=\LL$, since $\RR(+) = \RR\oplus i\RR$ with $i^2=-1$ and $\RR(-)=\RR\oplus e\RR$ with $e^2=1$.
+
+    We have $\RR(+,+)=\CC\oplus e_2\CC$, with $e_2^2 = -1$. So $i, j=e_2, k= ie_2$ all square to minus 1, and we get $i^2=j^2=k^2=ijk = -1$. So $\RR(+,+) = \HH$.
+
+    We also have $\RR(+,-) \cong M_{2\times 2}(\RR)$. The isomorphism is as follows.
+    Consider the norm on $M_{2\times 2}(\RR)$ given by $\norm{A}^2 = \det A$. An orthonormal basis is given by,
+    \[B = \left\{\One=\m{1&0\\0&1},e_2= \m{0&-1\\1&0},e_3=\m{0&1\\1&0},e_4=\m{1&0\\0&-1}\right\}\]
+    We can see that $e_2^2=-\One$, so $\Span\{\One,e_1\}$ is isometric to $\CC$, and then we see that $e_2 e_3 = -e_4$, so overall $M_{2\times 2}$ is isometric to $\CC\oplus \CC e_3 = \CC(-)$ as required.
+\end{proof}
+
+\subsubsection{Hurwitz Theorem}
+Many proofs of Hurwitz' theorem are done using topology. However, Hurwitz' theorem was proven in 1898, and the original proof only involved linear algebra. We will give a similar proof here. 
+\begin{thm}[Hurwitz' Theorem]
+Up to isomorphism there are only seven real composition algebras, $\RR,\CC,\LL,\HH,M_{2\times 2}(\RR),\tilde{\mathbb{O}},\mathbb{O}$.
+
+Of these, the only real composition algebras which are division algebras are $\RR,\CC,\HH,\mathbb{O}$. 
+\end{thm}
+\begin{proof}
+    Let $B$ be a composition algebra. Let $A_1 = \Re(B)=\RR$. If $A_1=B$ we are done. Otherwise set $e_1\in A_1^\perp$ be a unit vector.
+
+    Let $A_2 = A_1\oplus A_1e_1=A_1(\pm)$ according to $e_1^2 = \mp 1$. We have $A_2 = \CC$ or $\LL$.
+
+    If $B=A_2$ we're done. Otherwise set $e_2\in A_2^\perp$ with $|e_2|^2=1$. Let $A_3=A_2(\pm)$. There are two cases,
+    \begin{enumerate}[1.]
+        \item {
+        If $A_2=\CC$ then $A_2(\pm)$ is either $\HH$ or $M_{2\times 2}(\RR)$.
+        }\item {
+        If $A_2=\LL$ then $e_1^2=1$, $e_2^2=\pm 1$, and $e_1\perp e_2$. Recall that $x\overline{y}+y\overline{x}=0$ if $x\perp y$. So if $x\perp y$ and $x,y$ are imaginary, we have $xy=-yx$, So $e_1e_2=-e_2e_1$. Let $e_3=e_1e_2$. Then $e_3^2=\mp 1$. So one of $e_2,e_3$ square so $1$ while the other squares to $-1$. Without loss of generality set $e_2^2=e_3^2=-1$. Notice that $e_1e_2=e_3$ implies that $e_3e_1=\pm e_2$, $e_2e_3=\pm e_1$. So $A_3=(A_1\oplus A_1e_3)\oplus ((A_1\oplus A_1e_3)e_2)$. Therefore $A_3= \CC(-)\cong M_{2\times 2}(\RR)$.
+        }
+    \end{enumerate}
+
+    Now if $B=A_3$ we are done. Otherwise there exists $e_4 \in A_3^\perp$ with $e_4^2 = \pm 1$, and we set $A_4 = A_3\oplus A_3e_4$. If $A_3=\HH$ then clearly $A_4=\mathbb{O}$ when $e_4^2=-1$. If $e_4^2=1$ then we get $\tilde{\mathbb{O}}$ which is defined to be $\HH(-)$.
+
+    If $A_3 = \CC(-)$, then instead we get $A_3 = (A_1\oplus A_1e_1)\oplus(A_1e_2\oplus A_1e_3)$, which means 
+    \[A_3e_4 = A_1e_4+A_1e_1e_4+A_1e_2e_4+A_1(e_1e_2)e_4\] This means we can write $A_4$ as,
+    \[A_4 = A_3\oplus A_3e_4 = (A_1\oplus A_1e_1 \oplus A_1e_2\oplus A_1e_1e_2 \oplus A_1e_4 \oplus A_1e_1e_4\oplus A_1 e_2e_4\oplus A_1(e_1e_2)e_4)\]
+    We want to show that this reduces to $\HH\oplus \HH e$ where $e^2=1$.
+    Note that in this case, the resulting algebra is alternative. Furthermore, we can show that $(e_1e_4)^2 = -e_1e_4e_4e_1=e_4^2=\pm 1$. Similarly $(e_2e_4)^2=(e_3e_4)^2=-1$. Finally, if $x\perp y$ we get $(w\overline{y})x+(w\overline{x})y=0$, so since $e_1\perp e_2e_4$ we get,
+    \begin{align*}
+    (e_2e_4)e_1 &= \pm e_3e_4\\
+    (e_2e_4)e_2&=\pm e_4\\
+    ((e_2e_4)e_1)e_2&=\pm e_1e_4
+    \end{align*}
+    This allows us to finally reduce $A_4$ to $\HH(-)$, so $A_4\cong \tilde{\mathbb{O}}$.
+
+    Finally, since any higher dimensional algebra produced by this construction is not compositional, we are done.
+\end{proof}
+\begin{remark*}
+    One can also show that if $A$ is a real finite dimensional division algebra then $\dim A$ is $1,2,4$ or $8$ using topology. These include the composition algebras, $\RR,\CC,\HH,\mathbb{O}$, but also more which are not composition algebras. 
+\end{remark*}
+
+\subsection{Lecture 20: Cross Products and Isometries of Composition Algebras}
+\subsubsection{Cross Products}
+\begin{defn}[Cross Product on Composition Algebra]
+Let $A$ be a composition algebra and define a map $\times : \Im(A)\times \Im(A)\to \Im(A)$ by the formula,
+\begin{equation}
+    a\times b = \Im(ab) = \frac{ab-\overline{ab}}{2}=\frac{1}{2}[a,b]
+\end{equation}
+Notice that $a\times b=-b\times a$ and that this product is $\RR$-linear in both inputs.
+\end{defn}
+\begin{remark*}
+    \begin{align*}
+        ab&=\Re(ab)+\Im(ab)\\
+        &=-\Re(a\overline{b})+a\times b\\
+        &= a\times b - \langle a,b\rangle 1
+    \end{align*}
+\end{remark*}
+\begin{lemma}
+    \begin{align}
+        \langle a\times b,a\rangle &=0\\
+        \langle a\times b,b\rangle &= 0
+    \end{align}
+\end{lemma}
+\begin{proof}
+The second follows from the first by antisymmetry. Therefore we just prove one,
+    \begin{align*}
+        \langle a\times b,a\rangle &= \langle ab+\langle a,b\rangle,a\rangle\\
+        &= \langle a,b\rangle\langle 1,a\rangle + \langle ab,a\rangle\\
+        &= \langle b,|a|^2\rangle\\
+        &= 0
+    \end{align*}
+\end{proof}
+\begin{lemma}
+    \begin{equation}
+        |a\times b|^2 = |a|^2|b|^2-\langle a,b\rangle^2
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        |a\times b|^2 &= \frac{1}{4}|ab-ba|^2\\
+        &= \frac{1}{4}(|ab|^2 - 2\langle ab,ba\rangle+|ba|^2)\\
+        &= \frac{1}{2}(|a|^2|b|^2-\langle ab,ba\rangle)\\
+        &= \frac{1}{2}(|a|^2|b|^2-\langle a,b\rangle^2 + |a\times b|^2)
+    \end{align*}
+    Rearranging this gives the desired result.
+\end{proof}
+\begin{defn}
+    Let $a \in \Im(A)$. Then define $L^\times_a : \Im(A)\to \Im(A)$ by $L_a^\times(b)=a\times b$.
+\end{defn}
+\begin{lemma}
+    $(L_a^\times)^2 (b) = -|a|^2b+\langle a,b\rangle a$.
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        (L_a^\times)^2 (b)&= a\times (a\times b)\\
+        &= a(a\times b)+\cancel{\langle a,a\times b\rangle}\\
+        &= a(ab+\langle a,b\rangle)\\
+        &= \langle a,b\rangle a + a(ab)\\
+        &= \langle a,b\rangle a - \overline{a}(ab)\\
+        &= \langle a,b\rangle a - |a|^2b
+    \end{align*}
+\end{proof}
+\begin{remark*}
+    Fix $|a|=1$ and let $V = \Span\{a\}^\perp$. Then $(L^\times_a)^2|_V = -\One$, so $(L^\times_a)^2$ is a complex structure on $V$.
+\end{remark*}
+\begin{defn}[Associative 3-Form]
+    The \textbf{associative 3-form} of an algebra with a cross product and a metric is the $3$-form $\varphi : (\Im(A))^3\to \RR$, $\varphi \in \Lambda^3(\Im(A)^*)$ defined by the formula,
+    \begin{equation}
+        \varphi(a,b,c)=\langle a\times b,c\rangle = \langle ab,c\rangle
+    \end{equation}
+\end{defn}
+\begin{lemma}[Triple Product Identity]
+Let $A$ be a composition algebra with a cross product. Then,
+\begin{equation}a\times(b\times c)=-\langle a,b\rangle c+\langle a,c\rangle b - \frac{1}{2}[a,b,c]\end{equation}
+\end{lemma}
+\begin{proof}
+We first show that,
+    \begin{align*}
+        a(bc) &= -a(\overline{b}c)\\
+        &= b(\overline{a}c)-2\langle a,b\rangle c\\
+        &= b(\overline{c}a-2\langle a,c\rangle)-2\langle a,b\rangle c\\
+        &= -b(\overline{c}a)+2\langle a,c\rangle b-2\langle a,b\rangle c\\
+        &= c(\overline{c}a)-2\langle b,c\rangle a+2\langle a,c\rangle b - 2\langle a,b\rangle c\\
+        &= -c(\overline{ab})-2\langle b,c\rangle a + 2\langle a,c\rangle b - 2\langle a,b\rangle c\\
+        &= (ab)\overline{c}-2\varphi(a,b,c)-2\langle b,c\rangle a + 2\langle a,c\rangle b -2\langle a,b\rangle c
+    \end{align*}
+    We then use this to determine the triple product identity in the general cross product case,
+    \begin{align*}
+        a\times(b\times c) &= \frac{1}{2}(a\times(b\times c))+\frac{1}{2}(a\times(b\times c))\\
+        &= \frac{1}{2}\varphi(a,b,c)+\frac{1}{2}\langle b,c\rangle a + \frac{1}{2}a(bc)\\
+        &+\frac{1}{2}\varphi(a,b,c)+\frac{1}{2}\langle b,c\rangle a+\frac{1}{2}a(bc)\\
+        &= -\langle a,b\rangle c+\langle a,c\rangle b - \frac{1}{2}[a,b,c]
+    \end{align*}
+\end{proof}
+We have defined a cross product for a composition algebra, which extends the usual definition from $\RR^3$. Now we will show that these are the \textbf{only} algebras with a cross product.
+\begin{defn}[Cross Product Algebra]
+    Let $V$ be an $n$-dimensional vector space with a metric. We say $V$ is a cross-product algebra if there is a product $\times : V^2 \to V$ which satisfies,
+    \begin{enumerate}
+        \item $a\times b = -b\times a$
+        \item $a \times b \perp a$ and $a\times b \perp b$
+        \item $|a\times b|^2 = |a\wedge b|^2$
+    \end{enumerate}
+\end{defn}
+\begin{thm}
+    If $V$ is a cross-product algebra, then $V$ is isomorphic as an algebra to $\Im(A)$ for some composition algebra $A$, where $a\times b=\Im(ab)$.
+\end{thm}
+\begin{cor}
+    Any cross-product algebra is either $0,1,3,$ or $7$ dimensional.
+\end{cor}
+\begin{proof}
+    Define $A = \RR\oplus V$ and define a product on $A$ by,
+    \[(t,a)(s,b) = (ts-\langle a,b\rangle, tb+sa+a\times b)\]
+    Where $t,s\in \RR$ and $a,b\in V$.
+    Note that this product is bilinear and that $(1,0)$ is the identity. Define a norm on $A$ by $|(t,s)|^2 = t^2+|a|^2$. We just need to show that $A$ is a composition algebra.  Let $a=(a_0,\vec{a}),b=(b_0,\vec{b})$. We have,
+    \begin{align*}
+        |ab|^2&=(a_0b_0-\langle \vec{a},\vec{b})^2 + |a_0\vec{b}+b_0\vec{a}+\vec{a}\times\vec{b}|^2\\
+        &=a_0^2b_0^2-2\langle\vec{a},\vec{b}\rangle a_0b_0 + \langle\vec{a},\vec{b}\rangle^2 + a_0^2|\vec{b}|^2 + b_0^2|\vec{a}|^2 + |\vec{a}\times\vec{b}|^2 + 2a_0b_0\langle\vec{a},\vec{b}\rangle\\
+        &= a_0^2b_0^2 + a_0^2|\vec{b}|^2 + b_0^2|\vec{a}|^2 \\
+        &= |a|^2|b|^2
+    \end{align*}
+    As required.
+\end{proof}
+
+This gives us a summary of all cross product algebras, related to the composition algebras.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|llll}
+$\dim V$ & 0            & 1            & 3                                    & 7                                    \\
+$\dim A$ & 1            & 2            & 4                                    & 8                                    \\
+$\Im(A)$ & \{0\}        & $\mathbb{R}$ & $\mathbb{R}^3$                       & $\mathbb{R}^7$                       \\
+$A$      & $\mathbb{R}$ & $\mathbb{C}$ & $\mathbb{H}$ or $\tilde{\mathbb{H}}$ & $\mathbb{O}$ or $\tilde{\mathbb{O}}$ \\
+$\times$ & Trivial      & Trivial      & Nontrivial                           & Nontrivial                          
+\end{tabular}
+\caption{Summary of Cross Product Algebras and their relation to Composition Algebras.}
+\end{table}
+\begin{example}
+The cross product on $\{0\}$ is clearly meaningless, and just amounts to multiplying zero by zero.
+
+The cross product on $\RR$ is just multiplication, $ab = a\times b$ if $a,b\in \RR$.
+
+In the case $\RR^3$ we get the usual cross product that is well-known from linear algebra.
+
+In the case $\RR^7$ we discover a modified cross product, related to the multiplication of octonions.
+\end{example}
+\subsubsection{Automorphisms of Composition Algebras}
+The cross product defined on the imaginary part of a composition algebra allows us to understand the automorphisms. Recall that the automorphisms of an algebra $A$ are the linear isomorphisms from $A$ to itself which satisfy $T(ab)=T(a)T(b)$.
+\begin{lemma}
+    $\Aut(A) \subseteq \Orth(\Im(A))$
+\end{lemma}
+\begin{proof}
+    Let $T\in \Aut(A)$. Then $T(b)=T(1b)=T(1)T(b)$. This means $T(1)=1$. So $T$ fixes $\Re(A)$. If $a\in A$, then we have $\overline{\Im(a)} = -\Im(a)$, so
+    \begin{align*}
+        a^2 &= \Re(a)^2+\Im(a)^2 + 2\Re(a)\Im(a)\\&= (\Re(a)^2-|\Im(a)|^2) + 2\Re(a)\Im(a)
+    \end{align*}
+    Let $a \in \Im(a)$. Then we see that $a^2 \in \Re(A)$, so $g(a^2)=g(a)^2$, so $g(a)$ must be purely imaginary or purely real. Since $g$ fixes $\RR$, we can't possibly have $g(a) \in \Re(A)$. So $g(\Im(A))\subseteq \Im(A)$, meaning $g \in \GL(\Im(A))$.
+
+    Also, $\overline{g(a)} = g(\overline{a})$, so $|g(a)|^2 = |a|^2$, so $g \in \Orth(\Im(A))$.
+
+    Therefore we have shown that $\Aut(A) \subseteq \Orth(\Im(A))$.
+\end{proof}
+In fact, we can go further.
+
+\begin{lemma}
+Let $A = \HH$ or $\tilde{\HH}$, and let $T\in \Aut(A)$. Let $\varphi$ be the associative 3-form of $\Im(A)$. Then $T^* \varphi = \varphi$.
+\end{lemma}
+\begin{proof}
+    Since $\dim \Im(A) = 3$, the associative 3-form $\varphi$ is a top-degree form. For all $a,b,c\in \Im(A)$ we have
+    \begin{align*}
+        T^*\varphi(a,b,c) &= \langle g(a)g(b),g(c)\rangle\\
+        &= \langle g(ab),g(c)\rangle\\
+        &= \langle ab,c\rangle\\
+        &= \varphi(a,b,c)
+    \end{align*}
+    Since $g$ is an isometry.
+\end{proof}
+\begin{lemma}
+Let $A = \HH$ or $\tilde{\HH}$, then $\Aut(A) \subseteq \SO(\Im(A))$
+\end{lemma}
+\begin{proof}
+    Let $e_1,e_2,e_3$ be an orthonormal basis of $\Im(A)$. Then let $\mu = e_1\wedge e_2\wedge e_3$. Since $\varphi$ is a top form we have $\varphi = \lambda \mu$ for some $\lambda \in \RR$. Therefore, if $T \in \Aut(A)$ we have
+    \begin{align*}
+        T^*\mu &= T^*( e_1\wedge e_2\wedge e_3)\\&= \lambda^{-1}T^*\varphi\\
+        &= \lambda^{-1}\varphi\\
+        &= \mu
+    \end{align*}
+    We also have $T^*\mu = \det(T) \mu$. So $\det T = 1$, which means $T \in \SO(\Im(A))$ as required.
+\end{proof}
+
+A summary of the automorphism groups of every composition algebra is shown in the following table. We just looked at the 4-dimensional case, and the smaller cases are trivial. In the next lecture we will study the 8 dimensional case and define the exceptional groups $G_2$ and $\tilde{G}_2$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+$A$                  & $\Im(A)$       & $\Orth(\Im(A))$          & $\Aut(A)$                \\ \hline
+$\mathbb{R}$         & $\{0\}$        & $\{1\}$                  & $\{1\}$                  \\
+$\mathbb{C}$         & $\mathbb{R}$   & $\mathbb{Z}/2\mathbb{Z}$ & $\mathbb{Z}/2\mathbb{Z}$ \\
+$\mathbb{H}$         & $\mathbb{R}^3$ & $\Orth(3)$               & $\SO(3)$                 \\
+$\mathbb{O}$         & $\mathbb{R}^7$ & $\Orth(7)$               & $G_2$                    \\
+$\mathbb{L}$         & $\mathbb{R}$   & $\mathbb{Z}/2\mathbb{Z}$ & $\mathbb{Z}/2\mathbb{Z}$ \\
+$\tilde{\mathbb{H}}$ & $\mathbb{R}^3$ & $\Orth(1,2)$             & $\SO(1,2)$               \\
+$\tilde{\mathbb{O}}$ & $\mathbb{R}^7$ & $\Orth(3,4)$             & $\tilde{G}_2$           
+\end{tabular}
+\caption{Table of Automorphism Groups of the Real Composition Algebras}
+\end{table}
+
+\subsection{Lecture 21: The Exceptional Groups $G_2$ and $\tilde{G}_2$.}
+\subsubsection{Automorphisms of $\HH$ and $\tilde{\HH}$, Continued}
+We will first prove the following theorem, and then move on to the 8 dimensional case.
+\begin{thm}
+Let $A$ be a composition algebra.
+    If $\dim A = 4$ then $\Aut(A) = \SO(\Im(A))$.
+\end{thm}
+\begin{proof}
+    We have shown that $\Aut(A)\subseteq \SO(\Im(A))$ in the previous lecture.
+
+    Let $g \in \SO(\Im(A))$. We know $\langle a,b\rangle = \langle g(a),g(b)\rangle$. Then,
+    \begin{align*}
+        g^*\varphi(a,b,c) &= \langle g(a\times b),g(c)\rangle\\
+        &=\langle g(ab+\langle a,b\rangle),c\rangle\\
+        &= \langle g(a)g(b)+\langle a,b\rangle,c\rangle\\
+        &= \langle g(a)g(b),c\rangle + \langle g(a),g(b)\rangle \langle 1,c\rangle\\
+        &= \langle g(a)g(b)+\langle g(a),g(b)\rangle ,c\rangle
+    \end{align*}
+    So $g(a\times b) = g(a)\times g(b)$. So,
+    \begin{align*}
+        g(a\times b) &= g(ab+\langle a,b\rangle)\\&= g(ab)+\langle a,b\rangle g(1)\\&= g(ab)+\langle a,b\rangle\\
+        g(a)\times g(b) &=g(a)g(b) + \langle g(a),g(b)\rangle\\
+        &= g(ab)+\langle a,b\rangle
+    \end{align*}
+    Therefore $g(ab)=g(a)g(b)$, so $g\in \Aut(A)$.
+\end{proof}
+\subsubsection{Automorphisms of $\OO$ and $\tilde{\OO}$}
+\begin{defn}[Exceptional Groups $G_2$ and $\tilde{G}_2$]\index{Exceptional Groups}\index{Group!Exceptional}
+We define the group $G_2 = \Aut(\OO)$ and the group $\tilde{G}_2=\Aut(\tilde{\OO})$. These are the smallest real \textbf{exceptional lie groups}.
+\end{defn}
+\begin{physics*}
+    The groups $\Orth(n)$ and $\SO(n)$ are the symmetry groups of an object with rotational symmetry.
+
+    The question is then, what physical system is $G_2$ the symmetry group of? \'Elie Cartan showed in 1893 that one option is to interpret the group $G_2$ as the symmetry group of a ball which rolls without slipping or twisting \cite{cartan1893}.
+\end{physics*}
+\begin{thm}
+    $G_2 \subseteq \SO(7)$ and $\tilde{G}_2 \subseteq \SO(3,4)$.
+\end{thm}
+\begin{proof}
+    We already showed that $\Aut(A) \subseteq \Orth(\Im(A))$. Let us now show that $G_2$ and $\tilde{G}_2$ preserve orientations on $\RR^7$.
+
+    First, recall that in the four dimensional case we used the associative 3-form in order to show that the automorphisms were isometries of determinant 1. In this case we will use the associative 3-form as well as its' Hodge dual to come up with a similar argument. We define a four form $\psi \in \Lambda^4(\Im(A)^*)$ by the formula,
+    \[\psi(a,b,c,d) = \frac{1}{2}\langle a,[b,c,d]\rangle\]
+    Observe that since $A$ is compositional, it is also alternative, so $\psi$ is antisymmetric in $b,c,d$. To show that $\psi$ is totally antisymmetric it suffices to show that $\psi(a,a,b,c)=0$. We have,
+    \begin{align*}
+        2\psi(a,a,b,c)&=\langle a,(ac)d-a(cd)\rangle\\&=
+        -\langle a\overline{d},ac\rangle -|a|^2\langle 1,cd\rangle\\
+        &= |a|^2\langle \overline{d},c\rangle-|a|^2\langle 1,cd\rangle\\&=0
+    \end{align*}
+    So $\psi$ is indeed a four-form. Clearly if $\dim A$ is not 8, then $\psi$ vanishes because $A$ would be associative. So this construction only works in this case.
+
+    We also see that if $g \in \Aut(A)$ then 
+    \[g^*\psi(a,b,c,d) = \langle g(a),[g(b),g(c),g(d)]\rangle = \langle g(a),g([b,c,d])\rangle\] Since $g\in \Orth(\Im(A))$ it follows that 
+    \[2g^*\psi(a,b,c,d) = \langle g(a),g([b,c,d])\rangle=\langle a,[b,c,d]\rangle =2 \psi\]
+    So $g^*\psi = \psi$. 
+
+    Now choose a basis $e_1,...,e_7$ for $\Im(A)$. Consider the case $A = \OO$, where $|e_i|^2 = 1$. Then we have,
+    \begin{align*}
+        \varphi &= e_1\wedge e_2\wedge e_3 - (e_1\wedge e_5\wedge e_7 + e_5\wedge e_2 \wedge e_7+e_5\wedge e_6\wedge e_3) - e_4\wedge(e_1\wedge e_5+e_2\wedge e_6+e_3\wedge e_7)
+    \end{align*}
+    Similarly, we can expand $\psi$ in a basis and show that $\star\varphi = \psi$.
+    
+Therefore $\varphi\wedge\psi = \langle \varphi,\varphi\rangle e_1\wedge...\wedge e_7 = 7\mu_G$, where $\mu_G$ is the volume form.
+
+So if $g\in \Aut(A)$, 
+\[7g^*\mu = g^*(\varphi\wedge\psi) = g^*\varphi \wedge g^*\psi = \varphi\wedge \psi = 7\mu\]
+So $g \in \SO(7)$.
+
+Similarly, we can show that if $A = \tilde{\OO}$ then $g \in \SO(3,4)$. This completes the proof.
+\end{proof}
+\begin{remark*}
+    The four-form $\psi$ is related to the associator. Similarly, $\varphi(a,b,c) = \langle a\times b,c\rangle = \frac{1}{2}\langle [a,b],c\rangle$, so the three-form $\varphi$ is related to the commutator.
+\end{remark*}
+\begin{defn}[Co-associative 4-Form]
+    Let $A$ be a composition algebra of dimension 8. The four-form $\psi \in \Lambda^4(\Im(A)^*)$ defined by $\psi(a,b,c,d) = \frac{1}{2}\langle a,[b,c,d]\rangle$ is called the \textbf{co-associative 4-form} (also known as the \textbf{Cayley form}). It satisfies $\star\varphi = \psi$.\index{Form!Co-associative}\index{Cayley Form}\index{Form!Cayley}
+\end{defn}
+\begin{thm}[Bryant, 1982 \cite{bryant1982submanifolds}]
+\begin{align}
+    G_2 &= \{g \in \GL(\Im(\OO)) : g^* \varphi = \varphi\}\\
+    \tilde{G}_2 &= \{g\in \GL(\Im(\tilde{\OO})) : g^*\varphi = \varphi\}
+\end{align}    
+\end{thm}
+\begin{proof}
+    We will give the proof for $G_2$. First, by plugging into a basis one can show through tedious computation that,
+    \[(a\hk \varphi)\wedge (b\hk\varphi)\wedge\varphi = -6\langle a,b\rangle \mu_G\]
+    Suppose $g \in \GL(\Im(\OO))$ and $g^*\varphi = \varphi$. Then $(g^{-1}(a)\hk\varphi)\wedge(g^{-1}(b)\hk\varphi)\wedge\varphi = -6\det G\langle a,b\rangle \mu_G= \langle g^{-1}(a),g^{-1}(b)\rangle \mu_G$.
+
+    So $\det g \langle a,b\rangle = \langle g^{-1}(a),g^{-1}(b)\rangle$ for all $a,b$. Then by inserting any normalized vector, we get $(\det g)^7 = 1$. So $\det g = 1$, meaning $g \in \SO(7)$. Furthermore, we saw earlier how this implies $g(a\times b)=g(a)\times g(b)$, which implies $g(ab)=g(a)g(b)$. So $g \in G_2$. This completes the proof for the $G_2$ case.
+
+    The $\tilde{G}_2$ case differs only by a few signs when plugging in basis vectors, which end up canceling anyway.
+\end{proof}
+\begin{remark*}
+    In an $8$-dimensional composition algebra, a map $g$ is an automorphism iff it preserves the associative 3-form. So everything is completely determined by $\varphi$.
+\end{remark*}
+\begin{remark*}
+    This is somewhat similar to the symmetries of complex vector spaces, in which all the automorphisms, $\Unitary(n)$, are determined by preserving two out of three special structures. However, with $G_2$ we end up with a much stronger requirement. Let us make this more precise.
+    
+    The vector space $\CC^n$ has a complex structure $J$ defined by $J(v) = iv$, a metric induced by the standard inner product on $\RR^{2n}$, and a two-form $\omega$ defined by $\omega(u,v) = \langle J(u),v\rangle$.
+
+    We call the tuple $(J,\omega,\langle\cdot,\cdot\rangle)$ a \textbf{compatible triple}. The equivalent structure on a manifold is called a \textbf{K\"ahler structure}, where the metric, complex structure, and 2-form are defined on the tangent bundle and have to satisfy some additional conditions.
+
+    The group which preserves $J$ is the set of $\CC$-linear invertible transformations, $\GL(n,\CC)$. The group preserving the inner product is the orthogonal group $\Orth(2n,\RR)$, and the group preserving $\omega$ is the symplectic group $\Sp(2n,\RR)$.
+
+    As we can see, if a transformation $g$ preserves two out of three of these structures, it must preserve the third. It turns out that the intersection of two of these groups is always $\Unitary(n)$.
+    \begin{align*}\Sp(2n,\RR)\cap \GL(n,\CC) &= \Unitary(n)\\\Sp(2n,\RR)\cap \Orth(2n,\RR) &= \Unitary(n)\\\Orth(2n,\RR)\cap \GL(n,\CC) &= \Unitary(n)\end{align*}
+
+    In this octonionic case, we only need to preserve one thing, which is $\varphi$. This means that the conditions on automorphisms are stricter.
+\end{remark*}
+\begin{remark*}
+    A K\"ahler manifold is a manifold with a compatible triple $(J,\omega,\langle\cdot,\cdot\rangle)$. Equivalently, it is a Riemannian manifold whose holonomy group is a subgroup of $\Unitary(n)$. So the holonomy must preserve two out of three of the objects in the K\"ahler structure.
+
+    Similarly, a $G_2$-manifold is a Riemannian manifold whose holonomy group is a subgroup of $G_2$. The condition of being a $G_2$-manifold is therefore a bit stricter, since the holonomy must preserve $\varphi$. 
+\end{remark*}
+\begin{lemma}
+    If $A \in G_2$, then we can write the matrix of $A$ as,
+    \[[A] = [v_1 | v_2 | v_1\times v_2 | v_4 | v_1\times v_4 | v_2\times v_4| (v_1\times v_2)\times v_4]\]
+    Where $v_1,v_2,v_4$ are orthonormal. This means the columns of $A$ are an oriented orthonormal basis of $\RR^7$. Furthermore, we see that $\dim G_2 = 14$.
+\end{lemma}
+\begin{proof}
+    Proof omitted for time.
+\end{proof}
+
+\section{Spinors}
+
+\subsection{Lecture 22: Classification of Clifford Algebras}
+\subsubsection{Classification of Clifford Algebras}
+
+In this section we will use what he have just learned about composition algebras in order to classify all Clifford algebras.
+\begin{remark*}
+    Recall some facts from the earlier sections. We have
+    \[\Cl(p,q) = \bigotimes \RR^{p,q}/I\]
+    Where $I = \langle v\otimes v+|v|^21\rangle$. We have $\Cl(p,q)\cong \Lambda^\bullet \RR^{p,q}$ as vector spaces but not as algebras, where if $v\in \RR^{p,q}$ and $\alpha\in \Lambda^\bullet \RR^{p,q}$ we have $v\alpha = v\hk\alpha - v\wedge \alpha$.
+\end{remark*}
+\begin{example}
+    We see the beginning of a pattern by looking at $\Cl(1,0),\Cl(0,1),\Cl(1,1)$. As shown earlier in the notes, we have,
+    \begin{align*}
+        \Cl(1,0) &\cong \CC,\\
+        \Cl(0,1) &\cong \LL,\\
+        \Cl(2,0) &\cong \HH, \\
+        \Cl(0,2)\cong\Cl(1,1) &\cong \tilde{\HH} \cong M_{2\times 2}(\RR)
+    \end{align*}
+    The pattern ends here since every Clifford algebra is associative but $\OO$ is non-associative. However, we can then show that every other Clifford algebra decomposes into a direct sum of these simple algebras.
+\end{example}
+
+\begin{example}
+    The algebra $\Cl(1,1)$ has a basis consisting of $1,e_1,e_2,e_1e_2$. This gets mapped to $M_{2\times 2}(\RR)$ by,
+    \[1\mapsto \One, \qquad e_1 \mapsto \m{0&1\\1&0},\qquad e_2 \mapsto \m{1&0\\0&-1},\qquad e_1e_2 \mapsto \m{0&-1\\1&0}\]
+\end{example}
+\begin{example}
+    We have $\Cl^{\textsf{even}}(1,1) \cong \LL$.
+
+    We also have,
+    \[\Cl^{\textsf{odd}}(1,1) \cong \left\{\left.\m{a&-b\\b&-a} \right| a,b\in\RR\right\}\]
+    Where matrices act on each other by $A\cdot B = ABA^{-1}$ rather than the usual formula.
+\end{example}
+
+\begin{example}
+    The algebra $\Cl(0,2)$ has basis $\{1,e_1,e_2,e_1e_2\}$, and we again use the map
+    \[1\mapsto \One, \qquad e_1 \mapsto \m{0&1\\1&0},\qquad e_2 \mapsto \m{1&0\\0&-1},\qquad e_1e_2 \mapsto \m{0&-1\\1&0}\]
+    Where now $\Cl^{\textsf{even}}(0,2)\cong \CC$ instead of $\LL$.
+\end{example}
+\begin{lemma}[Clifford Reduction Lemma] The following reduction formulas allow us to classify Clifford algebras,
+    \begin{align}
+        \Cl(p+1,q+1) &\cong \Cl(p,q)\otimes \Cl(1,1)\cong \Cl(p,q)\otimes M_{2\times 2}(\RR)\\
+        \Cl(q,p+2) &\cong \Cl(p,q)\otimes \Cl(0,2) \cong \Cl(p,q)\otimes M_{2\times 2}(\RR)\\
+        \Cl(q+2,p) &\cong \Cl(p,q)\otimes \Cl(2,0)\cong \Cl(p,q)\otimes \HH
+    \end{align}
+\end{lemma}
+\begin{proof}
+We start with $\Cl(p,q)\otimes \Cl(V)$ and show that it is equal to the Clifford algebra of some vector space $W$ with the right signature.
+
+    Let $e_1,...,e_n$ be a basis of $\RR^{p,q}$. Let $V$ be a real two-dimensional vector space with metric and orthonormal basis $\{f_1,f_2\}$. 
+    
+    Also let $\mu = e_1...e_n\in \Cl(p,q)$ be the volume form, and let $\nu = f_1f_2 \in \Cl(V)$.
+
+    Then $\nu^2 = -1$ if the signature of the metric on $V$ is $(2,0)$ or $(0,2)$, and $\nu^2 = 1$ if the signature is $(1,1)$.
+    
+    We then define a metric on  $\Cl(p,q)\otimes \Cl(V)$ by $\langle a_1\otimes b_1,a_2\otimes b_2\rangle = \langle a_1,a_2\rangle\langle b_1,b_2\rangle$.
+
+    We then define a subspace,
+    \[W = \Span\{e_1\otimes \nu,...,e_n\otimes \nu, 1\otimes f_1,1\otimes f_2\}\]
+    The inner product on $W$ is then
+    \[|e_i\otimes\nu|^2 = \nu^2|e_1|^2,\qquad |1\otimes f_i|^2 = |f_i|^2\]
+    We also have that $\nu \in \twcent(\Cl(V))$. So,
+    \begin{align*}
+        (e_i\otimes \nu)(e_j\otimes \nu) &= -(e_j\otimes\nu)(e_i\otimes \nu)\\
+        (1\otimes f_1) (1\otimes f_2)&=-(1\otimes f_2)(1\otimes f_1)\\
+        (e_i\otimes \nu)(1\otimes f_j)&=-(1\otimes f_j)(e_i\otimes \nu)
+    \end{align*}
+    Furthermore, this means
+    \begin{align*}
+        (e_i\otimes \nu)^2 &= -|e_i\otimes\nu|^2(1\otimes 1)\\
+        (1\otimes f_i)^2 &= -|1\otimes f_i|^2(1\otimes 1)
+    \end{align*}
+    We can therefore see that the inclusion map $\phi : W \to \Cl(p,q)\otimes \Cl(V)$ extends to an algebra homomorphism $\phi :\Cl(W)\to\Cl(p,q)\otimes\Cl(V)$.
+
+    We also have $(\nu^2)(e_i\otimes 1) = (e_i\otimes\nu)(1\otimes f_i)(1\otimes f_2)$, and $\nu^2 = \pm 1$, which means that $e_i\otimes 1 = \pm \phi(e_i\otimes\nu)\phi(1\otimes f_i)\phi(1\otimes f_2)$, so $e_i \otimes 1$ and $1\otimes f_i$ are both in the image of $\phi$, and together they span all of $\Cl(p,q)\otimes \Cl(V)$. So $\phi$ is an isomorphism.
+
+    Finally, if the signature of $V$ is $(1,1)$, the signature of $W$ is $(p,q)+(1,1) = (p+1,q+1)$, and otherwise we get $(q,p) + (2,0)$ or $(q,p)+(0,2)$ where $p$ and $q$ get swapped because $\nu^2=-1$. This completes the proof.
+\end{proof}
+\begin{lemma}
+Let us use the notation $M_{k\times k}(R) = M_{k}(R)$, where $R = \RR,\CC$, or $\HH$ (note here we are considering matrices whose entries are quaternions, but quaternions are not a field, hence we use the letter $R$).
+\begin{enumerate}[(1)]
+\item $M_k(R)\otimes M_\ell(\RR) \cong M_{k\ell}(R)$
+\item $\HH\otimes\HH = M_4(\RR)$
+\item $\CC\otimes \HH\cong M_2(\CC)$
+\item $\CC\otimes \CC \cong \CC\oplus \CC$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[(1)]
+\item {
+This follows from the fact that $L(V\otimes W) = L(V)\otimes L(W)$.
+}
+\item {
+We will construct an isomorphism directly. Recall that $\HH = \RR^4$ as vector spaces, so multiplying a vector $v\in \RR^4$ by a quaternion can be defined by simply interpreting $v$ as an element of $\HH$. Let $T : \HH\otimes \HH \to M_4(\RR)$ be defined by,
+\[T(p\otimes q)(v) = pv\overline{q}\]
+
+Clearly $T$ is injective, since $|pv\overline{q}| = |v|^2 |p|^2|q|^2 =0 $ iff $p=0$ or $\overline{q}=0$.
+
+Finally, $\dim \HH\otimes \HH = 16 = \dim M_4(\RR)$. So $T$ is an isomorphism.
+
+Furthermore, if we define $|A|^2 = |\det A|^2$ we see that $|T(p\otimes q)|^2 = 4|p|^2|q|^2$, so $T$ is an isometry.
+}
+\item {
+Recall that $\CC$ is a subalgebra of $\HH$. So we can restrict $T$ to $\CC\otimes \HH$. 
+
+Then $T(i\otimes 1)^2 = -1$, so $J=T(i\otimes 1)$ is a complex structure on $\HH$ and we have $\HH = \CC^2$ as vector spaces.
+
+Similarly, $T(1\otimes q)$ is right multiplication by $\overline{q}$.
+
+Therefore $T(1\otimes q)$ acts as a linear map from $\CC^2$ to $\CC^2$, and since $T$ was shown to be surjective on the previous part, we are done.
+}
+\item {
+We know $\CC\otimes \CC=\HH$.
+
+We also know that $T(1\otimes i)$ right-multiplies by $i$. We have,
+\[T(1\otimes i)(a,b) = (a+T(i\otimes 1)b)i = ai + T(i\otimes 1)bi = ai + T((i\otimes 1)(1\otimes i))b = ai -iT(i\otimes 1)b\]
+So, in matrix form we can write
+\[[T(1\otimes i)] = \m{i&0\\0&-i}\]
+Which means we have,
+\[\CC\otimes \CC = \left\{\left.t\One +s\m{i&0\\0&-i} \right| t,s\in\RR\right\}=\CC\oplus\CC\]
+}
+\end{enumerate}
+
+\end{proof}
+\begin{thm}[Classification of Clifford Algebras]\index{Theorem!Classification of Clifford Algebras}\index{Bott Periodicity}
+Let $p,q$ be positive integers and set $n=p+q$. Then $\Cl(p,q)$ is given by the following table according to the value of $p-q\mod 8$.
+\begin{center}
+\begin{tabular}{lll}
+$p-q\mod 8$ & $\mu^2$ & $\Cl(p,q)$                \\ \hline
+0,6         & $\pm1$  & $M_n(\RR)$                \\
+2,4         & $\pm 1$ & $M_n(\HH)$                \\
+1,5         & $-1$    & $M_n(\CC)$                \\
+3           & $1$     & $M_n(\HH)\oplus M_n(\HH)$ \\
+7           & $1$     & $M_n(\RR)\oplus M_n(\RR)$
+\end{tabular}
+\end{center}
+\end{thm}
+\begin{proof}
+Apply the previous lemmas.
+\end{proof}
+\begin{remark*}
+    The fact that this pattern repeats with period $8$ is called the \textbf{Bott periodicity} phenomenon. It can also be proven using algebraic topology, and can be seen to relate to the homotopy groups of spheres.
+\end{remark*}
+
+\subsubsection{Self Duality}
+\begin{lemma}
+    Let $A$ be an algebra of matrices. Then $\cent(A)$ consists of matrices which are constant multiples of the identity.
+\end{lemma}
+\begin{proof}
+    Let $\mu_0\in \cent(A)$. Then let $m_{ij}$ denote the matrix consisting only of a 1 in the $i,j$ position. 
+    
+    Since $\mu_0$ commutes with everything, $\mu_0 m_{ii} = m_{ii}\mu_0$ for all $i$. The matrix $\mu_0 m_{ii}$ consists just of the $i$'th column of $\mu_0$, with zeros everywhere else, and similarly the matrix $m_{ii}\mu_0$ consists of the $i$'th row of $\mu_0$ and zeros everywhere else. The only way these two matrices can possibly be equal is if every element except those on the diagonal is zero. So $\mu_0$ is diagonal.
+    
+    Furthermore, $\mu_0 m_{ij} = m_{ij}\mu_0$. The matrix $\mu_0 m_{ij}$ consists of just the $j$'th column of $\mu_0$, shifted to the $i$'th spot, and similarly $m_{ij}\mu_0$ consists of just the $i$'th row of $\mu_0$ shifted to the $j$'th spot. That is, we have $(\mu_0)_{ii} = (\mu_0)_{jj}$ for all $i,j$. So $\mu_0 = c\One$ for some constant $c$. 
+\end{proof}
+Recall that the volume form is $\mu = e_1...e_n$, and $\mu^2=1$ if $p-q=0$ or $3$ mod $4$, and $\mu^2=-1$ otherwise.
+
+In the case where $\mu^2=-1$, we see that $\mu$ defines a complex structure on $\Cl(p,q)$.
+
+In the case where $\mu^2 = 1$, we see that $\mu$ defines a real structure, and hence splits $\Cl(p,q)$ into self-dual and anti-self-dual parts, $\Cl(p,q) = \Cl^+(p,q)\oplus \Cl^-(p,q)$, where these are two-sided ideals iff $p-q=3$ mod $4$.
+
+Furthermore, when $n$ is even, $\mu \in \cent(\Cl^{\textsf{even}}(p,q))$ and when $n$ is odd, $\mu \in \cent(\Cl(p,q))$. So we have the following lemma.
+
+\begin{lemma}
+Let $\mu \in \Cl(p,q)$. Let $A = \Cl(p,q)$ when $n$ is odd or $\Cl^{\textsf{even}}(p,q)$ when $n$ is even.
+\begin{enumerate}[(i)]
+\item {
+If $\mu^2 = 1$ and $\mu \in \cent(A)$ then $A$ decomposes into $A^+\oplus A^-$, and with respect to this decomposition we have $\mu = \pm(1,-1)$
+}
+\item {
+If $\mu^2 = -1$ and $\cent(A)$, then $A = B_{\RR}$, where $B$ is some complex algebra and $\mu = i$ when regarded as an element of $B$.
+}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+    By the classification theorem, $\Cl(p,q)$ is a matrix algebra or a direct sum of matrix algebras.
+
+    Suppose first that $\Cl(p,q)$ can be written as $M_n(\FF)$. We then know that either $\cent(\Cl(p,q)) = \Span\{1,\mu\}$ (if $n$ is odd) or $\cent(\Cl(p,q)) = \Span\{1\}$ (if $n$ is even). So the center of $\Cl(p,q)$ contains at most all of $\{1,-1,\mu,-\mu\}$. 
+
+    If $n$ is odd, then $\mu^2 = 1$ implies that $\mu =\pm 1$. Therefore $\cent(\Cl(p,q)) = \Span\{1\}$.
+
+    Similarly if $\Cl^{\textsf{even}}(p,q)$ can be written as a matrix algebra, $\cent(\Cl^{\textsf{even}}(p,q)) = \Span\{1\}$.
+
+    So the cases where $A \subseteq M_n(R)$ are trivial, since $A^+=A$ and $A^-=\{0\}$.
+
+    Now we can prove the lemma in the case where $A \subseteq M_n(R)\oplus M_n(R)$.
+
+    Suppose $\mu^2 = 1$ and $\mu\in \cent(A)$
+    
+    Then, with respect to the decomposition $M_n(R)\oplus M_n(R)$ we have $\mu = (a,b)$, where $a$ and $b$ both square to the identity. Furthermore $\mu$ being in the center implies that $a=\pm 1$ and $b=\pm 1$. 
+
+    Finally, note that when $n$ is odd (even) the isomorphism $\phi : \Cl(p,q)\to A$ ($\phi : \Cl^{\textsf{even}}(p,q)\to A$) takes $\phi(1) = (1,1)$ and $\phi(-1) = (-1,-1)$. Since $\mu \neq \pm 1$, we must have $\mu = \pm(1,-1)$ as required.
+
+    The case $\mu^2=-1$ is trivial from the fact that it is a complex structure.
+\end{proof}
+
+\subsection{Lecture 23: Pinor and Spinor Representations}
+\subsubsection{Classification of Pinor and Spinor Representations}
+The irreducible representations of the pin group (or, more generally, $\Cl(p,q)$) are called pinors, and the irreducible representations of the spin group (more generally $\Cl^{\textsf{even}}(p,q)$) are called spinors.
+
+Recall that a representation is a mapping from a group or algebra $A$ to the general linear group (note that this forms a matrix algebra, which is why the tools of representation theory works for both groups and algebras).
+
+In particular, an algebra representation is an algebra homomorphism.
+
+\begin{defn}[Irreducible Representation I]
+    Let $\rho : A \to \GL(V)$ be an algebra representation. Then $\rho$ is said to be \textbf{irreducible} if it is impossible to split $V$ into a direct sum $V=V_1\oplus V_2$, so that $\rho$ also splits into $\rho = \rho_1\oplus \rho_2$, where $\rho_1:A\to \GL(V_1)$ and $\rho_2 : A \to \GL(V_2)$ are both representations.
+\end{defn}
+
+\begin{defn}[Invariant Subspace]
+Let $\rho :A \to \GL(V)$ be a representation. Then a subspace $W\subseteq V$ is said to be $A$-invariant if $\rho(a)V \subseteq V$ for all $a\in A$.
+\end{defn}
+\begin{remark*}
+    The trivial invariant subspaces are $\{0\}$ and $V\subseteq V$.
+\end{remark*}
+\begin{defn}[Irreducible Representation II] Let $\rho:A\to \GL(V)$ be a representation. Then $\rho$ is said to be \textbf{irreducible} if there does not exist any non-trivial $A$-invariant subspace of $V$.
+\end{defn}
+
+\begin{lemma}
+    Definitions I and II of irreducible representations are equivalent.
+\end{lemma}
+\begin{proof}
+    Suppose $V$ had a non-trivial $A$-invariant subspace $W$. It suffices to show that there exists an $A$-invariant subspace $U$ so that $W\cap U = \{0\}$ and so that $V=W\oplus U$.
+
+    The reverse direction is much simpler. 
+\end{proof}
+
+\begin{example}
+    The algebra $A = M_n(\FF)$, where $\FF$ is not $\CC$, has only one irreducible representation, which is the standard one on $\FF^n$ where $\rho(a)$ just acts on a vector by left-multiplication.
+\end{example}
+\begin{example}
+    If $\FF = \CC$ then there are two irreducible representations, which are on $\CC^n$ and $\overline{\CC}^n$.
+    
+    That is, there are two maps $\rho_1 : M_n(\CC) \to \GL(\CC^n)$ and $\rho_2 : M_n(\CC)\to \GL(\overline{\CC}^n)$, where $\rho_1(a)v = av$ and $\rho_2(a)v=\overline{a}v$.
+\end{example}
+A consequence of the previous two examples is the following.
+
+\begin{thm}[Pinor Representations] The irreducible representations of $\Cl(p,q)$ (equivalently $\Pin(p,q)$) are classified in the following table. We denote the representation space by $\PP$.
+\begin{center}
+\begin{tabular}{llll}
+$p-q\mod 8$ & $\Cl(p,q)$                & $\PP$                          & $\rho$                                              \\ \hline
+0,6         & $M_n(\RR)$                & $\RR^n$                        & $\rho(a)v=av$                                       \\
+2,4         & $M_n(\HH)$                & $\HH^n$                        & $\rho(a)v=av$                                       \\
+1,5         & $M_n(\CC)$                & $\CC^n$ and $\overline{\CC}^n$ & $\rho(a)v=av$ and $\rho(a)v=\overline{a}v$          \\
+3           & $M_n(\HH)\oplus M_n(\HH)$ & $\PP^+ = \HH^n\oplus \{0\}$ and $\PP^- = \{0\}\oplus \HH^n$            & $\rho(a)(v,w) = (a_1v,w)$ and $\rho(a)(v,w) = (v,a_2w)$ \\
+7           & $M_n(\RR)\oplus M_n(\RR)$ & $\PP^+ = \RR^n\oplus\{0\}$ and $\PP^- = \{0\}\oplus \RR^n$             & $\rho(a)(v,w) = (a_1v,w)$ and $\rho(a)(v,w) = (v,a_2w)$
+\end{tabular}
+\end{center}
+Note that overall, in the last two cases we have a representation on $\PP^+ \oplus \PP^-$, which splits into two irreducible representations.
+\end{thm}
+\begin{remark*}
+    The representations of $\Cl(p,q)$ for $p-q=3$ or $7$ mod $8$ are inequivalent. We can see that this is the case because of the fact that $\mu \in \Cl(p,q)$ acts differently on either factor, since $\mu=(1,-1)$ or $(-1,1)$. That is, in the first case we find $\rho(\mu)(v,w) = (v,-w)$ and in the second case we have $\rho(\mu)(v,w) = (v,w)$. Therefore, a choice of orientation (ie $\mu = (1,-1)$ or $\mu=(-1,1)$) determines the representation. 
+\end{remark*}
+\begin{remark*}
+    The same table classifies representations of the group $\Pin(p,q)$ because we can just restrict the domain of $\rho$, and it turns out that the representations are still irreducible.
+\end{remark*}
+
+\begin{thm}[Spinor Representations]
+    The irreducible representations of $\Cl^{\textsf{even}}(p,q)$ (equivalently $\Spin(p,q)$) are classified in the following table, and are called the \textbf{spinor representations} of $\Spin(p,q)$. We denote the representation space by $\PP$.
+    \begin{center}
+        \begin{tabular}{llll}
+$p-q\mod 8$ & $\Cl^{\textsf{even}}(p,q)$ & $\PP$                                                      & $\rho$                                              \\ \hline
+0           & $M_n(\RR)\oplus M_n(\RR)$  & $\PP^+ = \RR^n\oplus \{0\}$ and $\PP^- = \{0\}\oplus\RR^n$ & $\rho(a)(v,w) = (av,w)$ and $\rho(a)(v,w) = (v,aw)$ \\
+1,7         & $M_n(\RR)$                 & $\RR^n$                                                    & $\rho(a)v=av$                                       \\
+3,5         & $M_n(\HH)$                 & $\HH^n$                                                    & $\rho(a)v=av$                                       \\
+2,6         & $M_n(\CC)$                 & $\CC^n$ and $\overline{\CC}^n$                             & $\rho(a)v=av$ and $\rho(a)v=\overline{a}v$          \\
+4           & $M_n(\HH)\oplus M_n(\HH)$  & $\PP^+ = \HH^n\oplus \{0\}$ and $\PP^- = \{0\}\oplus\HH^n$ & $\rho(a)(v,w) = (av,w)$ and $\rho(a)(v,w) = (v,aw)$
+\end{tabular}
+    \end{center}
+\end{thm}
+\begin{example}
+    The representation $\Spin(1)\to \GL(\RR)$ is just the trivial reprsentation. We just have $\rho(a)s = as$, where $s\in\RR$ and $a=\pm 1$.
+
+    There are two obvious representations of $\Spin(2,0)$ on $\CC$. Recall that $\Spin(2,0)$ is isomorphic to $\SO(2)\cong \Unitary(1)$, which means that $\Spin(2,0)$ acts on $\CC$ by multiplying on the left by $e^{i\theta}$, and on $\overline{\CC}$ by multiplication by $e^{-i\theta}$.
+
+    For $\Spin(4,0)$, the irreducible representations are $\rho^+ : \Spin(4,0) \to M_n(\HH)\oplus \{0\}$ and $\rho^- : \Spin(4,0) \to \{0\}\oplus M_n(\HH)$. One can show that $\Spin(4,0) \cong \SU(2)\times \SU(2)$, which means each representation simply acts on $\HH\oplus \{0\}$ or $\{0\}\oplus\HH$ by multiplication on the left by an imaginary unit quaternion.
+\end{example}
+
+\begin{physics*}
+    Finally, we can discuss the spin representations which appear in physics.
+
+    In physics, we essentially take the wave function of a particle to be a function which takes values in some vector space $\PP$. This vector space is in general a representation space of some spin group. 
+
+    Recall that the metric used in physics has signature $(3,1)$. Therefore $p-q = 2 \mod 8$, so the representation spaces of $\Spin(3,1)$ are all going to be of the form $\CC^n$ or $\overline{\CC}^n$.
+
+    In the case $n=2$ we get two representations. One on $\CC^2$ and one on $\overline{\CC}^2$. When we interpret these as representation spaces, the elements of $\CC^2$ and $\overline{\CC}^2$ are called \textbf{uncharged Weyl spinors}.
+
+    Similarly, the \textbf{uncharged Dirac spinors} are elements of the reducible representation space $\CC^2\oplus\,\overline{\CC}^2$. As we can see, a Dirac spinor consists of a pair of Weyl spinors. In general, other reducible representations of $\Spin(3,1)$ for $n=2$ give rise to other types of uncharged spin-$1/2$ particles.
+
+    For $n=3$, we get a representation on $\CC^3$ and a representation on $\overline{\CC}^3$. Wave functions of uncharged spin-1 particles therefore give values in $\CC^3$. 
+    
+    In general, a non-electrically-charged spin $k/2$ particle can described by one of the $n=2k+1$ dimensional representations of $\Spin(3,1)$.  
+\end{physics*}
+\begin{physics*}
+    To take this a bit further, each irreducible representation $\rho$ of $\Spin(p,q)$ on some representation space $\PP$ also induces a representation of $\Spin(p,q)$ on $\Cl(\PP)$. This allows us to describe the action of an element of $\Spin(p,q)$ on a system of particles. One can find that when we are dealing with spin-$n/2$ representations with $n$ odd, we find that the system of particles satisfies a kind of antisymmetry, meaning we get \textbf{fermions}. Similarly, for spin-$n$ particles we get symmetry, which implies these are \textbf{bosons}. The relationship between spin and particle statistics is called the \textbf{spin-statistics theorem}.
+\end{physics*}
+\begin{physics*}
+    Charged particles are described by representations of the \textbf{complexified} Clifford algebra $\Cl^{\CC}(p,q) = \Cl(p,q)\otimes \CC$. In this case we get a complexified Spin group as the even unit elements, which can be related to the usual spin group by the formula $\Spin^{\CC}(p,q) = \Spin(p,q)\times S^1/\sim$, where we are quotienting by the relation $(a,\theta)\sim(-a,-\theta)$. The \textbf{electric charge} of a particle is the conserved quantity associated to the $S^1$ symmetry, and the \textbf{spin} of the particle is the conserved quantity associated to the $\Spin(3,1)$ symmetry.
+\end{physics*}
+\begin{physics*}
+    Describing particles which have spin on the domain $\RR^{3,1}$ is fairly straightforward since we can just describe them as functions $\psi : \RR^{3,1} \to \CC^n$. However, the situation for other domains is more difficult. In general, for a pseudo-Riemannian manifold $M$ of signature $(p,q)$ we construct a principal $\Spin(p,q)$ bundle $S\to M$, and then the spinors are sections of the associated representation bundle $\tilde{S}$, which is defined so that the representation is of the form $\rho : (S\to M)\to (\mathfrak{gl}(\tilde{S})\to M)$. The bundle $\tilde{S}$ is called the \textbf{Spinor bundle}. The study of manifolds with a principal $\Spin(p,q)$ bundle is called \textbf{spin geometry}.
+\end{physics*}
+
+\subsubsection{Duality and Triality}
+Recall that there is a map $\bigtilde{\Ad}:\Spin(p,q) \to \SO(p,q)$, and that $\SO(p,q) \subseteq \GL(\RR^{p,q})$. Therefore, we get a representation of $\Spin(p,q)$ on $\RR^{p,q}$, given by the twisted adjoint representation. When viewing this as a representation of the spin group we call this the vector representation.
+\begin{defn}[Vector Representation]
+The \textbf{vector representation} of $\Spin(p,q)$ is the map $\bigtilde{\Ad} : \Spin(p,q) \to \SO(p,q)$.
+\end{defn}
+
+\begin{remark*}
+    For $\Spin(8)$ we therefore have the two spinor representations $\rho^+ : \Spin(8) \to \GL(\RR^8\oplus\{0\})$, $\rho^- : \Spin(8) \to \GL(\{0\}\oplus\RR^8)$, and now a third representation $\bigtilde{\Ad} : \Spin(8) \to \GL(\RR^{8})$. These are all \textbf{inequivalent} representations! They are all related in a mysterious way called \textbf{triality}.
+\end{remark*}
+
+\begin{defn}[Duality]
+Let $V$ and $W$ be real vector spaces. A \textbf{duality} between $V$ and $W$ is a bilinear map $F : V\times W \to \RR$, where if $v,w\neq 0$ we have $F(\cdot,w)\neq 0 \in V^*$ and $F(v,\cdot)\neq 0\in W^*$.
+\end{defn}
+\begin{remark*}
+    The map $L : V\to W^*$ given by $L(v)(w) = F(v,w)$ is injective since $L(v)\neq 0$ by definition, as is $R : W\to V^*$ where $R(w)(v)=F(v,w)$. Therefore if two vector spaces are dual, we have $\dim V = \dim W = \dim V^* = \dim W^*$ and $L$ and $R$ are isomorphisms.
+\end{remark*}
+\begin{defn}[Norm-Duality]
+Let $V$ and $W$ be vector spaces with positive definite inner products. Then a \textbf{norm-duality} is a bilinear map $F$ so that $|F(v,w)|\leq |v||w|$ and so that for all $v\neq 0$ there exists $w\neq 0$ with $|F(v,w)|=|v||w|$ (and vice versa for all $w\neq 0$)
+\end{defn}
+\begin{lemma}
+    Any norm-duality is a duality.
+\end{lemma}
+\begin{proof}
+    Suppose $v\neq 0$. Then there is $w\neq 0$ so that $|F(v,w)|=|v||w|\neq 0$, so $F(v,w)\neq 0$ and vice versa. So $L(v)\neq 0$ and $L(w)\neq 0$
+\end{proof}
+\begin{example}
+    Let $V=W$ with the same inner product. Let $F(v,w) = \langle v,w\rangle$. Then clearly by Cauchy-Schwartz, $|\langle v,w\rangle | \leq |v||w|$. Additionally, if $v\neq 0$ then $|\langle v,v\rangle| = |v||v|$. So a positive definite inner product defines a norm-duality from a vector space to itself.
+\end{example}
+
+\begin{remark*}
+    Since a norm-duality is a duality, we get a map $L : V \to W^*$, and we already have a map $\sharp : W^* \to W$.
+\end{remark*}
+\begin{lemma}
+    The map $T = \sharp\circ L : V\to W$ is an isometry.
+\end{lemma}
+\begin{proof}
+    Let $w = T(v)$. Then $|T(v)|^2 = |F(v,T(v))|^2 \leq |v||T(v)|$. So $|T(v)|\leq |v|$. 
+
+    Conversely, for all $v\neq 0$ there exists $w$ so that $|v||w| = |F(v,w)|$. We then have $|F(v,w)| = |\langle T(v),w\rangle| \leq |T(v)||w|$. So $|v||w|\leq |T(v)||w|$, which means $|v|\leq |T(v)|$.
+
+    So $|T(v)|=|v|$ as required.
+\end{proof}
+\begin{remark*}
+    The key thing here is that given a norm-duality between $V$ and $W$, we get an isometry between $V$ and $W$.
+\end{remark*}
+
+\begin{defn}[Triality]
+    \index{Triality}
+    Let $U,V,W$ be real vector spaces. A \textbf{triality} is a trilinear map $T : U\times V\times W \to \RR$ so that if any two arguments are nonzero, then the induced linear functional on the third argument is nonzero.
+
+    That is, $T(a,b,\cdot)\neq 0$, $T(\cdot,b,c)\neq 0$, and $T(a,\cdot,c)\neq 0$ whenever $a,b,c\neq 0$.
+\end{defn}
+\begin{remark*}
+    Suppose we have a triality between $U,V,W$. Then if we fix $c\neq 0$ we get a duality between $U$ and $V$ by the map $m = T(\cdot,\cdot,c) : U\times V \to \RR$. Without loss of generality, we therefore have $\dim U = \dim V = \dim W$.
+\end{remark*}
+\begin{remark*}
+    Given $a\in U$ and $a\neq 0$, we get $L_a = m(a,\cdot) : V\to W^*$. Similarly for $b\in V$ with $b\neq 0$ we get $R_b = m(\cdot,b)$. These are isomorphisms $V\cong W^*$ and $U\cong W^*$. So we get an isomorphism between $U$ and $V$ which depends on the choice of $a,b$.
+
+    In general, by fixing two nonzero elements from two of $U,V$ or $W$ we get an isomorphism between the two vector spaces.
+\end{remark*}
+\begin{lemma}
+    Let $e\in W$ be defined by $e = \sharp( T(a,b,\cdot))$ and define $M : W\times W \to W$ by 
+    
+    \[M(w_1,w_2) = \sharp( T(R_b^{-1}(w_1),L_a^{-1}(w_2),\cdot))\]
+
+    Then $e$ is an identity for $M$. That is $M(e,v) = M(v,e) = v$ for all $v$.
+\end{lemma}
+\begin{proof}
+This is done directly. Let $w\in W$
+    \begin{align*}
+        M(e,w) &= \sharp(T(R_b^{-1}(e),L_a^{-1}(w),\cdot))\\
+        &= \sharp(T(R_b^{-1}(R_b(a)),L_a^{-1}(w),\cdot))\\
+        &= \sharp(T(a,L_a^{-1}(w),\cdot))\\
+        &= L_a(L_a^{-1}(w))\\
+        &= w
+    \end{align*}
+    The other case is identical.
+\end{proof}
+\begin{remark*}
+    Since we can construct a multiplication $M : W\to W\to W$, with an identity $e$, we see that a triality along with a nonzero element from $U$ and $V$ gives $W$ the structure of a real unital algebra.
+\end{remark*}
+\begin{remark*}
+    If we use $M$ to define multiplication of elements $w_1,w_2\in W$, we can see that left or right-multiplication gives an isomorphism. That is, if $w_1\neq 0$ then $R_b^{-1}(w_1)\neq 0$, and if $w_2\neq 0$ we have $L_a^{-1}(w_2)\neq 0$, so $T(R_b^{-1}(w_1),L_a^{-1}(w_2),\cdot)\neq 0$. Hence $w_1w_2=0$ implies that either $w_1=0$ or $w_2=0$.
+
+    Therefore, we in fact have constructed a real division algebra out of $W$.
+\end{remark*}
+\begin{cor}
+    If $T$ is a triality of $U,V,W$, then each of $U$, $V$, $W$ can be made into a real unital division algebra.
+\end{cor}
+\begin{remark*}
+    We saw in an earlier section that the only real unital division algebras are in dimensions 1,2,4, and 8. Therefore, there are not many possible trialities!
+\end{remark*}
+\begin{defn}[Norm-Triality]
+Let $U,V,W$ be equipped with positive definite inner products. A \textbf{norm-triality} is a trilinear map $T:U\times V\times W \to \RR$ with $T(u,v,w)\leq |u||v||w|$ and so that whenever two elements are nonzero there is a third which satisfies $T(u,v,w) = |u||v||w|$.
+\end{defn}
+\begin{remark*}
+    In this case, if we fix two elements $a$ and $b$ with $|a|=|b|=1$, then we see that we get \textbf{isometries} between $U,V$ and $W$.
+\end{remark*}
+\begin{cor}
+    A normed triality between $U,V,$ and $W$ gives rise to a compositional division algebra structure on each of $U,V$, and $W$.
+\end{cor}
+\begin{proof}
+    We have,
+    \begin{align*}
+        \langle M(a,b),c\rangle &= T(a,b,c)\\
+        \implies |M(a,b),M(a,b)| = |M(a,b)|^2 &\leq |a||b||M(a,b)|\\
+        \implies |M(a,b)|&\leq |a||b|
+    \end{align*}
+    and similarly $|a||b| \leq |M(a,b)|$.
+\end{proof}
+In summary, a normed triality gives rise to a composition algebra and vice versa.
+
+\subsection{Lecture 24: $\Spin(8)$ and Triality}
+\subsubsection{Properties of $\Cl(8,0)$}
+Recall that the octonions $\OO$ are isometric to $\RR^8$ with the standard inner product. We can therefore describe elements of $\GL(\OO\oplus \OO)$ as elements of $M_{16}(\RR)$.
+
+\begin{defn}
+    Define a map $\beta : \OO \to M_{16}(\OO)$ by the formula,
+    \[\beta(v) = \m{0 & R_v\\-R_{\overline{v}}&0}\]
+    Where $R_v$ and $R_{\overline{v}}$ represent right-multiplication by $v$ and $\overline{v}$ respectively.
+\end{defn}
+\begin{remark*}
+    The map $\beta$ is $\RR$-linear.
+\end{remark*}
+\begin{lemma}
+    The map $\beta$ is injective.
+\end{lemma}
+\begin{proof}
+    Suppose $v\in\ker(\beta)$. Then for all $\alpha,\beta\in \RR^8$ we have
+    \[\beta(v)\m{a\\b} =\m{R_vb\\ -R_{\overline{v}}a}\]
+    Therefore we need $R_vb=R_{\overline{v}}a=0$. So $R_v b = bv = 0$ for all $b$, which means $v=0$. So $\ker(\beta)=\{0\}$ as required.
+\end{proof}
+\begin{defn}
+    Define the vector space $V = \image(\beta)$. Then we define an inner product on $V$ by the formula,
+    \[\langle \beta(v),\beta(u)\rangle = \langle u,v\rangle\]
+\end{defn}
+\begin{remark*}
+    Therefore, $\beta$ is an isometry by definition.
+\end{remark*}
+\begin{remark*}
+    We have
+    \[\beta(u)\beta(v)=\m{-R_uR_{\overline{v}}&0\\0&-R_{\overline{v}}R_u}\]
+    Furthermore, this implies that,
+    \[(\beta(u)\beta(v) + \beta(v)\beta(u))\m{a\\b} =\m{-(a\overline{v})u-(a\overline{u})v\\-(bv)\overline{u}-(bu)\overline{v}} = -2\langle u,v\rangle \m{a\\b} \]
+    Where we have used equation \eqref{eq:innprod_octonion} in the last step.
+\end{remark*}
+\begin{cor}
+    By the universal property, $\beta$ extends to a map $\beta : \Cl(8,0) \to M_{16}(\RR)$. Furthermore, since $M_{16}(\RR)$ has no non-trivial two-sided ideals, the extension of $\beta$ is injective. Finally, since $\dim \Cl(8,0)= \dim \GL(\OO\oplus \OO)$, we see that $\beta$ is an isomorphism between $\Cl(8,0)$ and $\GL(\OO\oplus \OO)$.
+\end{cor}
+\begin{lemma}
+    Let $\{e_0,...,e_7\}$ be an oriented orthonormal basis for $\RR^8$. Recall that the volume form is $\mu = e_0...e_7$. Then \[\beta(\mu) = \m{\One&0\\0&-\One}\]
+\end{lemma}
+\begin{proof}
+    One directly computes $\beta(\mu) = \beta(e_0)...\beta(e_7)$ by tedious calculation, using the fact that $R_{e_i}R_{e_j}u = (ue_j)e_i$ for all $i,j$ as well as the other octonion identities.
+\end{proof}
+\begin{remark*}
+    Let $\PP^+ = \OO\oplus \{0\}$ and $\PP^- = \{0\}\oplus \OO$. Then the above says $\Cl(8,0) \cong \GL(\PP^+\oplus \PP^-)$.
+\end{remark*}
+
+\begin{cor}
+    We have,
+    \[\Cl^{\textsf{even}}(8,0) \cong \left\{\m{A&0\\0&B} : A,B \in \GL(\OO)\right\}= \GL(\PP^+)\oplus \GL(\PP^-)\]
+    Which means $\Cl^{\textsf{even}}(8,0)$ splits up into 
+    \[\Cl^{\textsf{even}}_+(8,0) \cong \GL(\PP^+),\qquad \Cl^{\textsf{even}}_-(8,0) \cong  \GL(\PP^-)\]
+\end{cor}
+\begin{remark*}
+    Define projection maps $p_+$ and $p_-$ by $p_+(a,b) = (a,0)$ and $p_-(a,b) = (0,b)$. Then the above corollary tells us that $p_+\circ \beta$ is the positive spinor representation of $\Spin(8)$ and that $p_-\circ \beta$ is the negative spinor representation.
+\end{remark*}
+\begin{defn}
+    We define an inner product on $\PP^+\oplus \PP^-$ by the formula
+    \[\left\langle \m{u\\v},\m{u'\\v'}\right\rangle = \langle u,u'\rangle +\langle v,v'\rangle\]
+\end{defn}
+\begin{lemma}
+    With respect to the inner product defined above, $\beta(\alpha)$ is skew-adjoint for all $\alpha\in \Cl(8,0)$.
+\end{lemma}
+\begin{proof}
+We calculate,
+    \begin{align*}\left\langle \beta(\alpha)\m{u\\v},\m{u'\\v'}\right\rangle & = \langle v\alpha,u'\rangle - \langle u\overline{\alpha},v'\rangle\end{align*}
+    Then note that $R_\alpha^\dagger = R_{\overline{\alpha}}$, so
+    \begin{align*}\langle v\alpha,u'\rangle - \langle u\overline{\alpha},v'\rangle &= \langle R_\alpha(v),u'\rangle - \langle R_\alpha^\dagger(u),v'\rangle \\& = \langle v,u'\overline{\alpha}\rangle - \langle u,v'\alpha\rangle \\&=-(\langle u,v'\alpha\rangle-\langle v,u'\overline{\alpha}\rangle)\\&=\left\langle \m{u\\v},-\beta(\alpha)\m{u'\\v'}\right\rangle\end{align*}
+As required.
+\end{proof}
+\begin{cor}
+    If $\alpha \in \Cl(8,0)$, then $\beta(\bighat{\alpha}) = \beta(\alpha)^\dagger$.
+\end{cor}
+\begin{proof}
+Let $A,B$ be the matrices defined so that $\beta(\alpha) = \m{A&0\\0&B}$. Since $\beta(\alpha)$ is skew adjoint, $A$ and $B$ must also be. 
+
+Now suppose we decompose $\alpha$ into $\alpha = \sum_{i\in\NN,k\leq 8}  \alpha_{i1}...\alpha_{ik}$. Then $\bighat{\alpha} = \sum_{i\in\NN,k\leq 8} (-1)^k\alpha_{ik}...\alpha_{i1}$. In matrix form we get,
+\[\beta(\bighat{\alpha}) = \sum_{i\in\NN,k\leq 8} (-1)^k\m{A_{ik}...A_{i1}&0\\0&B_{ik}...B_{i1}}\]
+Since each $A_{ij}$ is skew-adjoint, we have $(A_1...A_k)^\dagger = A_k^\dagger... A_1^\dagger = (-1)^kA_k...A_1$. So we are done.
+\end{proof}
+\begin{cor}
+    $\Spin(8)\subseteq \SO(\PP^+)\oplus\SO(\PP^-)$.
+\end{cor}
+\begin{proof}
+    Consider a decomposable even element $\alpha = v_1...v_{2r} \in \Spin(8)$. Then,
+    \[\alpha\bighat{\alpha} = (-1)^{2r}v_1...v_{2r} v_{2r}...v_1 = |v_1|^2...|v_{2r}|^2 = 1\]
+    So \[\beta(\alpha\bighat{\alpha}) = \beta(\alpha)\beta(\bighat{\alpha}) = \beta(\alpha)\beta(\alpha)^\dagger = \One\]
+    In other words, $AA^\dagger = \One$ and $BB^\dagger = \One$, so $\beta(\alpha) \in \Orth(\PP^+)\times \Orth(\PP^-)$. Since $\Spin(8)$ is connected, $\One\in\image(\beta)$, and $\beta$ is a continuous mapping, we therefore see that $\beta(\alpha)\subseteq \SO(\PP^+)\times \SO(\PP^-)$ as required.
+\end{proof}
+\begin{remark*}
+    So we have two representations $\rho_+ = p_+ \circ \beta |_{\Spin(8)}$ and $\rho_- = p_- \circ \beta |_{\Spin(8)}$ which are the positive and negative spinor representations.
+
+    We also have a third representation $\rho_0 = \bigtilde{\Ad}$ defined so that $\bigtilde{\Ad}_\alpha (v) = \bigtilde{\alpha}v\alpha^{-1}$. Since every element of $\Spin(8)$ is even, we have $\bigtilde{\alpha} = \alpha$ for all $\alpha\in \Spin(8)$. Therefore $\bigtilde{\Ad} = \Ad$ when we restrict to $\Spin(8)$.
+\end{remark*}
+\begin{remark*}
+    One can show that for any vector space $V$ with a metric of signature $p,q$, the group $\Spin(V)$ can be written as,
+    \[\Spin(V) = \{\alpha \in \Cl^{\textsf{even}}(V)^* : \bigtilde{\Ad}_\alpha(V) \subseteq V, |\alpha|^2 = \pm 1\}\]
+    Where we have used the notation that $A^*$ denotes the group of invertible elements of an algebra $A$.
+\end{remark*}
+
+\begin{remark*}
+    Let us write
+    \[g =\m{g_+&0\\0&g_-}\in\Cl^{\textsf{even}}(8,0) = \Cl_+^{\textsf{even}}(8,0)\oplus \Cl_-^{\textsf{even}}(8,0)\]
+    Then if $g\in \Spin(8)$, we have $g_+,g_-\in\SO(\OO)$. Furthermore, we can abuse notation and write $\rho_+(g)=g_+$ and $\rho_-(g)=g_-$. Then how do we write $\rho_0(g)$?
+\end{remark*}
+\begin{thm}[$\Spin(8)$ Triality Theorem]
+Let $(g_0, g_+, g_-)$ be an ordered triple of elements of $\Orth(\OO)$. Then the following statements are equivalent.
+\begin{enumerate}
+    \item $g=
+\diag(g_+, g_-)\in \Spin(8)$, and $g_0 = \Ad_g$.
+\item $g_+(xy) = g_-(x)g_0(y)$ for all $x,y \in \OO$.\index{Theorem!$\Spin(8)$ Triality Theorem}
+\end{enumerate}
+\end{thm}
+\begin{remark*}
+    Since having $g_+$ and $g_-$ determines $g_0$ completely, it is useful to denote $\Spin(8)$ as consisting of all ordered triples $(g_0,g_+,g_-)$ satisfying the above criteria. 
+\end{remark*}
+\begin{proof}
+The goal of the proof is to show that an equivalent condition for $\Ad_\rho(v) \in \OO$ is that $g_-(x)g_0(v)=g_+(xv)$ for all $x,v\in \OO$.
+
+Recall that $\OO$ is isometric to $V=\beta(\OO)$, where we have defined $\beta(v)$ by the formula,
+\[\beta(v) = \m{0&R_v\\-R_{\overline{v}}&0}\]
+Also recall that,
+\[\Spin(V) = \{\alpha \in \Cl^{\textsf{even}}(V)^* : \bigtilde{\Ad}_\alpha(V) \subseteq V, |\alpha|^2 = \pm 1\}\]
+Now let
+\[\rho = \m{A&0\\0&B}\]
+Then by the above definition of $\Spin(V)$ we have that $\rho \in \Spin(8)$ iff it is true that $A,B \in \Orth(\OO) \cong \Orth(V)$ and that $\beta(\Ad_\rho(v)) \in V$. 
+
+Let us then write out $\Ad_\rho(v)$ directly. We have,
+\[\Ad_\rho(v) = \bigtilde{\rho}v\rho^{-1}\]
+Applying the isometry, this is equivalent to writing,
+\[\beta(\Ad_\rho(v)) = \m{A&0\\0&B}\m{0&R_v\\-R_{\overline{v}}&0}\m{A^\dagger&0\\0&B^\dagger} = \m{0&AR_v B^\dagger\\-BR_{\overline{v}}A^\dagger&0}\]
+So $\Ad_\rho(v) \in \OO$ if and only if $AR_v B^\dagger=R_u$ and $BR_{\overline{v}}A^\dagger=R_{\overline{u}}$ for some $u\in V$. Note that since these are adjoint to each other, we only have to prove one of these. We can take $AR_v B^\dagger=R_u$ and apply both sides to the element $1 \in \OO$, which gives us,
+\begin{align*}
+    u&= R_u(1)\\
+    &= A R_v B^\dagger(1)\\
+    &= A(B^\dagger(1)v)
+\end{align*}
+So we have $g_0(v) = u$ defined by the above equation.
+This means that $\Ad_g \in \Spin(8)$ if and only if $g_+(g^{-1}_-(1)v)=g_0(v)$ for all $v$. In general, we can apply the same equation to $w\in \OO$ to get \begin{align*}
+    wu&= R_u(w)\\
+    &= A R_v B^\dagger(w)\\
+    &= A(B^\dagger(w)v)
+\end{align*}
+Set $x = g^{-1}_-(w)$. Then the above implies that $g_-(x)u=g_+(xv)$, so $g_-(x)g_0(v)=g_+(xv)$ as required.
+
+\end{proof}
+
+\begin{remark*}
+    If $\diag(g_+,g_-)\in\Spin(8)$, then $g_+,g_-\in \SO(\OO)$, and so the above theorem implies that $g_0 \in \SO(\OO)$ as well.
+\end{remark*}
+
+\begin{defn}
+    Let $C$ denote conjugation of octonions. Then we define $\rho_{\pm}' = C\circ \rho_{\pm}\circ C$.
+\end{defn}
+\begin{remark*}
+    Observe that $C R_v C =L_{\overline{v}}$.
+\end{remark*}
+\begin{lemma}
+    If the ordered triple $(g_0,g_+,g_-)$ satisfies the triality theorem, then the triple $(g_-',g_+',g_0')$ also satisfies the triality theorem.
+\end{lemma}
+\begin{proof}
+Direct calculation gives,
+    \begin{align*}
+g_+'(xy)&=\overline{g_+(\overline{xy})}\\&=\overline{g_+(\overline{y}\overline{x})}\\&=\overline{g_-(\overline{y})g_0(\overline{x})}\\
+        &=\overline{g_0(\overline{x})}\overline{g_-(\overline{y})}\\&= g_0'(x)g_-'(y)
+    \end{align*}
+    As we can see, this is the same condition as in the theorem except reordered as required.
+\end{proof}
+\begin{defn}[Inner/Outer Automorphism]\index{Automorphism!Inner/Outer}
+Let $G$ be a group. An automorphism $a : G\to G$ is said to be \textbf{inner} if there is some $h\in G$ so that $a(g) = hgh^{-1}$. If $a$ is not inner, we say it is \textbf{outer}.
+\end{defn}
+\begin{remark*}
+    If $a$ is an inner automorphism, then since $hgh^{-1}=g$ for all $g \in \cent(G)$, it follows that $a\cent(G) = G$.
+\end{remark*}
+
+\begin{defn}[Triality Automorphism I]
+The first outer automorphism of $\Spin(8)$ is the map $\alpha : \Spin(8)\to \Spin(8)$ defined so that
+\[\alpha(g_0,g_+,g_-)=(g_-',g_+',g_0')\]
+\end{defn}
+\begin{remark*}
+    Clearly $\alpha\circ\alpha = \One$ since conjugation $C$ is an involution. Additionally, one can check that $\alpha$ is a group homomorphism using the formula $g_+(xy)=g_-(x)g_0(y)$. Finally, since it is bijective it is a group automorphism.
+\end{remark*}
+\begin{remark*}
+    Recall that $g_+(xy)=g_-(x)g_0(y)$ is equivalent to the equations $R_v = A R_v B^\dagger$ and $R_{\overline{v}} = BR_{\overline{v}}A^\dagger$. We have $g_0(v) = A(B^\dagger(1)v)$, so $g_0'(v) = \overline{A(B^\dagger(1)\overline{v})} = B(A^\dagger(1)v)$. 
+
+    We also have $g_+(v) = Av$ and $g_-(v) = Bv$. Therefore
+    \[g_0'(v) = g_-(g_+^{-1}(1)v)\]
+    This means that $(g_0', g_-,g_+)$ satisfies the triality theorem.
+\end{remark*}
+\begin{defn}[Triality Automorphism II]
+Let $\gamma : \Spin(8)\to \Spin(8)$ be the map defined by $\gamma(g_0,g_+,g_-) = (g_0',g_-,g_+)$. Then $\gamma$ is also a group automorphism.
+\end{defn}
+\begin{thm}[Outer Automorphisms of $\Spin(8)$]
+Let $\alpha$ and $\gamma$ be the automorphisms defined above. Then $\alpha, \gamma,$ and $\alpha\circ\gamma$ are \textbf{outer automorphisms}. Furthermore, they are the \textbf{only} outer automorphisms of $\Spin(8)$.
+\end{thm}
+\begin{proof}
+To show these are outer autmorphisms it suffices to show that they do not fix $\cent(\Spin(8))$. Recall that $1,\mu,-1$, and $-\mu$ are elements of $\cent(\Spin(8))$.
+
+Consider the isomorphism taking $a \in \Spin(8)$ to $g=(\rho_0(a),\rho_+(a),\rho_-(a))$. Then we have,
+\begin{align*}
+    1&\mapsto (1,1,1)\\
+    \mu&\mapsto (-1,1,-1)\\
+    -1&\mapsto (-1,-1,-1)\\
+    -\mu&\mapsto (-1,-1,1)
+\end{align*}
+From this we immediately see that,
+\begin{align*}
+    \alpha(-1)&=-\mu \neq -1\\
+    \gamma(\mu)&=-\mu \neq \mu\\
+    \alpha\circ\gamma(\mu)&=-1\neq \mu
+\end{align*}
+So none of them are inner automorphisms.
+
+Proving that these are the \textbf{only} outer autmorphisms takes more work.
+\end{proof}

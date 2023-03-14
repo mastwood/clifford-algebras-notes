@@ -1,0 +1,900 @@
+\section{Tensors and $k$-Forms}
+\subsection{Lecture 1: Linear Functionals and the Dual Space}
+Let us begin with the first new definition of the course:
+\begin{defn}[Dual Space]\index{Dual!Space} Let $V$ be a vector space. Consider the set $V^*$ consisting of all linear maps from $V$ to $\FF$. This set is a vector space, as whenever $T,S \in V^*$ we have $(T+S)(v) = T(v)+S(v)$. We call the vector space $V^*$ the \textbf{dual space} of $V$. The elements of the dual space are called \textbf{linear functionals}, \textbf{1-forms}, or \textbf{covectors}\index{Linear!Functional}\index{Covector}\index{Form!1-form}.
+\end{defn}
+
+\begin{thm} If $V$ is a finite dimensional vector space, then $\dim V^* = \dim V$.
+\end{thm}
+For a proof of this, it is easiest to use a basis. Therefore we will delay the proof until the next lemma. Note that in the infinite dimensional case, the most we can get is $\dim V \leq \dim V^*$. Also, just because $V$ and $V^*$ have the same dimension, there does not have to be an obvious isomorphism between them. In order to construct a nice isomorphism $f : V \to V^*$, we typically need a basis.
+\begin{thm}
+Let $V$ be a vector space with basis $B = \{e_1,...,e_n\}$. We will define $B^* = \{e^1,...,e^n\}$ as the (unique up to reordering) collection of $n$ linear maps so that $e^i(e_j) = 0$ if $i\neq j$, and $e^i(e_i)=1$ for all $i$. The set $B^*$ is a basis for $V^*$.
+\end{thm}
+\begin{proof}Consider any arbitrary element of $V^*$. Let us call it $\alpha$. Then $\alpha(v) = \alpha(v^i e_i) = v^i \alpha(e_i)$ since $\alpha$ is linear. We then consider the map $\tilde{\alpha} = \alpha(e_i)e^i$. Observe that for all $v$, we have 
+\begin{align*}\tilde{\alpha}(v) &= v^i \tilde{\alpha}(e_i) \\&= v^i \alpha(e_j) e^j(e_i) \\&= v^i \alpha(e_i)\end{align*} Therefore we can see that $\tilde{\alpha}(v)=\alpha(v)$ for all $v$, so $\alpha = \alpha(e_i)e^i$. The numbers $\alpha_i = \alpha(e_i),i=1,...,n$ are the coordinates of $\alpha$ in the basis $B^*$.
+\end{proof}
+In particular, this proof shows us that a linear functional is completely determined by its' value when evaluated on each basis vector $e_i$.
+\begin{defn}[Canonical]
+Let $V$ and $W$ be vector spaces. Then we say $V$ and $W$ are \textbf{canonically isomorphic} if it is possible to construct an isomorphism between $V$ and $W$ without having to use a basis for $V$ or $W$.
+\end{defn}
+\begin{remark*}
+    $V$ and $V^*$ are \textbf{not} canonically isomorphic unless we have extra information, such as a metric.
+\end{remark*}
+
+Now, since $V^*$ is a perfectly well defined vector space on its' own, we could construct the \textbf{double dual} $V^{**}$ as $(V^*)^*$. Since whenever $V$ is finite dimensional we have $\dim V = \dim V^* = \dim V^{**}$, it is natural to ask whether there is a canonical isomorphism between $V$ and $V^{**}$. As it turns out, there is.
+
+\begin{defn}[Canonical Injection]\index{Canonical Injection}
+The \textbf{canonical injection} is the injective linear map $\xi : V \to V^{**}$ defined by the formula $\xi(v)(\alpha) = \alpha(v)$ for all $\alpha \in V^*, v \in V$.
+\end{defn}
+If $V$ is finite dimensional, this map is an isomorphism between $V$ and $V^{**}$, and in particular it does not depend on the choice of basis for $V$ (this is what we usually mean by a canonical linear isomorphism). If $V$ is infinite dimensional, this map is only guaranteed to be injective, and so we sometimes call it the canonical injection (this terminology is often used in functional analysis).
+
+\begin{thm}
+If $V$ is a finite dimensional vector space, the canonical injection $\xi : V \to V^{**}$ is an isomorphism.
+\end{thm}
+\begin{proof}We first show that $\xi$ is linear. Observe: 
+\begin{align*}\xi(\lambda v + w)(\alpha) &= \alpha(\lambda v + w) \\&= \lambda \alpha(v) + \alpha(w)\end{align*} as required. Next we show that the kernel is trivial. Suppose $\xi(v)(\alpha)=0$ for all $\alpha$, then $\alpha(v)=0$ for all $\alpha$, which means $v=0$. Therefore  $\ker \xi = \{0\}$. Since $\dim V = \dim V^{**}$, we conclude that $\xi$ is an isomorphism.\end{proof} 
+
+It is important to note that this proof did not use any basis for $V$ or $V^*$. This is why we call $\xi$ ``canonical".
+
+\subsection{Lecture 2: Tensor Product and Dual Map}
+\subsubsection{Bilinear Forms and Tensor Products of Forms}
+In this lecture we will begin with a very useful tool in linear algebra, the tensor product. First we need to review some definitions.
+
+\begin{defn}[Bilinear Map]\index{Bilinear Map} Let $V$ and $W$ be vector spaces over $\FF$. Then a map $G : V\times W \to \FF$ is called bilinear if for all $a,b\in \FF$, 
+\[G(av_1+bv_2,w) = aG(v_1,w)+bG(v_2,w) \textsf{ for all } v_1,v_2\in V, w\in W\] 
+and 
+\[G(v,aw_1+bw_2)=aG(v,w_1)+bG(v,w_2) \textsf{ for all }v\in V, w_1,w_2 \in W\]
+
+The set of bilinear maps defines a vector space $B(V,W,\FF)$.
+\end{defn}
+
+\begin{defn}[Tensor Product of Forms]\index{Tensor!Product!Linear Forms}\index{Product!Tensor!Linear Forms}
+Consider two linear forms $\alpha \in V^*$ and $\beta \in W^*$. We define a bilinear map from $\alpha$ and $\beta$, called the tensor product of $\alpha$ and $\beta$, so that the following identity holds for all $v\in V, w\in W$:
+\[\alpha\otimes \beta (v,w) = \alpha(v)\beta(w)\]
+\end{defn}
+Observe that,
+\begin{align*}\alpha\otimes\beta(av_1+bv_2,w) &= \alpha(av_1+bv_2)\beta(w) \\&= (a\alpha(v_1)+b\alpha(v_2))\beta(w)\\& = a\alpha(v_1)\beta(w)+b\alpha(v_2)\beta(w)\\& = a(\alpha\otimes \beta)(v_1,w) + b(\alpha\otimes\beta)(v_2,w)\end{align*}
+So $\alpha\otimes \beta$ is linear in the first input. A similar proof holds for the second input. So we have verified that $\alpha\otimes\beta$ is indeed a bilinear mapping.
+If we consider all possible finite linear combinations of all these bilinear maps we get the tensor product space.
+\begin{defn}[Tensor Product of Dual Vector Spaces]\index{Tensor!Product!Dual Spaces}\index{Product!Tensor!Dual Spaces}
+    Define $V^* \otimes W^* = \textsf{span}\{\alpha\otimes \beta: \alpha\in V^*, \beta\in W^*\}$. This is called the tensor product of the two vector spaces $V^*$ and $W^*$.
+\end{defn}
+Note that not all elements of $V^*\otimes W^*$ are of the form $\alpha \otimes \beta$. In general, an element is of the form $\omega = \sum_{i=1}^N \alpha_i \otimes \beta_i$.
+By linearity, every element of $V^*\otimes W^*$ is bilinear.
+Therefore $V^*\otimes W^* \subseteq B(V, W, \FF)$.
+It remains to be shown that $B(V, W, \FF)$ is a subset of $V^* \otimes W^*$.
+\begin{thm}
+    Let $V,W$ be finite dimensional vector spaces. Then $B(V,W,\FF) = V^*\otimes W^*$.
+\end{thm}
+\begin{proof}Suppose that $\gamma \in V^* \otimes W^*$. Then $\gamma$ defines a bilinear map as shown above. Now, on the other hand, suppose that $\kappa$ is any bilinear map taking inputs in $V\times W$. Let $\{e_1,...,e_n\}=B$ be a basis for $V$ and let $\{f_1,...,f_m\}=C$ be a basis for $W$. Let $\{e^i\}=B^*$ and $\{f^j\}=C^*$ be the corresponding dual bases. Then let $\kappa_{ij} = \kappa(e_i,f_j)$. We can see that,
+\begin{align*}
+    \kappa(v,w) &= v^i w^j \kappa(e_i,f_j) \\
+    &= e^i(v)f^j(w)\kappa_{ij}\\
+    &= \kappa_{ij} e^i\otimes f^j(v,w)
+\end{align*}
+Since this holds for all $v,w\in V,W$, we can see that $\kappa = \sum_{i,j} \kappa_{ij} e^i\otimes f^j$. So $\kappa$ is indeed a linear combination of elements of $V^*\otimes W^*$. Additionally, from this we see that $\{e^i\otimes f^j : 1\leq i\leq n, 1\leq j \leq m\}$ is a basis for $V^* \otimes W^*$.\end{proof}
+\begin{cor}
+    Let $V,W$ be finite dimensional vector spaces. Then 
+    \[\dim (V^* \otimes W^*) = (\dim V) (\dim W)\]
+\end{cor}
+\begin{proof}
+    In the proof of the previous theorem we constructed a basis $\{e^i\otimes f^j : 1\leq i\leq n, 1\leq j \leq m\}$ for $V^* \otimes W^*$. There are $nm = (\dim V)(\dim W)$ elements in this basis.
+\end{proof}
+\subsubsection{Tensor Product of Arbitrary Vector Spaces}
+Now we should define the tensor product in complete generality. For it to make sense as an explicit construction of a vector space takes some work.
+
+One way to define the tensor product of any general vector spaces is as a quotient of $V\times W$. This is the most explicit construction which does not depend on a choice of basis. It also makes it very easy to prove the various properties of the tensor product. We will also have to show that this definition agrees with the above definition of $V^* \otimes W^*$.
+
+\begin{defn}[Tensor Product of Vector Spaces]\index{Tensor!Product!Vector Spaces}\index{Product!Tensor!Vector Spaces}
+Let $V$ and $W$ be vector spaces. Recall that $V\times W$ is a vector space. Then define the following subspace of $V\times W$.
+\begin{align*}R = \textsf{span} \Bigg\{(v,w) \in V\times W, &\textsf{ where }
+ (v,w) = (v_1+v_2,w)-(v_1,w)-(v_2,w)\\
+&\textsf{ or }(v,w) = (v,w_1+w_2)-(v,w_1)-(v,w_2)\\
+&\textsf{ or }(v,w) = s(v_1,w) - (sv_1,w)\\
+&\textsf{ or }(v,w) = s(v,w_1) - (v,sw_1)
+\Bigg\}
+\end{align*}
+Then the tensor product $V\otimes W$ is defined by,
+\[V \otimes W = \frac{V\times W}{R}\]
+Where we also define the notation,
+\[v \otimes w = [(v,w)]\]
+and in general, any element of $V \otimes W$ is of the form $\sum_{i=1}^N v_i \otimes w_i$.
+Remember that the quotient of two vector spaces is formed by considering equivalence classes $[v] =\{w \in V : w - v \textsf{ is equivalent to } 0\}$. 
+\end{defn}
+\begin{thm}
+    The above definition ensures that the following equations hold:
+\begin{enumerate}[i.]
+\item {
+$(v_1+v_2)\otimes w = v_1\otimes w + v_2\otimes w$.
+}
+\item {
+$v\otimes (w_1+w_2) = v\otimes w_1 + v\otimes w_2$.
+}
+\item {
+$s(v\otimes w) = (sv)\otimes w = v\otimes (sw)$.
+}
+\end{enumerate}
+\end{thm}
+\begin{proof}
+We will show, for example, that
+$(v_1+v_2)\otimes w = v_1\otimes w + v_2\otimes w$. Observe that,
+\begin{align*}
+    &(v_1+v_2)\otimes w - v_1\otimes w - v_2\otimes w \\
+    &= [(v_1+v_2,w)] - [(v_1,w)] - [(v_2,w)]\\
+    &= [(v_1+v_2,w)-(v_1,w)-(v_2,w)]
+\end{align*}
+Since $(v_1+v_2,w)-(v_1,w)-(v_2,w)$ is equivalent to $0$ for all $v_1,v_2,w$, we therefore see that 
+\[[(v_1+v_2,w)-(v_1,w)-(v_2,w)] = [(0,0)]\] 
+In other words, $(v_1+v_2)\otimes w - v_1\otimes w - v_2\otimes w = 0$. The proofs for the other identities are identical.
+\end{proof}
+\begin{lemma}
+Let $V$ be a vector space over $\FF$. Then $\FF \otimes V$ is canonically isomorphic to $V$.   
+\end{lemma}
+\begin{proof}
+    Let $a \otimes v \in \FF \otimes V$. Observe that $a \otimes v = 1 \otimes (av)$. Let $i : \FF \otimes V \to V$ be defined by $i(a\otimes v) = av$. Then $i$ is invertible, since we can simply set $i^{-1}(v) = 1\otimes v$. To see that this is valid, observe that $i^{-1}(i(a\otimes v)) = i^{-1}(av) = 1\otimes av = a \otimes v$. So $i$ is an isomorphism as required.
+\end{proof}
+
+
+\begin{thm}
+Let $V$ and $W$ be vector spaces over $\FF$.
+For all $\omega \in V^* \otimes W^*$, there is a \textbf{unique} linear map $\tilde{\omega} : V\otimes W \to \FF$ which has the property that $\tilde{\omega}(v\otimes w) = \omega(v,w)$ for all $v\in V,w\in W$.
+\end{thm}
+\begin{proof}
+Recall that any element $T\in V\otimes W$ can be written in the form $T = \sum_{i=1}^N v_i\otimes w_i$, with each $v_i\in V$ and $w_i \in W$ for $i=1,...,N$. Define $\tilde{\omega}(T) = \sum_{i=1}^N \omega(v_i,w_i)$ for any such $T \in V\otimes W$. We must verify that this is linear and then that it is unique.
+
+To show that it is linear, let $S\in V\otimes W$ and set $S = \sum_{j=1}^M a_j\otimes b_j$, with $a_j\in V$ and $b_j\in W$ for each $j=1,...,M$. Also let $\lambda \in \FF$.
+
+ Observe,
+\begin{align*}
+    \tilde{\omega}(T+\lambda S) &= \tilde{\omega}\left(\sum_{i=1}^N v_i\otimes w_i + \lambda\sum_{j=1}^M a_j\otimes w_j\right)\\
+    &= \tilde{\omega}\left(\sum_{i=1}^N v_i\otimes w_i + \sum_{j=1}^M (\lambda a_j)\otimes w_j\right)\\
+    &= \tilde{\omega}\left(\sum_{k=1}^{N+M} e_k\otimes f_k\right)
+\end{align*}
+Where $e_k = v_k$ for $k=1,...,N$ and $e_k = \lambda a_k$ for $k=N+1,...,N+M$, and similarly $f_k = w_k$ for $k=1,...,N$ and $f_k = b_k$ for $k=N+1,...,N+M$. So,
+\begin{align*}
+    \tilde{\omega}(T+\lambda S) &= \sum_{k=1}^{N+M} \omega(e_k,f_k)\\
+    &= \sum_{i=1}^N \omega(v_i,w_i) + \sum_{j=1}^M \omega(\lambda a_j,b_j)\\
+    &= \sum_{i=1}^N \omega(v_i,w_i) + \lambda\sum_{j=1}^M \omega( a_j,b_j)\\
+    &= \tilde{\omega}(T) + \lambda\tilde{\omega}(S)
+\end{align*}
+Therefore $\tilde{\omega}$ is linear as required. Finally we will show that it is unique.
+
+Suppose some other map $\hat{\omega}$ existed so that $\tilde{\omega}(v\otimes w) = \hat{\omega}(v\otimes w)$ for all $v,w$. Then 
+\begin{align*}\tilde{\omega}(T) &= \sum_{i=1}^N \omega(v_i,w_i) \\
+&= \sum_{i=1}^N\hat{\omega}(v_i\otimes w_i)\\
+&= \hat{\omega}\left(\sum_{i=1}^N v_i\otimes w_i\right) 
+\end{align*}
+Therefore $\tilde{\omega}(T) = \hat{\omega}(T)$ for all $T \in V\otimes W$. So $\hat{\omega}=\tilde{\omega}$. Therefore this map is indeed unique.
+\end{proof}
+
+\begin{thm}\label{thm:2.4}
+    $\dim(V\otimes W) = (\dim V)(\dim W)$
+\end{thm}
+\begin{cor}
+    Let $\{e_i:1\leq i \leq n\}$ be a basis for $V$ and let $\{f_j:1\leq j\leq m\}$ be a basis for $W$. Then \[\{e_i\otimes f_j : 1\leq i\leq n, 1\leq j \leq m\}\]
+    is a basis for $V \otimes W$. \label{cor:2.1}
+\end{cor}
+\begin{proof} (of Theorem \ref{thm:2.4} and Corollary \ref{cor:2.1})
+
+Since there are $\dim V \dim W$ elements in the set $\{e_i\otimes f_j\}$ it suffices to show that this set is linearly independent. Let,
+\[\omega = \omega^{ij} e_i \otimes f_j\]
+Then $\omega = 0$ iff $\tilde{\omega}=0$. We check:
+\[\tilde{\omega}(\alpha\otimes \beta) = \omega^{ij} e_i(\alpha)f_j(\beta) = \omega^{ij}\alpha_i \beta_j\]
+This is zero for all $\alpha\in V^*,\beta\in W^*$ iff $\omega^{ij}=0$ for all $i,j$. Thus $e_i\otimes f_j$ is a linearly independent set. Finally, it is simple to show that any $\omega \in V\otimes W$ can be written as $\omega^{ij}e_i\otimes f_j$. So $\dim (V\otimes W)= \dim V \dim W$ as required, and this set is a basis.
+\end{proof}
+
+\begin{cor}
+    Let $V$ and $W$ be finite dimensional vector spaces. Then $(V\otimes W)^*$ is isomorphic to $V^* \otimes W^*$.
+\end{cor}
+
+
+\begin{proof}
+    Consider the map $i : V^* \otimes W^* \to (V\otimes W)^*$ given by $i(\omega) = \tilde{\omega}$. The previous theorem shows that this map is injective. It suffices to show that $\dim(V^* \otimes W^*) = \dim((V\otimes W)^*)$. We have, 
+    \begin{align*}\dim((V\otimes W)^*) &= \dim(V\otimes W) \\&= (\dim V)(\dim W)\\& = \dim(V^* \otimes W^*).\end{align*} 
+\end{proof}
+\begin{thm}
+    Let $V$ and $W$ be finite dimensional vector spaces. Then $L(V,W)$ is isomorphic to $V^*\otimes W$.
+\end{thm}
+\begin{proof} Recall that $\dim L(V,W) =\dim V \dim W =  \dim V^* \otimes W$.
+
+Let us define the map $f : V^*\otimes W \to L(V,W)$ according to the formula 
+\[f(\alpha\otimes w)(v) = \alpha(v)w\]
+for all $\alpha\in V^*, w\in W^*, v\in V$.
+
+Then $f$ is linear, since $\alpha$ is linear. Therefore, we can extend $f$ by linearity to all elements of $V^*\otimes W$.
+
+Let $\{e_1,...,e_n\}$ be a basis for $V$ and let $\{f_1,...,f_m\}$ be a basis for $W$. Then given any tensor $T\in V^*\otimes W$ we can write $T = T_i^j e^i\otimes f_j$.
+
+Suppose $f(T) = 0$. Then $T_i^j e^i(v)f_j = 0$. But this can only be true if $v=0$ or if $T_i^j = 0$ for all $i,j$. 
+
+Since the statement holds for any $v$, not just $v=0$, we must have the second case, that $T=0$. Therefore $\ker f = \{0\}$. Hence $f$ is injective, and is therefore an isomorphism.
+
+Observe that we only needed a basis to show that $\ker f = \{0\}$, but the definition of $f$ itself did not depend on any choice of basis. So we say $f$ is a canonical isomorphism.
+From here on out, we will therefore simply refer to $f(T)$ as $T$.
+\end{proof}
+
+From here, we can inductively construct higher rank tensors as elements of iterated tensor product spaces.
+\subsubsection{The Tensor Algebra}
+\begin{defn}
+    Let $V$ be a vector space over $\FF$. The vector space of rank-($k,\ell$) tensors over $V$ is defined as follows
+    \begin{equation}
+        \Tt_\ell^k(V) = \underbrace{(V\otimes...\otimes V) }_{k \textsf{ copies}}\otimes \underbrace{(V^*\otimes...\otimes V^*)}_{\ell \textsf{ copies}}
+    \end{equation}
+\end{defn}
+\begin{defn}\index{Tensor!Power!Vector Space}
+    We often write,
+    \begin{equation}
+        V^{\otimes n} = \underbrace{V\otimes ... \otimes V}_{n \textsf{ times}}
+    \end{equation}
+    This is called the $n$'th \textbf{tensor power} of $V$.
+\end{defn}
+
+\begin{thm} Let $B = \{e_i:0\leq i\leq n\}$ be a basis for $V$.
+A basis for $\Tt_\ell^k(V)$ is given by the set,
+\begin{equation}
+    \mathcal{B} = \bigg\{e_{i_1}\otimes...\otimes e_{i_k}\otimes e^{j_1}\otimes...\otimes e^{j_\ell} : 0\leq i_p,j_q\leq n \, \forall\, 0\leq p\leq k, 0\leq q\leq \ell\bigg\}
+\end{equation}
+There are exactly $N=n^{k+\ell}$ basis vectors.
+\end{thm}
+In this basis, any tensor $T \in \Tt^k_\ell$ can be written as a linear combination,
+\[T =  T^{i_1...i_k}{}_{j_1...j_\ell} e_{i_1}\otimes...\otimes e_{i_k}\otimes e^{j_1}\otimes...\otimes e^{j_\ell}\]
+Where repeated indices are summed over. The coefficients $T^{i_1...i_k}{}_{j_1...j_\ell}$ are called the components (or coordinate representations) of $T$ in the basis. It is common practice to define a multi-index to make this easier to write down.
+\begin{defn}[Multi-Index]\index{Multi-Index} Suppose we have an expression of the form \[T =  T^{i_1...i_k}{}_{j_1...j_\ell} e_{i_1}\otimes...\otimes e_{i_k}\otimes e^{j_1}\otimes...\otimes e^{j_\ell}\]
+Then we can bundle up the indices into ordered lists of indices 
+\[I=\{i_1,...,i_k : i_n = 1,...,\dim V\; \forall n\}\] 
+and \[J=\{j_1,...,j_\ell: j_n = 1,...,\dim V\;\forall n\}\]
+so that the above expression is written
+\[T = T_J^I e_I \otimes e^J\]
+Where $e_I = e_{i_1}\otimes...\otimes e_{i_k}$ and $e^J = e^{j_1}\otimes ...\otimes e^{j_\ell}$. The sets $I$ and $J$ are called multi-indices. 
+    
+\end{defn}
+\begin{remark*}
+    Let $I$ be a multi index of length $k$ over the set $\{1,...,n\}$. This means that $I$ consists of a choice of $k$ elements from $\{1,...,n\}$. So for example, if $k=3,n=5$ we could have $I = \{1,2,3\}$ or $\{1,2,5\}$ or $\{2,4,5\}$ and so on.
+\end{remark*}
+\begin{defn}
+    Let $I$ be a multi index of length $k$ over the set $\{1,...,n\}$. The \textbf{complementary multi-index} to $I$ is the set $I^c = \{1,...,n\}\setminus I$. That is, $I$ and $I^c$ are completely disjoint, and $I\cup I^c = \{1,...,n\}$. Observe that $|I| +|I^c| = n$.
+\end{defn}
+\begin{example}
+Let $n=5$. Then if $I= \{1,2,4\}$ we have $I^c = \{3,5\}$.
+\end{example}
+
+By convention, we define $\Tt_0^0(V) = \FF$, since $\FF\otimes V$ is canonically isomorphic to $V$. Similarly, one will note that $\Tt_0^1(V)=V$ and $\Tt_1^0(V) = V^*$.
+
+\begin{defn}[Decomposable Tensor]\index{Tensor!Decomposable}
+    A \textbf{decomposable} tensor $T \in \Tt_\ell^k(V)$ is a tensor which can be written in the form $T = v_1\otimes...v_k \otimes \alpha^1\otimes...\otimes \alpha^\ell$ for some $v_1,...,v_k,\alpha^1,...,\alpha^\ell$. Not all tensors are decomposable.
+\end{defn}
+\begin{example}
+The tensor $T = e_1\otimes e_2$ is decomposable, but not the tensor $e_1\otimes e_2 - e_2\otimes e_1$.
+\end{example}
+\begin{defn}[Tensor Algebra]\index{Tensor!Algebra}\index{Algebra!Tensor Algebra} Let $V$ be a vector space over $\FF$. The \textbf{tensor algebra} of $V$ is the vector space
+\begin{equation}
+    \bigotimes V = \bigoplus_{k=0}^\infty V^{\otimes k}
+\end{equation}
+Where each element $Y\in \bigotimes$ is of the form $Y = \sum_{k=0}^N Y_k$ with each $Y_k \in V^{\otimes k}$, $0\leq k \leq N$. Note that each element is defined as a finite linear combination of tensors.\label{defn:tensoralgebra}
+\end{defn}
+\begin{lemma}
+The tensor algebra is an associative algebra, where the ``multiplication" is the tensor product.
+\end{lemma}
+\begin{proof}
+The tensor product is associative and distributive.
+\end{proof}
+Additionally, notice that we have defined $1\otimes v = v \otimes 1 = v$ since $\FF\otimes V$ is isomorphic to $V$. This means that the algebra is \textbf{unital}, as in, it has a multiplicative identity.
+\begin{defn}[Unital Algebra]\index{Algebra!Unital}
+An algebra $A$ is said to be \textbf{unital} if there exists some $e \in A$ so that $ev = ve = v$ for all $v \in A$. 
+\end{defn}
+
+\subsubsection{Linear Maps as Tensors, and the Dual Map}
+
+Now we will shift gears a little bit to talk about something called the dual map assocated with a linear map.
+
+Let $V,W$ be finite dimensional vector spaces and let $M : V\to W$ be a linear map. Let $B$ be a basis of $V$ and let $C$ be a basis for $W$. Recall that we defined the coordinate matrix of $M$ to be the matrix $[M_i^j]_{C,B}$ where $M_i^j = f^j(M(e_i))$ for each $e_i\in B, f^j \in C^*$. The $C,B$ subscript in the above notation is there to remind the reader that a vector written in the basis $B$ can be inserted on the right hand side, and when matrix multiplication is carried out, a vector written in the basis $C$ comes out the other side. Suppose we were to perform a change of basis. That is, let $\tilde{B}$ be another basis for $V$ and let $\tilde{C}$ be another basis for $W$. Then there exist unique linear maps $P : \FF^n\to \FF^n$ and $Q : \FF^m\to \FF^m$ so that $P([v]_{\tilde{B}}) = [v]_{B}$ for all $v \in V$ and so that $Q([w]_{\tilde{C}})=[w]_{C}$ for all $w \in W$. These are called the change of basis transformations. Given these maps, we can convert the matrix $[M_i^j]_{C,B}$ which is written in terms of $C,B$ into a new matrix written in terms of $\tilde{C},\tilde{B}$. Observe that since $P,Q$ are invertible, we have,
+\[[M]_{C,B}[v]_B = [M(v)]_C = Q[M(v)]_{\tilde{C}} = Q[M]_{\tilde{C},\tilde{B}} [v]_{\tilde{B}} = Q[M]_{\tilde{C},\tilde{B}}P^{-1}[v]_{B}\]
+So the matrix representation of $M$ with respect to the new bases is given by, \[[M]_{\tilde{C},\tilde{B}} = Q^{-1} [M]_{C,B}P\]
+\begin{thm}
+    Let $L(V,W)$ denote the set of all linear maps from $V$ to $W$. Then $L(V,W)$ is canonically isomorphic to $W\otimes V^*$.
+\end{thm}
+\begin{proof}Let $M \in L(V,W)$. 
+
+Let $S \in W\otimes V^*$ be defined by $S_M(\alpha,v) = \alpha(M(v))$ for all $v \in V$, $\alpha \in W^*$. 
+
+So $S_M \in W\otimes V^*$ by construction. 
+
+Observe that for all $c_1,c_2\in \FF$ and $M_1,M_2\in L(V,W)$ we have,
+\begin{align*}S_{c_1 M_1+c_2 M_2}(v) &= \alpha(c_1 M_1+c_2M_2)(v) \\&= c_1 \alpha(M_1)(v)+c_2\alpha(M_2)(v) 
+\\&= c_1 S_{M_1}(\alpha,v) + c_2 S_{M_2}(\alpha,v)\end{align*}
+That is,
+\[S_{c_1M_1+c_2M_2}=c_1S_{M_1}+c_2S_{M_2}\]
+
+So $S$ defines a linear mapping between elements of $L(V,W)$ and elements of $W\otimes V^*$. We must show that it is injective and surjective.
+
+Suppose that $S_M(\alpha,v)=0$ for all $v,\alpha$. Then $\alpha(M(v))=0$ for all $\alpha,v$. So $M=0$. Therefore $\ker S = \{0\}$, meaning $S$ is injective. 
+
+Finally, observe that if $\dim V = n, \dim W = m$, then 
+\[\dim L(V,W)= \dim M_{nm}(\FF) = nm\]
+and 
+\[\dim W\otimes V^* = \dim W \dim V = nm\]
+So $\dim L(V,W)=\dim W\otimes V^*$. So $S$ has got to be surjective and therefore an isomorphism. 
+
+Since $S$ did not depend on any particular choice of basis, we can see that it is indeed a canonical isomorphism. \end{proof}
+
+\begin{defn}\index{Dual!Map}
+    Let $M : V \to W$ be a linear map. The \textbf{dual map} $M^* : W^* \to V^*$ (also known as the \textbf{pullback} of $M$\index{Pullback}) is defined so that,
+    \begin{equation}M^*(\alpha)(v) = \alpha(M(v)) \qquad \textsf{for all } \alpha\in W^*, v \in V\end{equation}
+\end{defn}
+Let $\One_V : V \to V$ be the identity map on $V$ and let $\One_{V^*} : V^* \to V^*$ be the identity map on $V^*$. Then $\alpha(\One_V(v)) = \alpha(v)$ for all $v \in V$ and $(\One_V)^*(\alpha)(v) = \alpha(\One_V(v))=\alpha(v)$ for all $v \in V$. Therefore $\One_V^* = \One_{V^*}$.
+
+Let $B$ be a basis for $V$ and let $C$ be a basis for $W$. Let $\alpha\in W^*$, $v\in V$. Then $M^*(\alpha) \in V^*$. We write,
+\[M^*(\alpha)(v) = [M^*(\alpha)]_{B^*}[v]_B\]
+And,
+\[\alpha(M(v))=[\alpha]_{C^*}[M(v)]_C = [\alpha]_{C^*}[M]_{CB}[v]_B\]
+So $[M^*(\alpha)]_{B^*} = [\alpha]_{C^*}[M]_{CB}$. Plugging in basis vectors $B=\{e_1,...,e_n\},C=\{f_1,...,f_m\}$ gives the following result.
+\begin{thm}
+Let $M : V \to W$ be a linear map. Let $B,C$ be bases for $V,W$.
+The matrix representation of $M^*$ is then 
+\[[M^*]_{B^* C^*}  = [M]_{CB}^T\]
+That is, the matrix of the dual map $M^*$ is the transpose of the matrix of $M$.
+\end{thm}
+\begin{proof}By direct computation we have,
+\[([M^*]_{B^* C^*})^i_j = M^*(f^j)(e_i) = f^j(M(e_i)) = ([M]_{CB})^j_i = ([M]_{CB}^T)_j^i\]
+So $[M^*]_{B^* C^*} = [M]_{CB}^T$.
+\end{proof}
+\begin{cor}
+    $\det T^* = \det T$
+\end{cor}
+
+\subsection{Lecture 3: The Exterior Algebra}
+\subsubsection{Antisymmetric Forms}
+First, remember that in this course we are working over a field $\FF$ of characteristic zero. This means that whenever $x \in \FF$, then $x^n = 0$ if and only if $x=0$. This includes $\FF=\RR,\CC,\QQ$ among others. The first way we will define the exterior algebra is as a vector subspace of the tensor algebra. 
+
+\begin{defn}[Totally Antisymmetric Tensor]\index{Tensor!Totally Antisymmetric}\index{Form!$k$-form} 
+Let $\alpha \in  \Tt_k^0(V)$. We say $\alpha$ is called totally antisymmetric if whenever two inputs are exchanged, the result picks up a minus sign. That is,
+\[\alpha(v_1,...,v_i,...,v_j,...,v_k) = -\alpha(v_1,...,v_j,...,v_i,...,v_k)\]
+With $0\leq i<j\leq k$. In general, if $\sigma : \{1,...,k\}\to \{1,...,k\}$ is a permutation operator we have,
+\[\alpha(v_{\sigma(1)},...,v_{\sigma(k)}) = \sgn(\sigma)\alpha(v_1,...,v_k)\]
+Totally anti-symmetric tensors are often referred to as \textbf{exterior $k$-forms}, \textbf{alternating forms}, or \textbf{skew-symmetric forms}.\index{Exterior!$k$-form}
+\end{defn}
+\begin{defn}[Exterior Power of $V^*$] \index{Exterior!Power!Vector Space}
+Let $V$ be a finite dimensional vector space over $\FF$. The set of totally anti-symmetric $(k,0)$-tensors over $V$ is called the $k$'th \textbf{exterior power} of $V^*$, and is written,
+\begin{equation}
+    \Lambda^k V^* = \{\alpha \in \Tt_k^0(V) : \alpha \textsf{ is totally anti-symmetric}\}
+\end{equation}
+By convention $\Lambda^0 V^* = \FF$. Elements of $\Lambda^k V^*$ are called \textbf{$k$-forms}.\index{Form!$k$-form}
+\end{defn}
+Since a linear combination of any two totally anti-symmetric $k$-forms is also totally anti-symmetric, this set forms a vector subspace of $\Tt_k^0(V)$.  We can construct these totally anti-symmetric forms in a similar way to the tensor product.
+\begin{defn}[Exterior Product]\index{Exterior!Product}\index{Wedge Product}\index{Product!Exterior/Wedge} Let $\alpha_1,...,\alpha_k \in V^*$ be some one-forms. The exterior product (also known as the wedge product) of $\alpha_1,...,\alpha_k$ is an alternating $k$-form defined by the formula,
+\begin{equation}
+\alpha_1\wedge...\wedge \alpha_k(v_1,...,v_k) = \sum_{\sigma \in S_n}\sgn(\sigma)\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}(v_1,...,v_k) \label{eq:defn_wedgeprod}
+\end{equation}
+\end{defn}
+\begin{remark*}
+    In some sources, the right hand side of \eqref{eq:defn_wedgeprod} is multiplied by $1/k!$. This is a matter of convention, but be careful with this!
+\end{remark*}
+\begin{physics*}
+    In physics we would write this formula using the Levi-Civita symbol as,
+    \[\alpha_1\wedge...\wedge\alpha_k = \varepsilon^{i_1...i_k}\alpha_{i_1}\otimes...\otimes \alpha_{i_k}\]
+    The Levi-Civita symbol makes some proofs easier, and some proofs harder. In this course we will avoid it.
+\end{physics*}
+We should verify first that this actually does define a $k$-form.
+\begin{thm}
+    The tensor $\alpha_1\wedge...\wedge\alpha_k$ is indeed totally antisymmetric.
+\end{thm}
+\begin{proof}Observe that $\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}(v_1,...,v_k) = \alpha_{\sigma(1)}(v_1)...\alpha_{\sigma(k)}(v_k)$. Upon exchanging the $i$'th entry of this product for the $j$'th, we essentially compose the permutation $\sigma$ with the map $\tau$ so that $\tau(p)=p$ for all $p\neq i,j$, but $\tau(i)=j,\tau(j)=i$. This map $\tau$ is also a permutation, and is acyclic. So we have,
+\[\alpha_1\wedge...\wedge \alpha_k(v_1,...,v_j,...,v_i...,v_k) = \sum_{\sigma \in S_k}\sgn(\sigma)\alpha_{\sigma\circ \tau(1)}\otimes...\otimes \alpha_{\sigma\circ \tau(k)}(v_1,...,v_k)\]
+Now, observe that this is a sum over all permutations. Since $\sigma$ is arbitrary, we can replace $\sigma$ everywhere by $\sigma\circ \tau^{-1}$ and the result will still be the same sum over all permutations.
+\[=\sum_{\sigma \in S_k}\sgn(\sigma\circ \tau^{-1})\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}(v_1,...,v_k)\]
+Finally, since the sign of a composition of permutations is the product of the signs, we have
+\begin{align*}=\sgn(\tau^{-1})\sum_{\sigma \in S_k}\sgn(\sigma)\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}(v_1,...,v_k)\\=-\alpha_1\wedge...\wedge \alpha_k(v_1,...,v_i,...,v_j...,v_k)\end{align*}
+As required. \end{proof}
+\begin{proof}[Alternate Proof]
+Another way to prove that this is antisymmetric is by computing the components directly. Let $A = [\alpha^i(v_j)]$ be the matrix formed by computing $\alpha^i(v_j)$ for each $0\leq i,j\leq k$. We can use the Laplace expansion formula for the determinant,
+\begin{align*}
+\alpha_1\wedge...\wedge \alpha_k(v_1,...,v_k) &= \sum_{\sigma \in S_k}\sgn(\sigma)\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}(v_1,...,v_k)\\
+&= \sum_{\sigma \in S_k} \sgn(\sigma) \prod_{i=1}^k \alpha_{\sigma(i)}(v_i)\\
+&= \det A
+\end{align*}
+Since the determinant function acquires a minus sign whenever a row or column is exchanged, we can see that exchanging either $\alpha_i$ for $\alpha_j$ or $v_i$ for $v_j$ introduces a minus sign. Therefore the wedge product indeed results in an alternating form.
+\end{proof}
+
+\begin{example}
+Consider $k=2$. We have $\alpha\wedge \beta =\alpha\otimes \beta - \beta \otimes \alpha$. 
+\end{example}
+\begin{example}
+Consider $k=3$. We have 
+\[\alpha\wedge\beta\wedge\gamma = \alpha\otimes\beta\otimes\gamma + \beta\otimes\gamma\otimes\alpha + \gamma\otimes\alpha\otimes\beta - \alpha\otimes\gamma\otimes\beta - \gamma\otimes\beta\otimes\alpha - \beta\otimes\alpha\otimes\gamma\]
+\end{example}
+\begin{lemma}
+    Let $V$ be a finite dimensional vector space with basis $B = \{e_i\}$. Then a basis for $\Lambda^k(V)$ is $\Lambda^k B = \{e_{i_1}\wedge...\wedge e_{i_k}:0\leq i_1,...,i_k\leq n\}$.
+\end{lemma}
+\begin{proof}
+We write $\omega = \omega_{i_1...i_k} e^{i_1}\otimes ...\otimes e^{i_k}$. Note that if $\sigma$ is a permutation, then
+\[\omega_{i_1...i_k} e^{i_1}\otimes ...\otimes e^{i_k}=\omega_{i_{\sigma(1)}...i_{\sigma(k)}} e^{i_{\sigma(1)}}\otimes ...\otimes e^{i_{\sigma(k)}}\]
+This follows from the fact that relabeling the indices doesn't do anything, and has nothing to do with $\omega$ being a $k$-form.
+
+However, the fact that $\omega$ is totally antisymmetric comes in the next step. Since there are $k!$ possible permutations, we can write 
+\[\omega_{i_1...i_k} e^{i_1}\otimes ...\otimes e^{i_k}=\frac{1}{k!}\sum_{\sigma\in S_k}\omega_{i_{\sigma(1)}...i_{\sigma(k)}} e^{i_{\sigma(1)}}\otimes ...\otimes e^{i_{\sigma(k)}}\]
+We can then use the antisymmetry of $\omega$ to remove the permutation from the indices on $\omega_{i_1...i_k}$ and insert a $\sgn(\sigma)$ as so,
+\begin{align*}
+    \omega &= \omega_{i_1...i_k} e^{i_1}\otimes ...\otimes e^{i_k}\\
+    &= \frac{1}{k!}\sum_{\sigma\in S_k}\omega_{i_{\sigma(1)}...i_{\sigma(k)}} e^{i_{\sigma(1)}}\otimes ...\otimes e^{i_{\sigma(k)}}\\
+    &= \frac{1}{k!}\sum_{\sigma\in S_k}\sgn(\sigma)\omega_{i_1...i_k} e^{i_{\sigma(1)}}\otimes ...\otimes e^{i_{\sigma(k)}}\\
+    &= \omega_{i_1...i_k}\frac{1}{k!}\sum_{\sigma\in S_k}\sgn(\sigma) e^{i_{\sigma(1)}}\otimes ...\otimes e^{i_{\sigma(k)}}\\
+    &= \frac{1}{k!}\omega_{i_1...i_k} e^{i_1}\wedge...\wedge e^{i_k}
+\end{align*}
+As required.
+\end{proof}
+\begin{remark*}
+    Observe that this is where the $k!$ would have come in handy. If we included it in the definition of the wedge product we could cancel it here. However, in this course we are using the convention that does not include the $k!$, so we have to be a bit careful with the components in the tensor basis and the components $k$-form basis.
+\end{remark*}
+Observe that since 
+\[e_{i_1}\wedge...\wedge e_{i_p}\wedge...\wedge e_{i_p}\wedge...\wedge e_{i_k} = -e_{i_1}\wedge...\wedge e_{i_p}\wedge...\wedge e_{i_p}\wedge...\wedge e_{i_k}\]
+we have $2e_{i_1}\wedge...\wedge e_{i_p}\wedge...\wedge e_{i_p}\wedge...\wedge e_{i_k} =0$. So any time two entries repeat in a wedge product the result is zero. 
+\begin{cor}
+Let $V$ be a vector space and let $\dim V = n$. Then
+    $\dim \Lambda^k (V) = \binom{n}{k} = \frac{n!}{(n-k)!k!}$.
+\end{cor}
+\begin{cor}
+     We can always write $\alpha = \sum_{i=1}^N \alpha_{i,1}\wedge...\wedge \alpha_{i,k}$ for some finite list of $1$-forms $\alpha_{i,k}$. Tensors of the form $\alpha_{i,1}\wedge...\wedge \alpha_{i,k}$ are called \textbf{wedge-decomposable}.
+\end{cor}
+
+\begin{cor} Let $\alpha_1,...,\alpha_k \in V^*$. Then $\alpha_1\wedge...\wedge \alpha_k = 0$ if and only if $\alpha_1,...,\alpha_k$ are not linearly independent.
+\end{cor}
+\begin{proof}Suppose they are not linearly independent. Then $\alpha_1 = \sum_{i=2}^k c_i \alpha_i$. So $\alpha_1\wedge...\wedge \alpha_k = \sum_{i=2}^k c_i \alpha_i \wedge \alpha_2 \wedge...\wedge \alpha_k = 0$ since every term in this sum has repeated entries. Now for the other direction of the "if and only if" statement: suppose that $\alpha_1\wedge...\wedge \alpha_k = 0$. Then $\sum_{\sigma\in S_k} \sgn(\sigma)\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}=0$. Let $\{e_i\}$ be any basis for $V$. Then,
+\[\sum_{\sigma\in S_k} \sgn(\sigma)\alpha_{\sigma(1)}\otimes...\otimes \alpha_{\sigma(k)}(e_1,...,e_k)=\sum_{\sigma\in S_k} \sgn(\sigma)\alpha_{\sigma(1)}(e_1)... \alpha_{\sigma(k)}(e_k)=0\]
+From this, if we group first the terms containing $\alpha_1(e_1),...,\alpha_k(e_1)$, and then the terms containing $\alpha_1(e_2),...,\alpha_k(e_2)$, and so on, we find that each grouping of terms will contain the same constants $C_1,...,C_k$ so that
+\[0 = C_1\alpha_1(e_i) + ... + C_k \alpha_k(e_i)\]
+for all $0\leq i \leq k$. In other words, $\alpha_1,...,\alpha_k$ are linearly dependent. \end{proof}
+\begin{cor} If $k > n$ then $\Lambda^k V^* = \{0\}$.
+\end{cor}
+
+\begin{defn}[Wedge product of totally antisymmetric tensors]
+    Let $\alpha\in \Lambda^k V^*$ and $\beta\in \Lambda^\ell V^*$.
+    Recall that we can always write $\alpha$ and $\beta$ as sums of wedge-decomposable tensors,
+    \[\alpha = \sum_{i=1}^N \alpha_{i,1}\wedge...\wedge \alpha_{i,k},\qquad \beta = \sum_{j=1}^M \beta_{j,1}\wedge...\wedge \beta_{j,\ell}\]
+    for some finite list of $1$-forms $\alpha_{i,k}, \beta_{j,k}$.
+    We therefore define $\alpha\wedge \beta\in\Lambda^{k+\ell}V^*$ as, 
+    \[\alpha\wedge\beta = \sum_{i=1}^N\sum_{j=1}^M  \alpha_{i,1}\wedge...\wedge \alpha_{i,k}\wedge \beta_{j,1}\wedge...\wedge \beta_{j,\ell}\]
+\end{defn}
+\begin{lemma}
+    If $\alpha \in \Lambda^k V^*$ and $\beta \in \Lambda^\ell V^*$, then $\alpha \wedge \beta = (-1)^{k\ell} \beta\wedge \alpha$.
+\end{lemma}
+\begin{proof}Recall that
+\[\alpha\wedge\beta = \sum_{i=1}^N\sum_{j=1}^M  \alpha_{i,1}\wedge...\wedge \alpha_{i,k}\wedge \beta_{j,1}\wedge...\wedge \beta_{j,\ell}\]
+We must then move $\beta_1$ to the far left, which requires $k$ swaps. Since there are $\ell$ factors in $\beta$, we must repeat this $\ell$ times. Therefore, we get a total of $k\ell$ swaps, which means a factor of $(-1)^{k\ell}$.
+\end{proof}
+\subsubsection{The Exterior Algebra}
+\begin{proof}
+    Let $B = \{e_1,...,e_n\}$ be a basis for $V$. Then suppose $\alpha \in \Lambda^k V^*$ with $k>n$. This would mean that $\alpha = \sum \alpha_{I} e^{i_1}\wedge...\wedge e^{i_k}$. But a set of $k>n$ elements of $B$ is necessarily linearly dependent. So $\alpha=0$ as required.
+\end{proof}
+
+\begin{defn}[Exterior Algebra]\index{Exterior!Algebra}\index{Algebra!Exterior Algebra} Let $V$ be a vector space of dimension $n$. We define the exterior algebra of $V$ to be,
+\begin{equation}
+    \Lambda^\bullet V^* = \bigoplus_{k=0}^n \Lambda^k V^*
+\end{equation}
+Where the product associated to this algebra is the wedge product defined above. It is associative.
+\end{defn}
+\begin{thm}
+The exterior algebra has dimension $\dim \Lambda^\bullet V^* = 2^n$
+\end{thm}
+\begin{proof}
+     By the binomial theorem,
+     \[\dim \Lambda^\bullet V^*=\sum_{k=0}^n \binom{n}{k}=\sum_{k=0}^n \binom{n}{k}1^k 1^{n-k} = (1+1)^n = 2^n\]
+\end{proof}
+
+We say if $\alpha \in \Lambda^k V^*$, then $\alpha$ is of degree $k$. We sometimes write $|\alpha| = k$ for the degree of $\alpha$.
+\begin{defn}[Graded Algebra] Let $A$ be an associative algebra. Then $A$ is said to be \textbf{graded} if we can write
+\[A = \bigoplus_{i=0}^\infty A_i\]
+Where the vector spaces $A_i, i\in\NN$ have the property that if $v\in A_i$ and $w \in A_j$ then $vw \in A_{i+j}$.
+
+Elements of $A_{2i}, i\in\NN$ are called elements of \textbf{even degree}. Elements of $A_{2i+1},i\in\NN$ are called elements of \textbf{odd degree}. \index{Algebra!Graded}\label{defn:gradedalgebra}
+\end{defn}
+\begin{thm}The exterior algebra $\Lambda^\bullet V^*$ is a graded algebra.
+\end{thm}
+\begin{proof}
+    We have $A_0 = \FF$, $A_k = \Lambda^k V^*$ for $k=1,...,n$, and $A_k = \{0\}$ for all $k>n$.
+
+    Suppose $\alpha$ is of degree $k$ and $\beta$ is of degree $\ell$. Then if $1\leq k+\ell \leq n$ it follows that $\alpha\wedge \beta \in \Lambda^{k+\ell} V^*$ by definition. If $\alpha$ is of degree zero, then $\alpha$ is just a scalar, which we have defined to act as $\alpha \wedge \beta = \alpha\beta \in \Lambda^\ell V^* = \Lambda^{0+\ell}V^*$ as required. Otherwise, if $k+l>n$ we have $\alpha \wedge \beta = 0 \in A_{k+\ell}$ since $\alpha$ and $\beta$ will necessarily contain linearly dependent components. So we have verified everything we needed to.
+\end{proof}
+
+Also note that since $\Lambda^\bullet V^*$ does not have the same "product" as $\Tt_k^0(V)$, it is not a vector subalgebra even though it is a vector subspace. These notions are different, and should be pointed out.
+
+Now we will talk about how a linear map $T : V \to W$ induces a linear map $\Tt_\ell^k(T) : \Tt_\ell^k(V)\to \Tt_\ell^k(W)$. Recall that any tensor can be written as the sum of decomposible tensors. We can therefore define the induced map as acting on decomposible tensors, and then extend the definition to all tensors by requiring that the induced map is linear (ie, using the extension by linearity theorem). 
+\begin{defn}[Tensor Power of Linear Map]\index{Tensor!Power!Linear Map} Let $T : V \to W$ be a linear map. Then let $\omega=v_1\otimes...\otimes v_k \otimes \alpha_1\otimes...\otimes \alpha_\ell$ be a decomposible tensor. We define,
+\[\mathcal{T}_\ell^k (T)(\omega) = T(v_1)\otimes...\otimes T(v_k)\otimes T^*(\alpha_1)\otimes...\otimes T^*(\alpha_\ell)\]
+and extend the definition by linearity to all of $\Tt_\ell^k(V)$.
+\end{defn}
+\begin{defn}[Exterior Power of Linear Map]\index{Exterior!Power!Linear Map}
+    Let $T : V \to W$ be a linear map. We often write $\Lambda^k T^*$ to mean the map with the property that
+    \[\Lambda^k T^*(\alpha_1\wedge...\wedge \alpha_k) = T^*(\alpha_1)\wedge...\wedge T^*(\alpha_k)\]
+    Where we extend by linearity to the rest of $\Lambda^k V^*$.
+\end{defn}
+
+We refer to $\Lambda^k T^*$ as the $k$'th exterior power of $T$. 
+
+\begin{thm}
+Let $\dim V = n$. and let $T : V \to V$ be a linear map. Then $\Lambda^n T^* = (\det T)\One$. 
+\end{thm}
+\begin{proof}Let $B=\{e_1,...,e_n\}$ be a basis for $V$. Then $\Lambda^n V^* = \textsf{span}\{e^1\wedge...\wedge e^n\}$. It follows that $\Lambda^n T^*(e^1\wedge...\wedge e^n) = C e^1\wedge...\wedge e^n$ for some constant $C$. So $C$ is the only coefficient of $\Lambda^n T$. We therefore directly compute the coefficient:
+\begin{align*}
+C&=(\Lambda^n T^*)_{1,....,n}\\
+&=\Lambda^n T^*\; (e^1\wedge...\wedge e^n)(e_1,...,e_n) \\
+&= \sum_{\sigma \in S_n}\sgn(\sigma)e^{\sigma(1)}\otimes...\otimes e^{\sigma(n)}(T(e_1),...,T(e_n))\\
+&= \sum_{\sigma \in S_n} \sgn(\sigma) \prod_{i=1}^n e^{\sigma(i)}(T(e_i))\\
+&= \det T
+\end{align*}
+As required.
+\end{proof}
+
+
+
+\subsection{Lecture 4: Dual Maps, Annihilators, and Non-degenerate Bilinear Forms}
+
+\subsubsection{Annihilators}
+\begin{defn}[Annihilator] Let $V$ be a vector space and let $W$ be a subspace of $V$. Then 
+\begin{equation}
+W^\circ = \{\alpha \in V^* : \alpha(W) = \{0\}\}    
+\end{equation}
+is called the \textbf{annihilator} of $W$. Be careful to note that $W^\circ$ is a subspace of $V^*$.\index{Annihilator}
+\end{defn}
+\begin{lemma}
+    $\dim W^\circ = \dim V - \dim W$
+\end{lemma}
+\begin{proof}
+    Let $B=\{e_1,...,e_k,f_1,...,f_{n-k}\}$ be a basis for $V$, where $B|_W = \{e_1,...,e_k\}$ is a basis for $W$. $f^i(e_j) = 0$ for all $i=1,...,n-k$ and $j=1,...,k$. Observe that if $\alpha \in W^\circ$, we can write $\alpha = \alpha_i e^i + \tilde{\alpha}_i f^i$. So then for any $w \in W$, we have
+    \begin{align*}
+        0=\alpha(w) &= \alpha(w^i e_i) \\
+        &= \alpha_j w^i e^k(e_i) + \tilde{\alpha}_p w^i f^p(e_i)\\
+        &= \alpha_j e^k(e_i) \qquad \textsf{for all } i=1,...,k
+    \end{align*}
+    So $\alpha_j = 0$ for all $j=1,...,k$. So $\alpha = \tilde{\alpha}_i f^i, i=1,...,n-k$.
+    Therefore $f^1,...,f^{n-k}$ is a basis for $W^\circ$. 
+\end{proof}
+Let us prove some theorems about how the fundamental subspaces of a linear map and its dual are related to annihilators of subspaces. 
+\begin{remark*}
+    Let $T : V \to W$ be a linear map. Its dual is $T^* : W^* \to V^*$. So,
+    \begin{enumerate}
+    \item {
+    $\ker T \subseteq V$
+    }
+    \item {
+    $\image T \subseteq W$
+    }
+    \item {
+    $\ker T^* \subseteq W^*$
+    }
+    \item {
+    $\image T^* \subseteq V^*$
+    }
+    \end{enumerate}
+\end{remark*}
+\begin{thm}
+    Let $T : V \to W$ be a linear map. Then,
+    \begin{equation}
+        \ker T^* = (\image T)^\circ,\qquad \image T^* = (\ker T)^\circ
+    \end{equation}
+    Furthermore,
+    \begin{equation}\dim \image T = \dim \image T^*\end{equation}
+\end{thm}
+\begin{proof}
+    Let $\beta \in W^*$. Then \begin{align*}
+        \beta \in (\image T)^\circ &\iff \beta(T(v))=0 \;\forall v\\
+        &\iff T^* \beta(v) = 0\;\forall v\\
+        &\iff T^* \beta = 0\\
+        &\iff \beta \in \ker T^*
+    \end{align*}
+    By rank-nullity theorem, 
+    \begin{align*}
+        \dim \image T^* &= \dim W^* - \dim \ker T^*\\
+        &= \dim W - \dim (\image T)^\circ\\
+        &= \dim W - (\dim W - \dim \image T)\\
+        &= \dim \image T
+    \end{align*}
+    Now let $\alpha \in \image T^*$. Then $\alpha = T^* \beta$ implies that $\alpha(v) = \beta(T(v))$. So if $v \in \ker T$ then $\alpha(v)=0$ implies that $\alpha \in (\ker T)^\circ$ as required. So $\image T^* \subseteq (\ker T)^\circ$. But by rank-nullity theorem, $\dim \image T^* = \dim V - \dim \ker T = \dim (\ker T)^\circ$. Therefore $\image T^* = (\ker T)^\circ$.
+\end{proof}
+\subsubsection{Bilinear Forms on a Vector Space $V$}
+Recall that if $T : V \to V$ is a linear operator, then $T \in V^* \otimes V$, and $\det T$ is well defined because the determinant does not depend on the choice of basis. We will show that for a bilinear form $G \in V^* \otimes V^*$ this is not the case. The determinant of a bilinear form can not be defined. In place of the determinant, we therefore have to turn to other invariants in order to learn about the properties of bilinear forms. One such invariant will be the signature.
+\begin{defn}[Matrix of a Bilinear Form]\index{Matrix!of a Bilinear Form}
+    Let $G \in V^* \otimes V^*$ be a bilinear form. Let $B=\{e_1,...,e_n\}$ be a basis for $V$. Then the matrix $[G]_B$ of $G$ is defined to be the $n\times n$ matrix with entries $G_{ij} = G(e_i,e_j)$. Observe that $G = G_{ij} e^i \otimes e^j$.
+\end{defn}
+\begin{thm}
+    Let $G \in V^* \otimes V^*$ be a bilinear form. Let $B=\{e_1,...,e_n\}$ and $\tilde{B} = \{\tilde{e}_1,...,\tilde{e}_n\}$ be two bases for $V$. Let $P_{\tilde{B}B} \in M_{nn}(\FF)$ be the change of basis matrix. Then the matrix $[G]_B$ is related to the matrix $[G]_{\tilde{B}}$ by the formula
+    \begin{equation}
+        P_{\tilde{B}B}^T [G]_{B} P_{\tilde{B}B} = [G]_{\tilde{B}}
+    \end{equation}
+\end{thm}
+Notice that instead of using the inverse of $P$ we use the transpose! Therefore we have $\det [G]_{\tilde{B}} = \det(P_{\tilde{B}B}^TP_{\tilde{B}B})\det [G]_{B}$. So the determinants of the two matrices are not the same! So the determinant is \textbf{not} an invariant of $G$. However, we can say something about $G$ from the rank. 
+\begin{lemma} The rank of $G$ is an invariant.\index{Invariant!Rank of Bilinear Form}
+\end{lemma}
+\begin{proof}
+This can be seen from the fact that $P_{\tilde{B} B}^T$ is the dual map of $P_{\tilde{B} B}$, and as we just showed in the previous section, $\rank T = \rank T^*$. Therefore, the rank of $[G]_B$ is the same as the rank of $[G]_{\tilde{B}}$ because of the fact that $\rank P_{\tilde{B}B} = \rank P_{\tilde{B} B}^T = \dim V$. 
+\end{proof}
+\begin{defn}[Non-Degenerate Bilinear Form] Let $G \in V^* \otimes V^*$. Then $G$ is called \textbf{non-degenerate} if $[G]_{B}$ is invertible for all bases $B$. That is, if $\rank G = \dim V$.\index{Non-Degenerate}\index{Form!Non-Degenerate Bilinear}
+\end{defn}
+\begin{defn}[Orthogonal]\index{Orthogonal!General Definition} Let $G \in V^* \otimes V^*$ and let $v,w \in V^*$. Then $v$ is said to be \textbf{orthogonal} to $w$ if $G(v,w) = 0$.
+\end{defn}
+Note that the statement "$v$ is orthogonal to $w$" is only equivalent to "$w$ is orthogonal to $v$" if it is true that  $G(v,w)=0\iff G(w,v)=0$.
+\begin{defn}[Symmetric/Skew-Symmetric Bilinear Form]\index{Symmetric!Bilinear Form}\index{Form!Symmetric/Skew-Symmetric Bilinear}
+$G$ is said to be \textbf{symmetric} if $G(v,w)=G(w,v)$ for all $v,w\in V$. $G$ is said to be \textbf{skew-symmetric} if $G(v,w)=-G(w,v)$ for all $v,w
+\in V$.
+\end{defn}
+\begin{defn}
+    The \textbf{symmetric part
+    } of $G$ is defined as
+    \begin{equation}
+        \Sym(G)(v,w) = \frac{G(v,w)+G(w,v)}{2}
+    \end{equation}
+    It is a symmetric bilinear form.
+
+    The \textbf{skew-symmetric} part of $G$ is defined as
+    \begin{equation}
+        \Alt(G)(v,w) = \frac{G(v,w)-G(w,v)}{2}
+    \end{equation}
+    It is a skew-symmetric bilinear form.
+\end{defn}
+Observe that $G = \Sym G + \Alt G$, so any bilinear form can be written as the sum of a symmetric form and a skew-symmetric form. This very useful fact allows us to decompose $V^* \otimes V^*$ into two subspaces.
+\begin{thm}
+    Let $G \in V^*\otimes V^*$. Suppose that $G(v,w)=0$ if and only if $G(w,v)=0$. Then either $G$ is symmetric or $G$ is skew-symmetric.
+\end{thm}
+\begin{proof}
+    Let $u,v,w\in V$. Let $y=G(u,v)w-G(u,w)v$. By bilinearity, $G(u,y)=G(u,v)G(u,w)-G(u,w)G(u,v)=0$. Therefore $u$ is orthogonal to $y$. Since $G(v,w)=0$ if and only if $G(w,v)=0$, we see that this means \[G(u,v)G(w,u)=G(u,w)G(v,u)\]  for all $u,v,w$. Call this equation (1)
+
+    Now, consider the above formula in the case $u=v$. We get $G(v,v)G(w,v)=G(v,w)G(v,v)$, so \[G(v,v)(G(v,w)-G(w,v))=0.\] Call this equation (2). This implies that either $G(v,v)=0$ or $G(v,w)=G(w,v)$. The case $G(v,v)=0$ implies that $G$ is skew-symmetric, while the case $G(v,w)=G(w,v)$ means that $G$ is symmetric. Therefore $G$ must be symmetric, skew-symmetric, or both. 
+
+    Suppose that $G$ were both. Then there must be some nonzero $x,y,z\in V$ so that $G(x,y)\neq G(y,x)$ and so that $G(z,z)\neq 0$. Call this fact (3). But then by (1), we get $G(x,x)(G(y,z)-G(z,y))=0$ and $G(y,y)(G(x,z)-G(z,x))=0$, so 
+    \[G(x,x)=0,\qquad G(y,y)=0,\qquad G(x,z)=G(z,x),\qquad G(y,z)=G(z,y)\]
+    We also have $G(x,z)=0$ and $G(y,z)=0$. Call this (4).
+
+    
+    By (3) and (4), $G(z,y)=G(y,z)=0$ and $G(x,z)=G(z,x)=0$. Call this (5). 
+    
+    From (5) and (3), we see that $G(x,y+z)=G(x,y)+G(y,z)=G(x,y)$. But \[G(y,x)+G(z,x)=G(y+z,x)\neq G(x,y)\]
+    So $G(x,y+z)\neq G(y+z,x)$. By (2) we see that $G(y+z,y+z)=G(z,z)=0$. But $G(z,z)\neq 0$ by (3), so we have reached a contradiction. Therefore $G$ can not be both symmetric and skew-symmetric.
+\end{proof}
+
+\begin{defn}[Perp Space] Let $V$ be a vector space and let $W \subseteq V$ be a subspace of $V$. Let $G \in V^* \otimes V^*$. We define
+\begin{equation}
+    W^\perp = \{v \in V : G(v,w)=0\;\forall w\in W\}
+\end{equation}
+These are the elements of $V$ which are orthogonal to every element of $W$. Since $G$ is bilinear, the set $W^\perp$ forms a subspace of $V$. This subspace is called the perpendicular subspace to $W$ (or, for short, the \textbf{perp space}).\index{Space!Perp}
+\end{defn}
+\begin{example}
+    If $G$ is an inner product, then the set $W^\perp$ can be interpreted literally as the hyperplane which lies perpendicular to $W$. In general, $G$ does not define a notion of perpendicular unless it is positive definite and non-degenerate.
+\end{example}
+\begin{lemma}
+Let $G$ be a symmetric or skew-symmetric bilinear form. Then $W \subseteq (W^\perp)^\perp$.
+\end{lemma}
+\begin{proof}
+    Let $w \in W$ and $v \in W^\perp$. Then $G(w,v) = \pm G(v,w) = 0$, so $w$ is orthogonal to every element of $W^\perp$. In other words, $w \in (W^\perp)^\perp$.
+\end{proof}
+
+\begin{lemma}
+    Let $W_1$ and $W_2$ be subspaces of $V$ and suppose $W_1\subseteq W_2$. Then $(W_2)^\perp \subseteq (W_1)^\perp$.
+\end{lemma}
+\begin{proof}
+    Let $v \in (W_2)^\perp$. Then $G(v,u)=0$ for all $u \in W_2$. Since any element $u$ of $W_1$ is an element of $W_2$ this means $G(v,u)=0$ for all $u \in W_1$. So $v \in (W_1)^\perp$.
+\end{proof}
+\begin{defn}[Radical] Let $V$ be a vector space. Note that $V$ is a subspace of itself. Let $G$ be a bilinear form on $V$. We define the \textbf{radical} of $G$ to be the vector subspace $\Radical(G) = V^\perp$. This is the set of vectors in $V$ which are orthogonal to every other vector in $V$.\index{Radical}
+\end{defn}
+
+\begin{defn} Let $V$ be a vector space and let $G \in V^* \otimes V^*$. We define the \textbf{sharp map}, $\sharp : V \to V^*$, by
+    \begin{equation}
+        \sharp(v)(w) = G(v,w)
+    \end{equation}
+    Observe that since $G$ is bilinear, $\sharp$ is linear.\index{Sharp}
+    \index{Musical Isomorphism}
+\end{defn}
+Observe that $\ker \sharp = \{v : G(v,w) = 0\;\forall w\} = V^\perp = \Radical(G)$. So
+$\sharp$ is an isomorphism iff $\Radical(G)=\{0\}$.
+\begin{remark*}
+    Note that $\sharp^* : V^* \to V^{**} \cong V$. Therefore we define $\sharp^*(v)(w) = \sharp^*(\xi(v))(w)= \xi(v)(\sharp(w)) =\sharp(w)(v)= G(w,v)$. So if $G$ is symmetric, $\sharp(v)(w)=\sharp^*(w)(v)$ and if $G$ is antisymmetric, $\sharp(v)(w)=-\sharp^*(w)(v)$.
+\end{remark*}
+\begin{thm}
+    Let $G$ be a symmetric or skew-symmetric bilinear form. Then $G$ is non-degenerate if and only if $\Radical(G) = \{0\}$.
+\end{thm}
+\begin{proof}
+    Let $\{e_1,...,e_n\}$ be a basis for $V$. Then $G(e_i,v)=0$ for all $i$ if and only if $G(u,v)=0$ for all $u$. Therefore $v \in \Radical(G)$ if and only if $G(e_i,v)=0$ for all $i=1,...,n$. Let us expand $v$ in this basis as $v = v^je_j$. Then if $G(e_i,v) =0$ for all $i$ we see that $v^j G_{ij} = 0$ for all $i$, which is exactly the statement that $[v]_B \in \ker [G]_B$ if we consider $[G]_B$ as a linear map. 
+
+    Therefore, $V^\perp = \{0\}$ iff $\ker [G]_B = \{0\}$. This is true if and only if $\rank G = \dim V$, if and only if $G$ is non-degenerate. This completes the proof.
+\end{proof}
+\begin{cor}
+    The map $\sharp$ is an isomorphism if and only if $G$ is non-degenerate. That is, if $G$ is non-degenerate then it defines a canonical isomorphism between $V$ and $V^*$.
+\end{cor}
+\section{Classification of Bilinear Forms}
+
+\subsection{Lecture 5: Restrictions of Bilinear Forms}
+\subsubsection{Restriction to Subspace}
+\begin{thm}[Riesz Representation Theorem (Finite Dimensional)] Let $V$ be a finite dimensional vector space and let $G$ be a bilinear form. Suppose $G$ is non-degenerate. Then for all $\alpha \in V^*$ there is a unique $v \in V$ so that $\alpha(w) = G(v,w)$ for all $w \in V$. \index{Theorem!Riesz Representation Theorem}
+\end{thm}
+\begin{proof}
+    Set $\alpha = \sharp(v)$.
+\end{proof}
+
+\begin{defn}
+    Let $W$ be a linear subspace of $V$. The map $\iota : W \to V$ given by $\iota(w)=w$ is called the inclusion map.\index{Inclusion Map} 
+\end{defn}
+\begin{remark*}
+    Observe that $\iota^*: V^* \to W^*$. So if $\alpha \in V^*$ we have $(\iota^* \alpha)(w) = \alpha(\iota(w))=\alpha(w)$ for any $w \in W$.
+
+    This definition may seem pointless, but the following lemmas are useful, and easier to prove with use of this inclusion map.
+\end{remark*}
+\begin{lemma}  $\ker (\sharp \circ \iota) = W \cap V^\perp$ and $\ker (\iota^* \circ \sharp) = W^\perp$
+\end{lemma}
+\begin{proof}
+    Let $w \in W$. Then $\sharp\circ\iota(w)(v) = \sharp w(v)=G(w,v)$. So $\ker (\sharp \circ \iota) = \{w \in W : G(w,v)=0 \;\forall v \in V\} = W\cap V^\perp$. 
+
+    Similarly, $\iota^*\circ\sharp(v)(w) = G(v,w)$ for all $w \in W$. Therefore $\ker (\iota^*\circ \sharp) = \{v\in V : G(v,w) \;\forall w \in W\} = W^\perp$.
+    
+\end{proof}
+\begin{thm}
+    Let $W$ be a subspace of $V$. Then $\dim W + \dim W^\perp = \dim V + \dim (W\cap V^\perp)$.
+\end{thm}
+\begin{proof}
+We begin by noting that,
+    \begin{align*}
+        \dim W + \dim \ker \iota^* \circ \sharp = \dim W + \dim V - \dim \image \iota^*\circ \sharp
+    \end{align*}
+So,
+    \begin{align*}
+        \dim W &= \dim \ker \sharp\circ\iota + \dim \image \sharp\circ\iota\\
+        &= \dim W\cap V^\perp + \dim (\ker \iota^*\circ\sharp)^\circ\\
+        &= \dim W \cap V^\perp + \dim V - \dim W^\perp
+    \end{align*}
+    Which can be rearranged to the desired equation.
+\end{proof}
+\begin{cor}
+    Let $G$ be non-degenerate. Then $\dim W + \dim W^\perp = \dim V$
+\end{cor}
+\begin{cor}
+    Let $G$ be non-degenerate. Then $(W^\perp)^\perp = W$
+\end{cor}
+\begin{proof}
+    First recall that $W\subseteq (W^\perp)^\perp$ as shown earlier. Next, observe that
+    \[\dim (W^\perp)^\perp = n-\dim W^\perp = n-(n-\dim W) = \dim W\] 
+    This completes the proof.
+\end{proof}
+\begin{cor}
+    Let $G$ be non-degenerate. Let $W\subseteq V$ be a subspace of $V$, and let $\alpha \in W^*$. Then there exists $v\in V$ so that $\alpha(w)=G(v,w)$ for all $w\in W$. (Note that there could be multiple choices for $V$ if $V\neq W$)
+\end{cor}
+\begin{proof}
+    This is the same as saying $\iota^* \circ \sharp$ is surjective. Observe: \begin{align*}\dim \image \iota^* \circ \sharp &= \dim \image\sharp \circ \iota \\&= \dim V - \dim \ker \sharp\circ\iota \\&= \dim W - \dim W\cap V^\perp \\&= \dim W\end{align*}
+\end{proof}
+\begin{cor}\label{cor4}Let $G$ be non-degenerate. Then $G|_W \in W^*\otimes W^*$ is nondegenerate iff $V = W \oplus W^\perp$.
+\end{cor}
+\begin{proof}
+    Observe that $\Radical(G|_W) = W\cap W^\perp$. 
+    
+    Suppose $W\cap W^\perp = \{0\}$. Then $\dim W + \dim W^\perp \geq \dim V$. 
+    But \[\dim W\oplus W^\perp = \dim W + \dim W^\perp -\dim W\cap W^\perp \geq \dim V\]
+    That is, $\dim W\oplus W^\perp = \dim V$. Since $W\oplus W^\perp $ is a subspace of $V$, we see that $W\oplus W^\perp = V$.
+
+    Now for the other direction. Suppose $V = W\oplus W^\perp$. Then \[W\cap W^\perp = (W\cap W^\perp)^\perp = V^\perp = \{0\}\]
+    So $\Radical(G|_W)=0$ as required.
+\end{proof}
+
+\subsubsection{Restriction to Quotient}
+\begin{defn}[Bilinear Form induced on Quotient]\index{Quotient!Bilinear Form} Let $V$ be a vector space and let $G$ be a symmetric or skew-symmetric bilinear form. Suppose $W \subseteq V^\perp$. Then we can define $\overline{G} \in (V/W)^*\otimes (V/W)^*$ by the formula,
+\[\overline{G}([v_1],[v_2]) = G(v_1,v_2)\]
+\end{defn}
+\begin{lemma}
+    The bilinear form $\overline{G}$ is well defined.
+\end{lemma}
+\begin{proof}
+    Recall that for any $w_1,w_2 \in W$ we have $v_1+w_1\in [v_1]$ and $v_2+w_2\in[v_2]$, so we must verify that no matter what choice of $w_1,w_2$ we use we get the same result.
+\begin{align*}\overline{G}([v_1],[v_2]) &= G(v_1+w_1,v_2+w_2) \\&= G(v_1,v_2)+\cancel{G(v_1,w_2)}+\cancel{G(w_1,v_2)}+\cancel{G(w_1,w_2)}\\ &= G(v_1,v_2) \textsf{ for all } w_1,w_2\in W\end{align*}
+\end{proof}
+\begin{thm}
+    $\overline{G} \in (V/W)^*\otimes (V/W)^*$ is non-degenerate if and only if $W = V^\perp$.
+\end{thm}
+\begin{proof}
+    \begin{align*}
+        \Radical \overline{G} &= \{[v] : \overline{G}([v],[u])=0 \;\forall [u] \in V/W\}\\
+        &= \{x \in V : G(x,y) = 0 \;\forall y \in V\}/W\\
+        &= V^\perp/W = \{0\} \textsf{ if and only if } V^\perp = W
+    \end{align*}
+\end{proof}
+\begin{remark*}
+    If $G$ is non-degenerate, then $W$ would have to be $\{0\}$ for the quotient bilinear form to be non-degenerate.
+\end{remark*}
+\begin{physics*}
+    This theorem is very important for symplectic reduction, which is a useful tool in classical mechanics as well as quantization theory.
+\end{physics*}
+
+\subsubsection{Classification of Bilinear Forms: Symmetric Bilinear Forms Part 1}
+A useful kind of theorem we like in algebra is a classification theorem. This tells us all of the different kinds of a certain object, up to isomorphism. In this section we will be interested in classifying all symmetric bilinear forms.
+\begin{defn}[Homogenous Function]A function $f : V \to \FF$ is said to be \textbf{homogenous} of degree $n$ if $f(av) = a^n f(v)$.
+\end{defn}
+\begin{remark*}
+    Let $T:V\to V$ be a linear map and let $B$ be a basis for $V$. Then the function $\det : L(V) \to \FF$ is homogenous of degree $\dim V$. That is, $\det (aT) = a^{\dim V} \det(T)$. 
+\end{remark*}
+\begin{defn}
+    Let $G :V\times V \to \FF$ be a symmetric bilinear form. Let $Q : V\to \FF$ be the function defined by $Q(v) = G(v,v)$. Then $Q$ is called the \textbf{quadratic form} of $G$.
+\end{defn}
+\begin{remark*}
+    Note that $Q(av) = a^2 Q(v)$, so $Q$ is homogenous of degree 2.
+\end{remark*}
+
+\begin{thm}[Polarization Identity]
+    Given a quadratic form $Q(v)$ we can recover the symmetric bilinear form $G(v,w)$ by the formula,
+    \begin{equation}
+        G(v,w) = \frac{1}{2}(Q(v+w)-Q(v)-Q(w))
+    \end{equation}
+\end{thm}
+\begin{proof}
+    Note that,
+    \begin{equation}
+        Q(v+w) = G(v+w,v+w) = G(v,v) + 2G(v,w) + G(w,w)
+    \end{equation}
+    Rearranging this gives the desired result.
+\end{proof}
+\begin{remark*}
+    Let $B=\{e_1,...,e_n\}$ is a basis for $V$ and consider $v = x^i e_i$. Then $Q(v) = G_{ij} x^i x^j$. This is a homogenous symmetric polynomial of degree 2 in $x^1,...,x^n$. Any such polynomial defines a symmetric bilinear form.
+\end{remark*}
+\begin{defn}
+    Suppose $u \in V$ and that $G(u,u)=0$. Then we say $u$ is an \textbf{isotropic} vector. 
+\end{defn}
+
+\begin{thm}\label{thm:orthogonaldiag}
+    There exists an orthogonal basis $B = \{e_1,...,e_r,g_1,...,g_{n-r}\}$ of $V$ so that $[G]_B = \diag(s_1,...,s_r,0,...,0)$ where $r = \Rank(G)$ and $s_1,...,s_r$ are nonzero.
+\end{thm}
+
+\begin{proof}
+    Suppose $G = 0$. Then $G$ is already in this form in every basis. So we will assume $G \neq 0$. Suppose $Q = 0$. Then $G(u,v) = \frac{1}{2}(Q(u+v)-Q(u)-Q(v))=0$ for all $u,v$. Therefore, we will assume $Q\neq 0$ as well. In other words, there exists some non-isotropic vector $u$. We will use this as our first basis vector. Let $e_1 = u$ and define $s_1 = G(e_1,e_1)$. 
+    
+    We will do the rest of the proof by induction. Suppose that for some $k \in \NN$ there exists some linearly independent set $B_k =\{e_1,...,e_k\}$ so that $G(e_i,e_j) = \delta_{ij}s_i$ for $1\leq i,j \leq k$. To begin, notice that we just proved this for $k=1$. We therefore just have to prove that if the statement holds for some $k$, it also holds for $k+1$.
+
+    Let $V_k = \textsf{span}\{e_1,...,e_k\}$. Then $[G|_{V_k}]_{B_k} = \diag(s_1,...,s_k)$. So $\det [G|_{V_k}]_{B_k} \neq 0$. So $G|_{V_k}$ is non-degenerate. By Corollary \ref{cor4} we have $V = V_k \oplus V_k^\perp$.
+
+    If $G|_{V_k^\perp}=0$ then we are done, and $r=k$. Otherwise, if $G|_{V_k^\perp}\neq 0$ then there exists some $e_{k+1}\in V_k^\perp$ so that $G(e_{k+1},e_{k+1})=s_{k+1}\neq 0$. This completes the proof by induction.
+\end{proof}
+\begin{remark*}
+    The set $\{g_1,...,g_{n-r}\}$ forms a basis of $V^\perp = \Radical(G)$.
+\end{remark*}
+\begin{remark*}
+    This theorem shows that given any symmetric $n\times n$ matrix $A\in M_{nn}(\FF)$ there exists an invertible $P$ so that $P^T A P = \diag(s_1,...,s_n,0,...,0)$. That is, we have just shown that every symmetric matrix is orthogonally diagonalizable. 
+\end{remark*}
+
+\begin{remark*}
+    Note that this is \textbf{not} a statement similar to the spectral theorem. The numbers $s_1,...,s_r$ are not eigenvalues of $[G]$, and in fact the eigenvalues of $[G]$ depend on the choice of basis. The only thing meaningful about the numbers $s_1,...,s_r$ is their \textit{signs}.
+\end{remark*}
+
+\begin{defn}[Orthonormal Basis]\index{Basis!Orthonormal}\index{Orthonormal!Basis}
+Suppose that we are working over an algebraically closed field such as $\FF=\CC$. Then every element of $\FF$ has a square root, so we can replace each $e_i$ with $e_i/\sqrt{G(e_i,e_i)}$. This means we can always put $[G]_B$ in the form $\diag(1,...,1,0,...,0)$. This basis is called an \textbf{orthonormal} basis for $G$.
+\end{defn}
+
+\begin{cor}
+    Suppose $G$ is a symmetric nondegenerate bilinear form over an algebraically closed field. Then there exists some basis $B=\{e_1,...,e_n\}$ for $V$ so that $[G]_B = \One$.
+\end{cor}
+\begin{remark*}
+    Therefore, up to orthogonal transformations there is only one symmetric nondegenerate bilinear form.
+\end{remark*}
+\begin{remark*}
+    The symmetric nondegenerate bilinear form over $\CC$ is \textbf{not} an inner product. It does \textbf{not} satisfy $G(u,v) = \overline{G(v,u)}$.
+
+    However, it is useful for defining complexified Clifford algebras.
+\end{remark*}
+\begin{defn}[Metric] We often call a nondegenerate symmetric bilinear form a \textbf{metric}.     
+\end{defn}
+\begin{defn}[Signature]\index{Signature}
+Suppose we are working over $\FF = \RR$. Then we can always reorder the vectors $\{e_1,...,e_r\}$ so that $s_1,...,s_p$ are positive and $s_{p+1},...,s_r$ are negative. Let $\tilde{e}_i = e_i/\sqrt{|s_i|}$ and set $\tilde{B} = \{\tilde{e}_1,...,\tilde{e}_r\}$. Then 
+\begin{equation}[G]_{\tilde{B}} = \diag(\underbrace{1,...,1}_{p},\underbrace{-1,...,-1}_{r-p},\underbrace{0,...,0}_{n-r})\end{equation}
+We define the \textbf{signature} of $[G]_{\tilde{B}}$ to be the pair of numbers describing how many positive and negative entries there are on the diagonal. That is,
+\begin{equation}\signature(G)=(p,r-p)\end{equation}
+\end{defn}
+
+\begin{thm}[Sylvester's Law of Inertia] \index{Theorem!Sylvester's Law of Inertia} Let $G$ and $\tilde{G}$ be symmetric bilinear forms and suppose there exists some bases $B,\tilde{B}$ and a matrix $P$ so that $P^T [G]_B P = [\tilde{G}]_{\tilde{B}}$. Then $\signature([G]_B)=\signature([\tilde{G}]_{\tilde{B}})$. In other words, signature is an \textbf{invariant} of a bilinear form.\index{Invariant!Signature}
+\end{thm}
+\begin{proof}
+    Let $\{e_1,...,e_p,e_{p+1},...,e_r,g_1,...,g_{n-r}\}= B$ be a basis for $V$ and let $\{\tilde{e}_1,...,\tilde{e}_{\tilde{p}},\tilde{e}_{\tilde{p}+1},...,\tilde{e}_{\tilde{r}},\tilde{g}_1,...,\tilde{g}_{n-\tilde{r}}\}=\tilde{B}$ be some other basis. Suppose that $[G]$ is diagonal in both bases. We want to show that the number of positive, negative, and zero entries on the diagonal of $[G]$ does not depend on which basis we use to diagonalize it.
+
+    First let $v = a^1e_1+...+a^pe_p$ and observe that $G(v,v) = \sum_{i=1}^p a_i^2>0$ if $v\neq 0$. 
+
+    Similarly let $w = b^{\tilde{p}+1}\tilde{e}_{\tilde{p}+1}+...+b^{\tilde{r}}e_{\tilde{r}} + c^1\tilde{g}_1+...+c^{n-r}\tilde{g}_{n-r}$. Observe that for any vector of this form, $G(w,w)\leq 0$. 
+
+    Then consider the following subspaces of $V$, 
+    \[U = \Span \{a^1e_1+...+a^pe_p\}\] and \[\tilde{U} = \Span\{b^{\tilde{p}+1}\tilde{e}_{\tilde{p}+1}+...+b^{\tilde{r}}e_{\tilde{r}} + c^1\tilde{g}_1+...+c^{n-r}\tilde{g}_{n-r}\}\]
+    Where we consider all possible values for the coefficients $a^i,b^i,c^i$. Since $G(v,v)>0$ for all $0\neq v \in U$ and $G(v,v)\leq 0$ for all $v\in \tilde{U}$, it is clear that $U$ and $\tilde{U}$ share no vectors except the zero vector. Therefore $\dim (U\cap \tilde{U})=0$.
+    
+    This tells us that $n\geq \dim(U\oplus \tilde{U}) = \dim U + \dim \tilde{U}-\dim(U\cap \tilde{U})$. So $n\geq p+n-\tilde{p}$. So $p\leq \tilde{p}$. 
+
+    Finally, if we repeat the above proof and swap all the variables in $B$ with their counterpart in $\tilde{B}$ and vice versa,
+    we can show in the exact same way that $\tilde{p}\leq p$. So $p=\tilde{p}$ as required.
+\end{proof}
