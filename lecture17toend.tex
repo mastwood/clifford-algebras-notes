@@ -1,4 +1,5 @@
 \subsection{Lecture 17: The Spin Group and Pin Group}
+\iffalse
 \subsubsection{Self-Dual and Anti-Self-Dual Forms}
 
 \begin{remark*}
@@ -176,7 +177,7 @@ and
 \begin{proof}
     Let $u \in V$, $|u|\neq 0$. Then $R_u = \bigtilde{\Ad}_u \in \Orth(V)$ as we saw earlier. So by Cartan-Dieudonn\'e theorem, $\bigtilde{\Ad}$ surjects onto $\Orth(V)$. 
     
-    Now suppose $\bigtilde{\Ad}_a$ equals the identity for some $a \in \Pin(V)$. This means $\bigtilde{a}va^{-1}=v$ for al $v\in V$. 
+    Now suppose $\bigtilde{\Ad}_a$ equals the identity for some $a \in \Pin(V)$. This means $\bigtilde{a}va^{-1}=v$ for all $v\in V$. 
     
     If $a$ is odd we have $\bigtilde{a}=-a$, so $av=-va$, or in other words $a \in \twcent(\Cl(V))$ which is impossible since $\twcent(\Cl(V))$ never contains odd elements. 
     
@@ -1238,6 +1239,7 @@ Let $V$ and $W$ be vector spaces with positive definite inner products. Then a \
 \begin{remark*}
     The key thing here is that given a norm-duality between $V$ and $W$, we get an isometry between $V$ and $W$.
 \end{remark*}
+\fi
 
 \begin{defn}[Triality]
     \index{Triality}
@@ -1272,7 +1274,7 @@ This is done directly. Let $w\in W$
     The other case is identical.
 \end{proof}
 \begin{remark*}
-    Since we can construct a multiplication $M : W\to W\to W$, with an identity $e$, we see that a triality along with a nonzero element from $U$ and $V$ gives $W$ the structure of a real unital algebra.
+    Since we can construct a multiplication $M : W\times W\to W$, with an identity $e$, we see that a triality along with a nonzero element from $U$ and $V$ gives $W$ the structure of a real unital algebra.
 \end{remark*}
 \begin{remark*}
     If we use $M$ to define multiplication of elements $w_1,w_2\in W$, we can see that left or right-multiplication gives an isomorphism. That is, if $w_1\neq 0$ then $R_b^{-1}(w_1)\neq 0$, and if $w_2\neq 0$ we have $L_a^{-1}(w_2)\neq 0$, so $T(R_b^{-1}(w_1),L_a^{-1}(w_2),\cdot)\neq 0$. Hence $w_1w_2=0$ implies that either $w_1=0$ or $w_2=0$.
@@ -1292,7 +1294,7 @@ Let $U,V,W$ be equipped with positive definite inner products. A \textbf{norm-tr
     In this case, if we fix two elements $a$ and $b$ with $|a|=|b|=1$, then we see that we get \textbf{isometries} between $U,V$ and $W$.
 \end{remark*}
 \begin{cor}
-    A normed triality between $U,V,$ and $W$ gives rise to a compositional division algebra structure on each of $U,V$, and $W$.
+    A norm-triality between $U,V,$ and $W$ gives rise to a compositional division algebra structure on each of $U,V$, and $W$.
 \end{cor}
 \begin{proof}
     We have,
@@ -1304,6 +1306,8 @@ Let $U,V,W$ be equipped with positive definite inner products. A \textbf{norm-tr
     and similarly $|a||b| \leq |M(a,b)|$.
 \end{proof}
 In summary, a normed triality gives rise to a composition algebra and vice versa.
+
+
 
 \subsection{Lecture 24: $\Spin(8)$ and Triality}
 \subsubsection{Properties of $\Cl(8,0)$}
@@ -1395,9 +1399,7 @@ Since each $A_{ij}$ is skew-adjoint, we have $(A_1...A_k)^\dagger = A_k^\dagger.
     In other words, $AA^\dagger = \One$ and $BB^\dagger = \One$, so $\beta(\alpha) \in \Orth(\PP^+)\times \Orth(\PP^-)$. Since $\Spin(8)$ is connected, $\One\in\image(\beta)$, and $\beta$ is a continuous mapping, we therefore see that $\beta(\alpha)\subseteq \SO(\PP^+)\times \SO(\PP^-)$ as required.
 \end{proof}
 \begin{remark*}
-    So we have two representations $\rho_+ = p_+ \circ \beta |_{\Spin(8)}$ and $\rho_- = p_- \circ \beta |_{\Spin(8)}$ which are the positive and negative spinor representations.
-
-    We also have a third representation $\rho_0 = \bigtilde{\Ad}$ defined so that $\bigtilde{\Ad}_\alpha (v) = \bigtilde{\alpha}v\alpha^{-1}$. Since every element of $\Spin(8)$ is even, we have $\bigtilde{\alpha} = \alpha$ for all $\alpha\in \Spin(8)$. Therefore $\bigtilde{\Ad} = \Ad$ when we restrict to $\Spin(8)$.
+    So we have two representations $\rho_+ = p_+ \circ \beta |_{\Spin(8)}$ and $\rho_- = p_- \circ \beta |_{\Spin(8)}$ which are the left and right chiral spinor representations. We also have a third representation $\rho_0 = \bigtilde{\Ad}$ defined so that $\bigtilde{\Ad}_\alpha (v) = \bigtilde{\alpha}v\alpha^{-1}$. Since every element of $\Spin(8)$ is even, we have $\bigtilde{\alpha} = \alpha$ for all $\alpha\in \Spin(8)$. Therefore $\bigtilde{\Ad} = \Ad$ when we restrict to $\Spin(8)$.
 \end{remark*}
 \begin{remark*}
     One can show that for any vector space $V$ with a metric of signature $p,q$, the group $\Spin(V)$ can be written as,
@@ -1410,19 +1412,22 @@ Since each $A_{ij}$ is skew-adjoint, we have $(A_1...A_k)^\dagger = A_k^\dagger.
     \[g =\m{g_+&0\\0&g_-}\in\Cl^{\textsf{even}}(8,0) = \Cl_+^{\textsf{even}}(8,0)\oplus \Cl_-^{\textsf{even}}(8,0)\]
     Then if $g\in \Spin(8)$, we have $g_+,g_-\in\SO(\OO)$. Furthermore, we can abuse notation and write $\rho_+(g)=g_+$ and $\rho_-(g)=g_-$. Then how do we write $\rho_0(g)$?
 \end{remark*}
-\begin{thm}[$\Spin(8)$ Triality Theorem]
+\begin{lemma}[$\Spin(8)$ Triality Lemma]
 Let $(g_0, g_+, g_-)$ be an ordered triple of elements of $\Orth(\OO)$. Then the following statements are equivalent.
 \begin{enumerate}
     \item $g=
 \diag(g_+, g_-)\in \Spin(8)$, and $g_0 = \Ad_g$.
 \item $g_+(xy) = g_-(x)g_0(y)$ for all $x,y \in \OO$.\index{Theorem!$\Spin(8)$ Triality Theorem}
 \end{enumerate}
-\end{thm}
+\end{lemma}
 \begin{remark*}
     Since having $g_+$ and $g_-$ determines $g_0$ completely, it is useful to denote $\Spin(8)$ as consisting of all ordered triples $(g_0,g_+,g_-)$ satisfying the above criteria. 
 \end{remark*}
+\begin{remark*}
+    It is not obvious to see why this is related to the concept of a triality as a trilinear functional. To see this recall that $g_+,g_-,g_0$ define irreducible representations of $\Spin(8)$, with representation spaces $\PP_+, \PP_-,$ and $\PP_0$ (i.e. the left and right chiral spinors and the standard vector representation). The above theorem will soon allow us to construct a triality on this triple of vector spaces.
+\end{remark*}
 \begin{proof}
-The goal of the proof is to show that an equivalent condition for $\Ad_\rho(v) \in \OO$ is that $g_-(x)g_0(v)=g_+(xv)$ for all $x,v\in \OO$.
+We must show that $\Ad_\rho(v) \in \OO$ whenever $g_-(x)g_0(v)=g_+(xv)$ for all $x,v\in \OO$.
 
 Recall that $\OO$ is isometric to $V=\beta(\OO)$, where we have defined $\beta(v)$ by the formula,
 \[\beta(v) = \m{0&R_v\\-R_{\overline{v}}&0}\]
@@ -1453,7 +1458,7 @@ Set $x = g^{-1}_-(w)$. Then the above implies that $g_-(x)u=g_+(xv)$, so $g_-(x)
 \end{proof}
 
 \begin{remark*}
-    If $\diag(g_+,g_-)\in\Spin(8)$, then $g_+,g_-\in \SO(\OO)$, and so the above theorem implies that $g_0 \in \SO(\OO)$ as well.
+    If $\diag(g_+,g_-)\in\Spin(8)$, then $g_+,g_-\in \SO(\OO)$, and so the above lemma implies that $g_0 \in \SO(\OO)$ as well.
 \end{remark*}
 
 \begin{defn}
@@ -1463,7 +1468,7 @@ Set $x = g^{-1}_-(w)$. Then the above implies that $g_-(x)u=g_+(xv)$, so $g_-(x)
     Observe that $C R_v C =L_{\overline{v}}$.
 \end{remark*}
 \begin{lemma}
-    If the ordered triple $(g_0,g_+,g_-)$ satisfies the triality theorem, then the triple $(g_-',g_+',g_0')$ also satisfies the triality theorem.
+    If the ordered triple $(g_0,g_+,g_-)$ is in $\Spin(8)$, then the triple $(g_-',g_+',g_0')$ is also in $\Spin(8)$.
 \end{lemma}
 \begin{proof}
 Direct calculation gives,
@@ -1471,7 +1476,7 @@ Direct calculation gives,
 g_+'(xy)&=\overline{g_+(\overline{xy})}\\&=\overline{g_+(\overline{y}\overline{x})}\\&=\overline{g_-(\overline{y})g_0(\overline{x})}\\
         &=\overline{g_0(\overline{x})}\overline{g_-(\overline{y})}\\&= g_0'(x)g_-'(y)
     \end{align*}
-    As we can see, this is the same condition as in the theorem except reordered as required.
+    As we can see, this is the same condition as in the lemma except reordered as required.
 \end{proof}
 \begin{defn}[Inner/Outer Automorphism]\index{Automorphism!Inner/Outer}
 Let $G$ be a group. An automorphism $a : G\to G$ is said to be \textbf{inner} if there is some $h\in G$ so that $a(g) = hgh^{-1}$. If $a$ is not inner, we say it is \textbf{outer}.
@@ -1519,4 +1524,38 @@ From this we immediately see that,
 So none of them are inner automorphisms.
 
 Proving that these are the \textbf{only} outer autmorphisms takes more work.
+\end{proof}
+
+\begin{thm}[Triality of $\Spin(8)$]
+The map $T:\PP_+\times \PP_-\times \PP_0 = \OO^3\to \RR$ given by $T(u,v,w)=\langle u,vw\rangle$ is a norm-triality. Furthermore, this triality characterizes $\Spin(8)$, in that a triple $(g_0,g_+,g_-)$ is in $ \Spin(8)$ if and only if $T(g_+(u),g_-(v),g_0(w))=T(u,v,w)$ for all $u,v,w\in \OO$.
+\end{thm}
+\begin{proof}
+First we must show that it is a triality.
+Fix $u$ and $v$ nonzero. Then set $w = v^{-1}u$, and we get $\langle u,vw\rangle = \langle u,u\rangle\neq 0$. So $T(u,v,\cdot)$ is nonzero. The same argument holds if we fix $u$ and $w$ nonzero. If we fix $v$ and $w$, then setting $u=vw$ works.
+
+Next we show that it is a norm-triality. To see this, first recall that since the octonions are a composition algebra, we have,
+\[T(u,v,w) = \langle u,vw\rangle \leq |u||vw| = |u||v||w|\]
+Next, we want to show that given fixed $u,v$ there is a $w$ so that $T(u,v,w) = |u||v||w|$. To get this, set $w = \overline{v}u$. Then we get
+
+\begin{align*}\langle u,vw\rangle &=\langle u,v\overline{v}u\rangle\\
+&= |v|^2\langle u,u\rangle\\
+&= |u|^2|v|^2\\
+&= |u| |v| |\overline{v}u|\\
+&= |u||v||w|
+\end{align*}
+Where in the last line we have once again used the composition algebra property. The same trick works if we fix $u$ and $w$. If we fix $v$ and $w$ then we can set $u=vw$. Therefore we have shown that $T$ is indeed a norm-triality.
+
+To show that this is preserved by $\Spin(8)$ we compute
+\begin{align*}
+    \langle g_+(u),g_-(v)g_0(w)\rangle
+    &= \langle g_+(u),g_+(vw)\rangle\\
+    &= \langle u,vw\rangle
+\end{align*}
+Where we have used the fact that $g_+$, being an element of $\SO(8)$, is an isometry. Finally we must show the converse, that if the above holds then $(g_+,g_-,g_0)\in \Spin(8)$. That is, suppose that $\langle u,vw\rangle = \langle g_+(u),g_-(v)g_0(w)\rangle$ for some $g_+,g_-,g_0\in \SO(8)$. We must show that $g_-(v)g_0(w) = g_+(vw)$. First observe that regardless of whether the triple is in $\Spin(8)$, we have
+\[\langle g_+(u),g_+(vw)\rangle=
+     \langle u,vw\rangle\]
+Therefore, since we are assuming that the triple preserves the triality, we have
+\[\langle g_+(u),g_-(v)g_0(w)\rangle =\langle g_+(u),g_+(vw)\rangle \]
+For all $u,v,w$. By the non-degeneracy of the inner product, we therefore see that this can only be true if $g_-(v)g_0(w) = g_+(vw)$ for all $v,w$. This completes the proof.
+    
 \end{proof}

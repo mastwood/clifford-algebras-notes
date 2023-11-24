@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 
-\title{Clifford Algebras and Spinors}
+\title{Algebra from a Geometric Viewpoint \\ (Octonions, calibrations, spinors, and all that)}
 \author{\\Notes based on PMATH945: Topics in Algebra at University of Waterloo\\Taught by Spiro Karigiannis in Fall 2020\\
 Transcribed and typeset by Michael Astwood}
 \date{\today}
@@ -277,40 +277,19 @@ Transcribed and typeset by Michael Astwood}
 
 \tableofcontents
 
-\section*{Introduction} 
-\addcontentsline{section}{toc}{Introduction}
+%\input{Introduction.tex}
 
-These are lecture notes based on a course I took in Fall 2020 at the University of Waterloo titled Clifford Algebras, Spinors, and Calibrations. On the first day, before beginning the main content of the course, Spiro gave us a short overview of the content of the course. I will review this here.
+%\input{lecture1to5.tex}
 
-The first major theme of the course is to build up to the notion of spinors, which are elements of certain special vector spaces which arise as representations of Clifford Algebras. This is all motivated by the study of special structures on vector spaces, and so this course will introduce a number of new structures you may not be familiar with. 
+%\input{lecture6to10.tex}
 
-As mentioned, spinors arise as representations of a certain group. This is the group of even elements of the Clifford Algebra, which is often called the Spin group. A characteristic feature of the spin group is that there is an exact sequence of groups,
-\[\{e\} \to \ZZ/2\ZZ \to \Spin(n) \to \SO(n) \to \{e\}\]
-Meaning a collection of maps, $f_1,f_2,f_3,f_4$ which represent the arrows in the above diagram, so that $\ker f_2 = \im f_1, \ker f_3 = \im f_2$, and $\ker f_4 = \im f_3$. From the existence of such a sequence, we will find that the spin group appears as a double covering of the special orthogonal group. This makes it extremely useful in physics applications, where certain groups of transformations must be replaced with their universal cover upon quantization. Additionally, in this course we will see that for small values of $n$, the group $\Spin(n)$ happens to be intimately related to the so-called compositional division algebras (these are the real numbers,  the complex numbers, the quaternions, and the octonions).
+%\input{lecture11to16.tex}
 
-A secondary theme of this course was that of calibrations. Unfortunately we did not have time to talk about calibrations in lectures. However, a few assignment questions dealt with them. Calibrations provide a way to generalize the Cauchy-Schwartz inequality, which we state as $-1\leq a\cdot b\leq 1$ for all unit vectors $a,b$. The reformulation roughly goes as follows. We first define a map from $\RR^n$ to $\RR$, given a unit vector $a$, by the formula $L_a(v) = a\cdot v$. This can be viewed as a linear functional on the space of oriented lines through the origin in $\RR^n$. A natural generalization of this then considers a map $\alpha$ which takes oriented $k$-dimensional subspaces $V$ of $\RR^n$, and returns a number between $-1$ and $1$. When $\RR^n$ is provided with certain special structures, we can find a rich class of maps like this, which are called calibrations. One question of interest is the following: which $k$-dimensional subspaces of $\RR^n$ give us $\alpha(V) = \pm 1$? 
-
-These calibrations are related to the compositional division algebras mentioned above, through the cross product. Also, it turns out that calibrations can even be related to $\Spin(n)$, albeit in a nontrivial way.
-
-Much of this course can be found in various parts of the following textbooks. However, none of the content of the course will come exactly from one book, except for the sections on bilinear forms which are mostly based on Basic Algebra I by Jacobson.
-\begin{itemize}
-\item \cite{Chevalley1995-fk} Chevalley, The algebraic theory of spinors, Columbia University Press, 1954. 
-\item \cite{Conway2001-rn} Conway and Smith, On quaternions and octonions: their geometry, arithmetic, and symmetry, A K Peters,
-2003.
-\item \cite{Reese_Harvey1990-fv} Harvey, Spinors and calibrations (Perspectives in Mathematics), Academic Press, 1990.
-\item \cite{Lawson1990-fd} Lawson and Michelson, Spin geometry (Princeton Mathematical Series), Princeton University Press, 1989.
-\item \cite{Porteous1995-hp} Porteous, Clifford algebras and the classical groups (Cambridge Studies in Advanced Mathematics), Cambridge University Press, 1995.
-\item \cite{Jacobson2009-pp} Jacobson, Basic Algebra I, Dover Publications, 1974.
-\end{itemize}
-
-\input{lecture1to5.tex}
-
-\input{lecture6to10.tex}
-
-\input{lecture11to16.tex}
 \input{lecture17toend.tex}
 
-\input{prereqs.tex}
+%\input{Lecture22to25.tex}
+
+%\input{prereqs.tex}
 
 \pagebreak
 
