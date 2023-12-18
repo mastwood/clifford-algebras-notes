@@ -1412,19 +1412,21 @@ Since each $A_{ij}$ is skew-adjoint, we have $(A_1...A_k)^\dagger = A_k^\dagger.
     \[g =\m{g_+&0\\0&g_-}\in\Cl^{\textsf{even}}(8,0) = \Cl_+^{\textsf{even}}(8,0)\oplus \Cl_-^{\textsf{even}}(8,0)\]
     Then if $g\in \Spin(8)$, we have $g_+,g_-\in\SO(\OO)$. Furthermore, we can abuse notation and write $\rho_+(g)=g_+$ and $\rho_-(g)=g_-$. Then how do we write $\rho_0(g)$?
 \end{remark*}
-\begin{lemma}[$\Spin(8)$ Triality Lemma]
+\begin{lemma}[$\Spin(8)$ Triality Lemma]\index{Theorem!$\Spin(8)$ Triality Lemma}
 Let $(g_0, g_+, g_-)$ be an ordered triple of elements of $\Orth(\OO)$. Then the following statements are equivalent.
 \begin{enumerate}
     \item $g=
 \diag(g_+, g_-)\in \Spin(8)$, and $g_0 = \Ad_g$.
-\item $g_+(xy) = g_-(x)g_0(y)$ for all $x,y \in \OO$.\index{Theorem!$\Spin(8)$ Triality Theorem}
+\item $g_+(xy) = g_-(x)g_0(y)$ for all $x,y \in \OO$.
 \end{enumerate}
+The next theorem will use this lemma to show that there is a norm-triality between the three irreducible representation spaces of $\Spin(8)$.
 \end{lemma}
 \begin{remark*}
     Since having $g_+$ and $g_-$ determines $g_0$ completely, it is useful to denote $\Spin(8)$ as consisting of all ordered triples $(g_0,g_+,g_-)$ satisfying the above criteria. 
 \end{remark*}
+
 \begin{remark*}
-    It is not obvious to see why this is related to the concept of a triality as a trilinear functional. To see this recall that $g_+,g_-,g_0$ define irreducible representations of $\Spin(8)$, with representation spaces $\PP_+, \PP_-,$ and $\PP_0$ (i.e. the left and right chiral spinors and the standard vector representation). The above theorem will soon allow us to construct a triality on this triple of vector spaces.
+    If $\diag(g_+,g_-)\in\Spin(8)$, then $g_+,g_-\in \SO(\OO)$, and so the above lemma implies that $g_0 \in \SO(\OO)$ as well.
 \end{remark*}
 \begin{proof}
 We must show that $\Ad_\rho(v) \in \OO$ whenever $g_-(x)g_0(v)=g_+(xv)$ for all $x,v\in \OO$.
@@ -1454,12 +1456,53 @@ This means that $\Ad_g \in \Spin(8)$ if and only if $g_+(g^{-1}_-(1)v)=g_0(v)$ f
     &= A(B^\dagger(w)v)
 \end{align*}
 Set $x = g^{-1}_-(w)$. Then the above implies that $g_-(x)u=g_+(xv)$, so $g_-(x)g_0(v)=g_+(xv)$ as required.
-
 \end{proof}
 
-\begin{remark*}
-    If $\diag(g_+,g_-)\in\Spin(8)$, then $g_+,g_-\in \SO(\OO)$, and so the above lemma implies that $g_0 \in \SO(\OO)$ as well.
-\end{remark*}
+\begin{thm}[Triality of $\Spin(8)$]
+The map $T:\PP_+\times \PP_-\times \PP_0 = \OO^3\to \RR$ given by $T(u,v,w)=\langle u,vw\rangle$ is a norm-triality. Furthermore, this triality characterizes $\Spin(8)$, in that a triple $(g_0,g_+,g_-)$ is in $ \Spin(8)$ if and only if $T(g_+(u),g_-(v),g_0(w))=T(u,v,w)$ for all $u,v,w\in \OO$.
+\end{thm}
+\begin{proof}
+First we must show that it is a triality.
+Fix $u$ and $v$ nonzero. Then set $w = v^{-1}u$, and we get $\langle u,vw\rangle = \langle u,u\rangle\neq 0$. So $T(u,v,\cdot)$ is nonzero. The same argument holds if we fix $u$ and $w$ nonzero. If we fix $v$ and $w$, then setting $u=vw$ works.
+
+Next we show that it is a norm-triality. To see this, first recall that since the octonions are a composition algebra, we have,
+\[T(u,v,w) = \langle u,vw\rangle \leq |u||vw| = |u||v||w|\]
+Next, we want to show that given fixed $u,v$ there is a $w$ so that $T(u,v,w) = |u||v||w|$. To get this, set $w = \overline{v}u$. Then we get
+
+\begin{align*}\langle u,vw\rangle &=\langle u,v\overline{v}u\rangle\\
+&= |v|^2\langle u,u\rangle\\
+&= |u|^2|v|^2\\
+&= |u| |v| |\overline{v}u|\\
+&= |u||v||w|
+\end{align*}
+Where in the last line we have once again used the composition algebra property. The same trick works if we fix $u$ and $w$. If we fix $v$ and $w$ then we can set $u=vw$. Therefore we have shown that $T$ is indeed a norm-triality.
+
+To show that this is preserved by $\Spin(8)$ we compute
+\begin{align*}
+    \langle g_+(u),g_-(v)g_0(w)\rangle
+    &= \langle g_+(u),g_+(vw)\rangle\\
+    &= \langle u,vw\rangle
+\end{align*}
+Where we have used the fact that $g_+$, being an element of $\SO(8)$, is an isometry. Finally we must show the converse, that if the above holds then $(g_+,g_-,g_0)\in \Spin(8)$. That is, suppose that $\langle u,vw\rangle = \langle g_+(u),g_-(v)g_0(w)\rangle$ for some $g_+,g_-,g_0\in \SO(8)$. We must show that $g_-(v)g_0(w) = g_+(vw)$. First observe that regardless of whether the triple is in $\Spin(8)$, we have
+\[\langle g_+(u),g_+(vw)\rangle=
+     \langle u,vw\rangle\]
+Therefore, since we are assuming that the triple preserves the triality, we have
+\[\langle g_+(u),g_-(v)g_0(w)\rangle =\langle g_+(u),g_+(vw)\rangle \]
+For all $u,v,w$. By the non-degeneracy of the inner product, we therefore see that this can only be true if $g_-(v)g_0(w) = g_+(vw)$ for all $v,w$. This completes the proof.
+    
+\end{proof}
+\begin{cor}
+    Equivalently, the triality may be taken to be $T(u,v,w) = \textrm{Tr}(\overline{u}(vw))= \overline{u}(vw)+\overline{\overline{u}(vw)}$.
+\end{cor}
+\begin{proof}
+Recall that $2\langle u,v\rangle = u\overline{v}+v\overline{u}$. We have,
+    \begin{align*}
+        2\langle u,vw\rangle &= 2\langle 1,\overline{u}vw\rangle \\
+        &= \overline{\overline{u}(vw)} + \overline{u}(vw)\\
+        &= \textrm{Tr}(\overline{u}(vw))
+    \end{align*}
+\end{proof}
+
 
 \begin{defn}
     Let $C$ denote conjugation of octonions. Then we define $\rho_{\pm}' = C\circ \rho_{\pm}\circ C$.
@@ -1497,13 +1540,13 @@ The first outer automorphism of $\Spin(8)$ is the map $\alpha : \Spin(8)\to \Spi
 
     We also have $g_+(v) = Av$ and $g_-(v) = Bv$. Therefore
     \[g_0'(v) = g_-(g_+^{-1}(1)v)\]
-    This means that $(g_0', g_-,g_+)$ satisfies the triality theorem.
+    This means that $(g_0', g_-,g_+)$ satisfies the triality property.
 \end{remark*}
 \begin{defn}[Triality Automorphism II]
 Let $\gamma : \Spin(8)\to \Spin(8)$ be the map defined by $\gamma(g_0,g_+,g_-) = (g_0',g_-,g_+)$. Then $\gamma$ is also a group automorphism.
 \end{defn}
 \begin{thm}[Outer Automorphisms of $\Spin(8)$]
-Let $\alpha$ and $\gamma$ be the automorphisms defined above. Then $\alpha, \gamma,$ and $\alpha\circ\gamma$ are \textbf{outer automorphisms}. Furthermore, they are the \textbf{only} outer automorphisms of $\Spin(8)$.
+Let $\alpha$ and $\gamma$ be the automorphisms defined above. Then $\alpha, \gamma,$ and $\alpha\circ\gamma$ are outer automorphisms.
 \end{thm}
 \begin{proof}
 To show these are outer autmorphisms it suffices to show that they do not fix $\cent(\Spin(8))$. Recall that $1,\mu,-1$, and $-\mu$ are elements of $\cent(\Spin(8))$.
@@ -1526,36 +1569,6 @@ So none of them are inner automorphisms.
 Proving that these are the \textbf{only} outer autmorphisms takes more work.
 \end{proof}
 
-\begin{thm}[Triality of $\Spin(8)$]
-The map $T:\PP_+\times \PP_-\times \PP_0 = \OO^3\to \RR$ given by $T(u,v,w)=\langle u,vw\rangle$ is a norm-triality. Furthermore, this triality characterizes $\Spin(8)$, in that a triple $(g_0,g_+,g_-)$ is in $ \Spin(8)$ if and only if $T(g_+(u),g_-(v),g_0(w))=T(u,v,w)$ for all $u,v,w\in \OO$.
-\end{thm}
-\begin{proof}
-First we must show that it is a triality.
-Fix $u$ and $v$ nonzero. Then set $w = v^{-1}u$, and we get $\langle u,vw\rangle = \langle u,u\rangle\neq 0$. So $T(u,v,\cdot)$ is nonzero. The same argument holds if we fix $u$ and $w$ nonzero. If we fix $v$ and $w$, then setting $u=vw$ works.
-
-Next we show that it is a norm-triality. To see this, first recall that since the octonions are a composition algebra, we have,
-\[T(u,v,w) = \langle u,vw\rangle \leq |u||vw| = |u||v||w|\]
-Next, we want to show that given fixed $u,v$ there is a $w$ so that $T(u,v,w) = |u||v||w|$. To get this, set $w = \overline{v}u$. Then we get
-
-\begin{align*}\langle u,vw\rangle &=\langle u,v\overline{v}u\rangle\\
-&= |v|^2\langle u,u\rangle\\
-&= |u|^2|v|^2\\
-&= |u| |v| |\overline{v}u|\\
-&= |u||v||w|
-\end{align*}
-Where in the last line we have once again used the composition algebra property. The same trick works if we fix $u$ and $w$. If we fix $v$ and $w$ then we can set $u=vw$. Therefore we have shown that $T$ is indeed a norm-triality.
-
-To show that this is preserved by $\Spin(8)$ we compute
-\begin{align*}
-    \langle g_+(u),g_-(v)g_0(w)\rangle
-    &= \langle g_+(u),g_+(vw)\rangle\\
-    &= \langle u,vw\rangle
-\end{align*}
-Where we have used the fact that $g_+$, being an element of $\SO(8)$, is an isometry. Finally we must show the converse, that if the above holds then $(g_+,g_-,g_0)\in \Spin(8)$. That is, suppose that $\langle u,vw\rangle = \langle g_+(u),g_-(v)g_0(w)\rangle$ for some $g_+,g_-,g_0\in \SO(8)$. We must show that $g_-(v)g_0(w) = g_+(vw)$. First observe that regardless of whether the triple is in $\Spin(8)$, we have
-\[\langle g_+(u),g_+(vw)\rangle=
-     \langle u,vw\rangle\]
-Therefore, since we are assuming that the triple preserves the triality, we have
-\[\langle g_+(u),g_-(v)g_0(w)\rangle =\langle g_+(u),g_+(vw)\rangle \]
-For all $u,v,w$. By the non-degeneracy of the inner product, we therefore see that this can only be true if $g_-(v)g_0(w) = g_+(vw)$ for all $v,w$. This completes the proof.
-    
-\end{proof}
+\begin{remark*}
+    something something action of $S^3$ 
+\end{remark*}
