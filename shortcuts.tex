@@ -1,0 +1,218 @@
+\stackMath
+\newcommand\bighat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+
+\stackMath
+\newcommand\bigcheck[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigvee\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+
+\stackMath
+\newcommand\bigtilde[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\sim\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+
+% \newcommand\bigtilde[1]{\ThisStyle{%
+%   \setbox0=\hbox{$\SavedStyle#1$}%
+%   \stackengine{-.1\LMpt}{$\SavedStyle#1$}{%
+%     \stretchto{\scaleto{\SavedStyle\mkern.2mu\sim}{.5467\wd0}}{.7\ht0}%
+% %    .2mu is the kern imbalance when clipping white space
+% %    .5467++++ is \ht/[kerned \wd] aspect ratio for \sim glyph
+%   }{O}{c}{F}{T}{S}%
+% }}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+\addbibresource{bib.bib}
+\numberwithin{equation}{section}
+\DeclareMathOperator{\Span}{\textsf{span}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}  
+\DeclarePairedDelimiter{\innprod}{\langle}{\rangle}
+\DeclareMathOperator{\QQ}{\mathbb{Q}}
+\DeclareMathOperator{\PP}{\mathbb{P}}
+\DeclareMathOperator{\Aa}{\mathcal{A}}
+\DeclareMathOperator{\Nn}{\mathcal{N}}
+\DeclareMathOperator{\Radical}{\textsf{rad}}
+\DeclareMathOperator{\Aut}{\textsf{Aut}}
+\DeclareMathOperator{\Mm}{\mathcal{M}}
+\DeclareMathOperator{\Bb}{\mathcal{B}}
+\DeclareMathOperator{\End}{\textsf{End}}
+\DeclareMathOperator{\Ii}{\mathcal{I}}
+\DeclareMathOperator{\im}{\textsf{im}}
+\DeclareMathOperator{\Cc}{{\mathcal{C}}}
+\DeclareMathOperator{\Pp}{\mathcal{P}}
+\DeclareMathOperator{\Dd}{\mathcal{D}}
+\DeclareMathOperator{\Ff}{\mathcal{F}}
+\DeclareMathOperator{\Hh}{\mathcal{H}}
+\DeclareMathOperator{\Ss}{\mathcal{S}}
+\DeclareMathOperator{\Tt}{\mathcal{T}}
+\DeclareMathOperator{\Ll}{\mathcal{L}}
+\DeclareMathOperator{\GL}{\textsf{GL}}
+\DeclareMathOperator{\RR}{\mathbb{R}}
+\DeclareMathOperator{\SL}{\textsf{SL}}
+\DeclareMathOperator{\II}{\mathbb{I}}
+\DeclareMathOperator{\FF}{\mathbb{F}}
+\DeclareMathOperator{\CC}{\mathbb{C}}
+\DeclareMathOperator{\ZZ}{\mathbb{Z}}
+\DeclareMathOperator{\HH}{\mathbb{H}}
+\DeclareMathOperator{\NN}{\mathbb{N}}
+\DeclareMathOperator{\diag}{\textsf{diag}}
+\DeclareMathOperator{\sgn}{\textsf{sgn}}
+\DeclareMathOperator{\nul}{\textsf{null}}
+\DeclareMathOperator{\cent}{\textsf{cent}}
+\DeclareMathOperator{\twcent}{\textsf{twcent}}
+\DeclareMathOperator{\id}{\textsf{Id}}
+\DeclareMathOperator{\One}{\mathbbm{1}}
+\DeclareMathOperator{\adj}{\textsf{adj}}
+\DeclareMathOperator{\p}{\partial}
+\DeclareMathOperator{\ksi}{\xi}
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator{\Sym}{\textsf{Sym}}
+\DeclareMathOperator{\xx}{{\mathfrak{X}}}
+\DeclareMathOperator{\yy}{{\mathfrak{Y}}}
+\DeclareMathOperator{\zz}{{\mathfrak{Z}}}
+\DeclareMathOperator{\KK}{\mathbb{K}}
+\DeclareMathOperator{\signature}{\textsf{signature}}
+\DeclareMathOperator{\Var}{\textsf{Var}}
+\DeclareMathOperator{\arsinh}{\textsf{arsinh}}
+\DeclareMathOperator{\Cov}{\textsf{Cov}}
+\DeclareMathOperator{\SU}{\textsf{SU}}
+\DeclareMathOperator{\Spin}{\textsf{Spin}}
+\DeclareMathOperator{\Pf}{\textsf{Pf}}
+\DeclareMathOperator{\image}{\textsf{image}}
+\DeclareMathOperator{\Alt}{\textsf{Alt}}
+\DeclareMathOperator{\Rank}{\textsf{rank}}
+\DeclareMathOperator{\Cl}{C\ell}
+\DeclareMathOperator{\rank}{\textsf{rank}}
+\DeclareMathOperator{\LL}{\mathbb{L}}
+\DeclareMathOperator{\Pin}{\textsf{Pin}}
+\DeclareMathOperator{\Ad}{\textsf{Ad}}
+\DeclareMathOperator{\Orth}{\textsf{O}}
+\DeclareMathOperator{\Unitary}{\textsf{U}}
+\DeclareMathOperator{\OO}{\mathbb{O}}
+\makeatletter
+\newcommand{\uset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits_{
+    \vbox to#1{\kern-7\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+\newcommand{\orthoplus}{\uset{\perp}{\oplus}}
+\newcommand{\bigorthoplus}{\smash[b]{\uset{\perp}{\bigoplus}}}
+\DeclareMathOperator{\Sp}{\textsf{Sp}}
+\renewcommand{\Im}{\textsf{Im}}
+\renewcommand{\Re}{\textsf{Re}}
+\renewcommand{\mod}{\textsf{ mod }}
+\newcommand\m[1]{\begin{bmatrix}#1\end{bmatrix}} 
+\newcommand\mdv[2]{\frac{D#1}{D#2}}
+\DeclareMathOperator{\SO}{\textsf{SO}}
+\makeatletter
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\def\bign#1{\mathclose{\hbox{$\left#1\vbox to8.5\p@{}\right.\n@space$}}\mathopen{}}
+\newcommand{\hk}{\mathbin{\! \hbox{\vrule height0.3pt width5pt depth 0.2pt \vrule height5pt width0.4pt depth 0.2pt}}}
+\makeatother
+
+\tcolorboxenvironment{proof}{
+  colback=brown!10!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\tcolorboxenvironment{example}{
+  colback=blue!4!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\newtheorem{defn}{Definition}
+\tcolorboxenvironment{defn}{
+  colback=green!7!white,
+  boxrule=0pt,
+  boxsep=0pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\newtheorem{lemma}{Lemma}
+\tcolorboxenvironment{lemma}{
+  colback=yellow!10!white,
+  boxrule=0pt,
+  boxsep=1pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\newtheorem{thm}{Theorem}
+\tcolorboxenvironment{thm}{
+  colback=purple!10!white,
+  boxrule=0pt,
+  boxsep=0pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\newtheorem{cor}{Corollary}
+\tcolorboxenvironment{cor}{
+  colback=yellow!10!white,
+  boxrule=0pt,
+  boxsep=0pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{physics*}{Physics Remark}
+\tcolorboxenvironment{physics*}{
+  colback=violet!10!white,
+  boxrule=0pt,
+  boxsep=0pt,
+  breakable,
+  left=10pt,right=10pt,top=10pt,bottom=10pt,
+  oversize=2pt,
+  before skip=2\topsep,
+  after skip=2\topsep,
+}
+\numberwithin{thm}{section}
+\numberwithin{example}{section}
+\numberwithin{defn}{section}
+\numberwithin{lemma}{section}
+\numberwithin{cor}{section}
